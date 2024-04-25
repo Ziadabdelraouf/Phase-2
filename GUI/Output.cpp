@@ -20,10 +20,11 @@ Output::Output()
 	UI.FillColor = GREEN;	//Filling color
 	UI.MsgColor = RED;		//Messages color
 	UI.BkGrndColor = LIGHTGOLDENRODYELLOW;	//Background color
+	UI.bkgToolBar = WHITE;   //background for tool bar color 
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
 	UI.StatusBarColor = TURQUOISE;
 	UI.PenWidth = 3;	//width of the figures frames
-
+	
 	
 	//Create the output window
 	pWind = CreateWind(UI.width, UI.height, UI.wx, UI.wy);

@@ -1,6 +1,6 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
-
+#include "SwitchMode.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -41,7 +41,17 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			///create ExitAction here
 			
 			break;
-		
+		case TO_PLAY:
+			/// switch to play mode
+			pOut->CreatePlayToolBar(); /// clears the tool bar then creates the play mode toolbar
+			UI.InterfaceMode = MODE_PLAY; ///changes the program to play mode
+            
+		break;
+		case TO_DRAW:
+			/// switch to draw mode
+			pOut->CreateDrawToolBar(); /// creates draw mode tool bar
+			UI.InterfaceMode = MODE_DRAW; ////changes the program to draw mode
+			break;
 		case STATUS:	//a click on the status bar ==> no action
 			return;
 	}
