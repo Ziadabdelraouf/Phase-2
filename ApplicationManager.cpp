@@ -1,6 +1,5 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
-#include "SwitchMode.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
