@@ -3,14 +3,14 @@
 
 #include "DEFS.h"
 #include "Figures\CFigure.h"
+#include "Figures\CRectangle.h"
 #include "GUI\input.h"
-#include "GUI\output.h"
+
 
 //Main class that manages everything in the application.
 class ApplicationManager
 {
-	enum { MaxFigCount = 200 };	//Max no of figures
-
+	enum{ MaxFigCount = 200 }; //max number of figures
 private:
 	int FigCount;		//Actual number of figures
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
@@ -24,9 +24,10 @@ private:
 	CFigure* Clipboard;  //Pointer to copied/cut figure
 
 public:	
+
 	ApplicationManager(); 
 	~ApplicationManager();
-	
+
 	// -- Action-Related Functions
 	//Reads the input command from the user and returns the corresponding action type
 	ActionType GetUserAction() const;
@@ -35,7 +36,9 @@ public:
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
-		
+	CFigure *GetFigure(int id) const; //Search for a figure given its ID
+	int GetFigureCount() const; //returns the number of figures
+
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output

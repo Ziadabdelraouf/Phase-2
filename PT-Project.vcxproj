@@ -128,6 +128,8 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+
+    <ClCompile Include="Actions\SelectAction.cpp" />
     <ClCompile Include="Actions\AddSquareAction.cpp" />
     <ClCompile Include="AddTriAction.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -177,6 +179,8 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+
+    <ClInclude Include="Actions\SelectAction.h" />
     <ClInclude Include="Actions\AddSquareAction.h" />
     <ClInclude Include="AddTriAction.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
