@@ -1,19 +1,20 @@
+#pragma once
 #ifndef ADD_TRI_ACTION_H
 #define ADD_TRI_ACTION_H
-#include "Actions/Action.h"
+#include "Action.h"
 
 
-class AddTriAction:public Action{
+class AddTriAction :public Action {
 private:
-	Point P1, P2, P3; //Rectangle Corners
+	Point P1, P2, P3; //Triangle Corners
 	GfxInfo TriGfxInfo;
 public:
 	AddTriAction(ApplicationManager* pApp);
 
-	//Reads rectangle parameters
+	//Reads triangle parameters
 	virtual void ReadActionParameters();
 
-	//Add rectangle to the ApplicationManager
+	//Add triangle to the ApplicationManager
 	virtual void Execute();
 };
 #endif
