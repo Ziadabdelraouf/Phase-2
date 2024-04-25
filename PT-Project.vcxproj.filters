@@ -149,6 +149,16 @@
       <Filter>CMUgraphicsLib</Filter>
     </ClCompile>
     <ClCompile Include="Actions\SelectAction.cpp">
+    <ClCompile Include="CTriangle.cpp">
+      <Filter>Figures Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="AddTriAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Figures\CSquare.cpp">
+      <Filter>Figures Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\AddSquareAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -239,6 +249,16 @@
     </ClInclude>
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="Actions\SelectAction.h">
+    <ClInclude Include="CTriangle.h">
+      <Filter>Figures Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="AddTriAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Figures\CSquare.h">
+      <Filter>Figures Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\AddSquareAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

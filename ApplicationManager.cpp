@@ -1,8 +1,11 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
+
 #include "Actions\SelectAction.h"
 #include "Figures\CFigure.h"
 #include "Figures\CRectangle.h"
+#include "Actions\AddTriAction.h"
+#include "Actions\AddSquareAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -40,6 +43,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case SELECT:
 			pAct = new SelectAction(this);
+			break;
+		case DRAW_SQR:
+			pAct = new AddSquareAction(this);
+			break;
+		case DRAW_TRI:
+			pAct = new AddTriAction(this);
 			break;
 		case EXIT:
 			///create ExitAction here
