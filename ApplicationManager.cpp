@@ -1,6 +1,8 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
-
+#include "Actions\SelectAction.h"
+#include "Figures\CFigure.h"
+#include "Figures\CRectangle.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -21,8 +23,8 @@ ApplicationManager::ApplicationManager()
 //==================================================================================//
 ActionType ApplicationManager::GetUserAction() const
 {
-	//Ask the input to get the action from the user.
-	return pIn->GetUserAction();		
+	//Ask the input to get the action from the user
+	return pIn->GetUserAction();
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Creates an action and executes it
@@ -36,7 +38,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
 			break;
-
+		case SELECT:
+			pAct = new SelectAction(this);
+			break;
 		case EXIT:
 			///create ExitAction here
 			
@@ -67,14 +71,27 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
-	//If a figure is found return a pointer to it.
-	//if this point (x,y) does not belong to any figure return NULL
-
-
-	//Add your code here to search for a figure given a point x,y	
-	//Remember that ApplicationManager only calls functions do NOT implement it.
-
+	//If a figure is found return a pointer to it
+	for (int i = FigCount-1; i >=0 ; i--) {
+		if (FigList[i]->IsClickInside(x, y))
+			return FigList[i];
+	}
+	
+	//If this point (x,y) does not belong to any figure return NULL
 	return NULL;
+}
+
+CFigure* ApplicationManager::GetFigure(int id) const
+{
+	if (id <= FigCount)
+		return FigList[id]; //return pointer to figure if found
+	else
+		return NULL; //return NULL if figure not found
+}
+
+int ApplicationManager::GetFigureCount() const
+{
+	return FigCount; //returns actual number of figures
 }
 //==================================================================================//
 //							Interface Management Functions							//
@@ -83,16 +100,19 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {	
-	for(int i=0; i<FigCount; i++)
+	for(int i=0; i<GetFigureCount(); i++)
 		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
 }
 ////////////////////////////////////////////////////////////////////////////////////
+
 //Return a pointer to the input
 Input *ApplicationManager::GetInput() const
 {	return pIn; }
+
 //Return a pointer to the output
 Output *ApplicationManager::GetOutput() const
 {	return pOut; }
+
 ////////////////////////////////////////////////////////////////////////////////////
 //Destructor
 ApplicationManager::~ApplicationManager()
@@ -101,5 +121,4 @@ ApplicationManager::~ApplicationManager()
 		delete FigList[i];
 	delete pIn;
 	delete pOut;
-	
 }
