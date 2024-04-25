@@ -1,6 +1,6 @@
 #ifndef CRECT_H
 #define CRECT_H
-#include "Figures/CFigure.h"
+#include "CFigure.h"
 
 class CTriangle: public CFigure{
 	private:
