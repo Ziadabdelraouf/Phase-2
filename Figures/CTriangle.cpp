@@ -16,8 +16,20 @@ void CTriangle::Draw(Output* pOut) const
 
 bool CTriangle::IsClickInside(int x, int y) const
 {
-	//add conditions to return false if click outside
-	return true;
+	//calculates total area of triangle, then the area if the triangle is divided into 3 triangles with the point passed being the shared point between them,
+	//if areas are equal then the click is inside and the function returns true value 
+
+	float TotalArea = 0.5*abs(Corner1.x*(Corner2.y-Corner3.y) + Corner2.x*(Corner3.y-Corner1.y) + Corner3.x*(Corner1.y-Corner2.y));
+	float A1 = 0.5 * abs(x * (Corner2.y - Corner3.y) + Corner2.x * (Corner3.y - y) + Corner3.x * (y - Corner2.y));
+	float A2 = 0.5 * abs(Corner1.x * (y - Corner3.y) + x * (Corner3.y - Corner1.y) + Corner3.x * (Corner1.y - y));
+	float A3 = 0.5 * abs(Corner1.x * (Corner2.y - y) + Corner2.x * (y - Corner1.y) + x * (Corner1.y - Corner2.y));
+	
+	if (TotalArea == A1+A2+A3)
+	{
+		return true;
+	}
+	
+	return false;
 }
 
 void CTriangle::PrintInfo(Output* pOut) const
