@@ -15,6 +15,13 @@ void CCircle::Draw(Output* pOut) const
 
 bool CCircle::IsClickInside(int x, int y) const
 {
+	float r1 = sqrt((Center.x - Radius.x)*(Center.x - Radius.x) + (Center.y - Radius.y)* (Center.y - Radius.y));
+	float r2 = sqrt((Center.x - x)*(Center.x - x) + (Center.y - y)*(Center.y - y));
+	if (r2 > r1)
+	{
+		return false;
+	}
+	
 	return true;
 }
 

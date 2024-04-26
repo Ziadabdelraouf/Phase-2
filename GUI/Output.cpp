@@ -366,7 +366,7 @@ void Output::DrawHex(Point C, GfxInfo HexGfxInfo, bool selected) const
 
 
 void Output::DrawCrc(Point cent, Point rad, GfxInfo crcGfxInfo, bool selcrc) {
-	Point cent1, cent2;
+	Point cent1;
 	int  radius;
 	color crc;
 	if (selcrc) {
