@@ -2,8 +2,29 @@
 
 CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo, int id):CFigure(FigureGfxInfo, id)
 {
+	if (P1.y < UI.ToolBarHeight || P2.y < UI.ToolBarHeight) {
+		if (P1.y < P2.y) {
+			P2.y += (UI.ToolBarHeight - P1.y);
+			P1.y = UI.ToolBarHeight + 3;
+		}
+		if (P2.y < P1.y) {
+			P1.y += (UI.ToolBarHeight - P2.y);
+			P2.y = UI.ToolBarHeight + 3;
+		}
+	}
+	if (P1.y >= UI.height - UI.StatusBarHeight || P2.y >= UI.height - UI.StatusBarHeight) {
+		if (P1.y > P2.y) {
+			P2.y -= UI.height - UI.StatusBarHeight - P1.y;
+			P1.y = UI.height - UI.StatusBarHeight - 3;
+		}
+		if (P2.y > P1.y) {
+			P1.y -= UI.height - UI.StatusBarHeight - P2.y;
+			P2.y = UI.height - UI.StatusBarHeight - 3;
+		}
+	}
 	Corner1 = P1;
 	Corner2 = P2;
+	
 	CFigure::RecTotalCount++;
 }
 	
@@ -11,6 +32,7 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo, int id):CFigur
 void CRectangle::Draw(Output* pOut) const
 {
 	//Call Output::DrawRect to draw a rectangle on the screen	
+	
 	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, Selected);
 
 }

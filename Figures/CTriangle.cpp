@@ -1,10 +1,52 @@
 #include "CTriangle.h"
 
-CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
+CTriangle::CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
-	Corner1 = P1;
-	Corner2 = P2;
-	Corner3 = P3;
+	if (p1.y < UI.ToolBarHeight || p2.y < UI.ToolBarHeight || p3.y < UI.ToolBarHeight) {
+		if (p1.y < p2.y && p1.y < p3.y) {
+			int temp = UI.ToolBarHeight - p1.y;
+			p1.y = UI.ToolBarHeight;
+			p2.y += temp;
+			p3.y += temp;
+		}
+		else if (p2.y < p1.y && p2.y < p3.y) {
+			int temp = UI.ToolBarHeight - p2.y;
+			p2.y = UI.ToolBarHeight;
+			p1.y += temp;
+			p3.y += temp;
+		}
+		else if (p3.y < p1.y && p3.y < p2.y) {
+			int temp = UI.ToolBarHeight - p3.y;
+			p3.y = UI.ToolBarHeight;
+			p1.y += temp;
+			p2.y += temp;
+		}
+	}
+	if (p1.y > (UI.height - UI.StatusBarHeight) || p2.y > (UI.height - UI.StatusBarHeight) || p3.y > (UI.height - UI.StatusBarHeight)) {
+		if (p1.y > p2.y && p1.y > p3.y) {
+			int temp = p1.y - (UI.height - UI.StatusBarHeight);
+			p1.y = UI.height - UI.StatusBarHeight - 2;
+			p2.y -= temp;
+			p3.y -= temp;
+		}
+		else if (p2.y > p1.y && p2.y > p3.y) {
+			int temp = p2.y - (UI.height - UI.StatusBarHeight);
+			p2.y = UI.height - UI.StatusBarHeight - 2;
+			p1.y -= temp;
+			p3.y -= temp;
+		}
+		else if (p3.y > p1.y && p3.y > p2.y) {
+			int temp = p3.y - (UI.height - UI.StatusBarHeight);
+			p3.y = UI.height - UI.StatusBarHeight - 2;
+			p1.y -= temp;
+			p2.y -= temp;
+		}
+	}
+
+	
+	Corner1 = p1;
+	Corner2 = p2;
+	Corner3 = p3;
 }
 
 

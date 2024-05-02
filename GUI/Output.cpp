@@ -215,47 +215,14 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	}
 	else
 		style = FRAME;
-	if (P1.y < UI.ToolBarHeight || P2.y < UI.ToolBarHeight) {
-		if (P1.y < P2.y) {
-			P2.y += (UI.ToolBarHeight - P1.y);
-			P1.y = UI.ToolBarHeight + 3;
-		}
-		if (P2.y < P1.y) {
-			P1.y += (UI.ToolBarHeight - P2.y);
-			P2.y = UI.ToolBarHeight + 3;
-		}
-	}
-	if (P1.y >= UI.height - UI.StatusBarHeight || P2.y >= UI.height - UI.StatusBarHeight) {
-		if (P1.y > P2.y) {
-			P2.y -= UI.height - UI.StatusBarHeight - P1.y;
-			P1.y = UI.height - UI.StatusBarHeight - 3;
-		}
-		if (P2.y > P1.y) {
-			P1.y -= UI.height - UI.StatusBarHeight - P2.y;
-			P2.y = UI.height - UI.StatusBarHeight - 3;
-		}
-	}
+	
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
-
 }
 
 void Output::DrawSquare(Point C, GfxInfo SquareGfxInfo, bool selected) const
 {
 	const int sidelength = 4 * UI.ToolBarHeight;	//pre-set sidelength for square
-	if (C.x < sidelength / 2) {
-		C.x = sidelength / 2;
-	}
-
-	if (C.x > UI.width - 15 - (sidelength / 2)) {
-		C.x = UI.width - 15 - (sidelength / 2);
-	}
-
-	if (C.y < UI.ToolBarHeight + sidelength / 2) {
-		C.y = UI.ToolBarHeight + sidelength / 2 + 2;
-	}
-	else if (C.y > UI.height - UI.StatusBarHeight - sidelength / 2) {
-		C.y = UI.height - UI.StatusBarHeight - sidelength / 2;
-	}
+	
 	Point P1;
 	Point P2;
 	P1.x = C.x - sidelength / 2;
@@ -282,47 +249,7 @@ void Output::Drawtri(Point p1, Point p2, Point p3, GfxInfo triGfxInfo, bool sele
 	}
 	else
 		style = FRAME;
-	if (p1.y < UI.ToolBarHeight || p2.y < UI.ToolBarHeight || p3.y < UI.ToolBarHeight) {
-		if (p1.y < p2.y && p1.y < p3.y) {
-			int temp = UI.ToolBarHeight - p1.y;
-			p1.y = UI.ToolBarHeight;
-			p2.y += temp;
-			p3.y += temp;
-		}
-		else if (p2.y < p1.y && p2.y < p3.y) {
-			int temp = UI.ToolBarHeight - p2.y;
-			p2.y = UI.ToolBarHeight;
-			p1.y += temp;
-			p3.y += temp;
-		}
-		else if (p3.y < p1.y && p3.y < p2.y) {
-			int temp = UI.ToolBarHeight - p3.y;
-			p3.y = UI.ToolBarHeight;
-			p1.y += temp;
-			p2.y += temp;
-		}
-	}
-	if (p1.y > (UI.height - UI.StatusBarHeight) || p2.y > (UI.height - UI.StatusBarHeight) || p3.y > (UI.height - UI.StatusBarHeight)) {
-		if (p1.y > p2.y && p1.y > p3.y) {
-			int temp = p1.y - (UI.height - UI.StatusBarHeight);
-			p1.y = UI.height - UI.StatusBarHeight - 2;
-			p2.y -= temp;
-			p3.y -= temp;
-		}
-		else if (p2.y > p1.y && p2.y > p3.y) {
-			int temp = p2.y - (UI.height - UI.StatusBarHeight);
-			p2.y = UI.height - UI.StatusBarHeight - 2;
-			p1.y -= temp;
-			p3.y -= temp;
-		}
-		else if (p3.y > p1.y && p3.y > p2.y) {
-			int temp = p3.y - (UI.height - UI.StatusBarHeight);
-			p3.y = UI.height - UI.StatusBarHeight - 2;
-			p1.y -= temp;
-			p2.y -= temp;
-		}
-	}
-
+	
 	pWind->DrawTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, style);
 }
 

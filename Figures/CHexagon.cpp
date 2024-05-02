@@ -2,8 +2,22 @@
 
 CHexagon::CHexagon(Point C, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
-	Center = C;
 	sidelength = 2 * UI.ToolBarHeight;
+	if (C.x < sidelength) {
+		C.x = sidelength;
+	}
+
+	if (C.x > UI.width - 15 - (sidelength)) {
+		C.x = UI.width - 15 - (sidelength);
+	}
+
+	if (C.y < UI.ToolBarHeight + (sqrt(3 / 4.0) * sidelength)) {
+		C.y = UI.ToolBarHeight + (sqrt(3 / 4.0) * sidelength) + 2;
+	}
+	else if (C.y > UI.height - UI.StatusBarHeight - (sqrt(3 / 4.0) * sidelength)) {
+		C.y = UI.height - UI.StatusBarHeight - (sqrt(3 / 4.0) * sidelength);
+	}
+	Center = C;
 }
 
 

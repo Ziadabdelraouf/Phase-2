@@ -2,8 +2,22 @@
 
 CSquare::CSquare(Point C, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
-	Center = C;
 	sidelength = 4 * UI.ToolBarHeight;
+	if (C.x < sidelength / 2) {
+		C.x = sidelength / 2;
+	}
+
+	if (C.x > UI.width - 15 - (sidelength / 2)) {
+		C.x = UI.width - 15 - (sidelength / 2);
+	}
+
+	if (C.y < UI.ToolBarHeight + sidelength / 2) {
+		C.y = UI.ToolBarHeight + sidelength / 2 + 2;
+	}
+	else if (C.y > UI.height - UI.StatusBarHeight - sidelength / 2) {
+		C.y = UI.height - UI.StatusBarHeight - sidelength / 2;
+	}
+	Center = C;
 }
 
 
