@@ -15,6 +15,7 @@ private:
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 
 	CFigure* SelectedFig; //Pointer to the selected figure
+	int FigerIndex;      //The index of the figure in the Figure list.
 
 	//Pointers to Input and Output classes
 	Input *pIn;
@@ -41,7 +42,8 @@ public:
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
-	void UpdateInterface() const;	//Redraws all the drawing window	
+	void UpdateInterface() const;	//Redraws all the drawing window
+	void Swaping(CFigure*, int x, int y);
 };
 
 #endif

@@ -17,6 +17,7 @@ ApplicationManager::ApplicationManager()
 	pIn = pOut->CreateInput();
 	
 	FigCount = 0;
+	FigerIndex = 0;
 		
 	//Create an array of figure pointers and set them to NULL		
 	for(int i=0; i<MaxFigCount; i++)
@@ -89,14 +90,15 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
 	//If a figure is found return a pointer to it
 	for (int i = FigCount-1; i >=0 ; i--) {
-		if (FigList[i]->IsClickInside(x, y))
+		if (FigList[i]->IsClickInside(x, y)){
 			return FigList[i];
+		}
 	}
 	
 	//If this point (x,y) does not belong to any figure return NULL
 	return NULL;
 }
-
+////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int id) const
 {
 	if (id <= FigCount)
@@ -104,10 +106,22 @@ CFigure* ApplicationManager::GetFigure(int id) const
 	else
 		return NULL; //return NULL if figure not found
 }
-
+////////////////////////////////////////////////////////////////////////////////////
 int ApplicationManager::GetFigureCount() const
 {
 	return FigCount; //returns actual number of figures
+}
+////////////////////////////////////////////////////////////////////////////////////
+void ApplicationManager::Swaping(CFigure* f,int x,int y) {
+	for (int i = 0; i < FigCount;i++) {
+		if (GetFigure(x,y) == FigList[i]) {
+			FigerIndex = i;
+		}
+	}
+	for (int i = FigerIndex; i <= FigCount+1; i++) {
+		FigList[FigerIndex] = FigList[FigCount + 1];
+		FigList[i] = FigList[i + 1];
+	}
 }
 //==================================================================================//
 //							Interface Management Functions							//

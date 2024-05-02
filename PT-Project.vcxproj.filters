@@ -159,6 +159,7 @@
     <ClCompile Include="Figures\CHexagon.cpp" />
     <ClCompile Include="Actions\AddCrcAction.cpp" />
     <ClCompile Include="Figures\CCircle.cpp" />
+    <ClCompile Include="Actions\FillAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -257,6 +258,7 @@
     <ClInclude Include="Figures\CHexagon.h" />
     <ClInclude Include="Actions\AddCrcAction.h" />
     <ClInclude Include="Figures\CCircle.h" />
+    <ClInclude Include="Actions\FillAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

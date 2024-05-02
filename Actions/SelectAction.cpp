@@ -99,5 +99,7 @@ void SelectAction::Execute()
 	else
 		UnselectAll(); //unselects all if click is not on a figure (click is on empty space)
 }
-
+int SelectAction::GetNumSelect() {
+	return NumSelected;
+}
 
