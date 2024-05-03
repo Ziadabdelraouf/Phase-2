@@ -135,13 +135,7 @@ void Output::clearToolBar() const {
 	pWind->SetBrush(UI.bkgToolBar);
 	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight, FILLED);
 }
-//////////////////////////////////////////////////////////////////////////////////////////
-void Output::ClearDrawArea() const
-{
-	pWind->SetPen(UI.BkGrndColor, 1);
-	pWind->SetBrush(UI.BkGrndColor);
-	pWind->DrawRectangle(0, UI.ToolBarHeight + UI.LineUnderTBWidth, UI.width, UI.height - UI.StatusBarHeight);
-}
+
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::CreatePlayToolBar() const
 {

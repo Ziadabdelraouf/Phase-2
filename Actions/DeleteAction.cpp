@@ -70,28 +70,3 @@ void DeleteAction::Execute()
 }
 
 
-/*set <CFigure*>::iterator SelectedFigList = pManager->getFirstFigSelected();
-	//CFigure ** listfig = pManager->getFigList();
-	int nFigList = pManager->getFigCount();
-	int nSelectedFig = pManager->getSelectedFigCount();
-	int k=0;
-
-	for (SelectedFigList; k < nSelectedFig; SelectedFigList++)
-	{
-		nFigList = pManager->getFigCount();
-		for (int j=0; j < nFigList; j++)
-		{
-			if(*(SelectedFigList) == listfig[j])
-			{
-				delete listfig[j];
-				listfig[j] = NULL;
-				for (int i=j; i < nFigList-1; i++)
-					listfig[i] = listfig[i+1];
-				listfig[nFigList-1] = NULL;
-				pManager->setfigcount(nFigList-1);
-				break;
-			}
-		}
-		k++;
-	}
-	pManager->ClearSelectedFigList();*/

@@ -43,7 +43,6 @@ public:
 	void AddClipBoard(CFigure* pFig);
 	CFigure* GetClipboard();
 	int GetNumSelected();
-	int GetNumSelected();
 	void UnselectAll();
 	void ClearAll();
 	// -- Interface Management Functions
@@ -54,9 +53,9 @@ public:
 	CFigure* GetSelectedFig(); // Get current selected figure
 	void SetFigCount(int);
 	void Swaping(CFigure*, int, int);
-	color GetColor();
+	
 	CFigure** getfiglist();
-	CFigure* GetSelectedFig(); // Get current selected figure
-	void SetFigCount(int);
+	
+	
 };
 #endif

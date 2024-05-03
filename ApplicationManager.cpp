@@ -191,39 +191,25 @@ CFigure* ApplicationManager::GetClipboard()
 	return Clipboard;
 	
 }
-////////////////////////////////////////////////////////////////////////////////////
-
-CFigure** ApplicationManager::getfiglist() {
-	return FigList;
-}
-/////////////////////////////////////////////////////////////////////////////////////
-CFigure* ApplicationManager::GetSelectedFig() {
-	for (int i = 0; i < FigCount; i++) {
-		if (FigList[i]->IsSelected()) {
-			return FigList[i];
-		}
-	}
-}
-
-void ApplicationManager::SetFigCount(int n) {
-		FigCount = (n >= 0) ? n : 0;
-	}
-
 int ApplicationManager::GetNumSelected() {
 	SelectedFigCount = 0;
 	for (int i = 0; i < FigCount; i++) {
 		if (FigList[i]->IsSelected()) {
 			SelectedFigCount++;
 		}
-int ApplicationManager::GetNumSelected()  {
-	SelectedFigCount = 0;
-	for (int i = 0; i < FigCount; i++){
-		if (FigList[i]->IsSelected()) {
-			SelectedFigCount++;
-		}
 	}
 	return SelectedFigCount;
 }
+////////////////////////////////////////////////////////////////////////////////////
+
+CFigure** ApplicationManager::getfiglist() {
+	return FigList;
+}
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 void ApplicationManager::UnselectAll()
 {
 	for (int i = 0; i < GetFigureCount(); i++)
@@ -264,7 +250,6 @@ void ApplicationManager::Swaping(CFigure*p, int x, int o) {
 
 		FigList[0] = p;
 	}
-	return SelectedFigCount;
 }
 //==================================================================================//
 //							Interface Management Functions							//

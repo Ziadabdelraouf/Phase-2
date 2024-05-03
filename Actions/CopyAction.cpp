@@ -20,6 +20,7 @@ void CopyAction::ReadActionParameters()
 		{
 
 			Pfig=pManager->GetSelectedFig();
+			pOut->PrintMessage("figure cpoied");
 		}
 	}
 	else {

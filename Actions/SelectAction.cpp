@@ -29,27 +29,14 @@ void SelectAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
-void SelectAction::UnselectAll()
-{
-	Output* pOut = pManager->GetOutput();
 
-	//loop to unselect all selected figures
-	for (int i = 0; i < pManager->GetFigureCount(); i++)
-	{
-		pFig = pManager->GetFigure(i);
-		if (pFig != NULL && pFig->IsSelected()) {
-			pFig->SetSelected(false);
-			pFig->Draw(pOut);
-		}
-	}
-}
+
 
 
 void SelectAction::Execute()
 {
 	ReadActionParameters(); //sets pFig to point to the figure clicked on
 	Output* pOut = pManager->GetOutput();
-
 
 	if (pFig != NULL) {
 		if (pFig->IsSelected()) {
@@ -91,9 +78,7 @@ void SelectAction::Execute()
 		}
 	}
 	else
-		UnselectAll(); //unselects all if click is not on a figure (click is on empty space)
+		pManager->UnselectAll();//unselects all if click is not on a figure (click is on empty space)
 }
-		pManager->UnselectAll(); //unselects all if click is not on a figure (click is on empty space)
-}
-
+	
 
