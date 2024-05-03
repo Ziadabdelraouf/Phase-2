@@ -10,7 +10,6 @@
 SelectAction::SelectAction(ApplicationManager* pApp):Action(pApp)
 {
 }
-int  SelectAction::NumSelected = 0; //counter for selected figures
 void SelectAction::ReadActionParameters()
 {	
 	//Get a Pointer to the Input / Output Interfaces
@@ -23,17 +22,7 @@ void SelectAction::ReadActionParameters()
 	pOut->PrintMessage("Select Tool: Click on a figure");
 	pIn->GetPointClicked(P1.x, P1.y);
 	
-	SelectAction::NumSelected = 0; //initialising of counter
-	
-	//loop to check the number of selected figure
-	for (int i = 0; i < pManager->GetFigureCount(); i++)
-	{
-		pFig = pManager->GetFigure(i);
-		if (pFig->IsSelected())
-		{
-			SelectAction::NumSelected++;
-		}
-	}
+
 	pFig = pManager->GetFigure(P1.x, P1.y); //gets pointer to the figure clicked on
 	pOut->ClearStatusBar();
 }
@@ -67,8 +56,8 @@ void SelectAction::Execute()
 		else {
 			pFig->SetSelected(true);
 			pFig->Draw(pOut);
-			if(NumSelected == 0)
-				pFig->PrintInfo(pOut); //displays rectangle info if only one is selected
+			if(pManager->GetNumSelected() == 1)
+				pFig->PrintInfo(pOut); //displays info if only one is selected
 			else {
 				string str;
 				str = "Selected: ";
@@ -99,7 +88,5 @@ void SelectAction::Execute()
 	else
 		UnselectAll(); //unselects all if click is not on a figure (click is on empty space)
 }
-int SelectAction::GetNumSelect() {
-	return NumSelected;
-}
+
 

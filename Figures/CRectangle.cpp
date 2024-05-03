@@ -82,3 +82,15 @@ void CRectangle::SetSelected(bool s)
 	else
 		CFigure::RecSelectedCount--; //decrements count of selected rectangles by 1 when a rectangle is deselected
 }
+
+char CRectangle::GetType()const {
+	return Type;
+}
+
+Point CRectangle::GetP1(){
+	return Corner1;
+}
+
+Point CRectangle::GetP2() {
+	return Corner2;
+}

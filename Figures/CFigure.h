@@ -23,6 +23,7 @@ protected:
 	static int CircleTotalCount;
 	static int CircleSelectedCount;
 
+
 public:
 	CFigure(GfxInfo FigureGfxInfo, int id);
 	virtual void SetSelected(bool s) = 0;	//select/unselect the figure

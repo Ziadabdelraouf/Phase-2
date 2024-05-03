@@ -5,12 +5,12 @@
 #include "../GUI/Input.h"
 #include "../GUI/Output.h"
 
-class FillAction: public Action{
+class BorderAction : public Action {
 private:
 	CFigure* PFig;
 	color color;
 public:
-	FillAction(ApplicationManager* papp);
+	BorderAction(ApplicationManager* papp);
 
 	//Reads rectangle parameters
 	virtual void ReadActionParameters();

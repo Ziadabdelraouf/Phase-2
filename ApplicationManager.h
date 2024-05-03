@@ -12,10 +12,12 @@ class ApplicationManager
 	enum{ MaxFigCount = 200 }; //max number of figures
 private:
 	int FigCount;		//Actual number of figures
+	int SelectedFigCount;
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 
 	CFigure* SelectedFig; //Pointer to the selected figure
 	int FigerIndex;      //The index of the figure in the Figure list.
+	color Color;
 
 	//Pointers to Input and Output classes
 	Input *pIn;
@@ -38,12 +40,13 @@ public:
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
 	CFigure *GetFigure(int id) const; //Search for a figure given its ID
 	int GetFigureCount() const; //returns the number of figures
-
+	int GetNumSelected();
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window
-	void Swaping(CFigure*, int x, int y);
+	color GetColor();
+	CFigure* GetSelectedFig(); // Get current selected figure
+	void SetFigCount(int);
 };
-
 #endif

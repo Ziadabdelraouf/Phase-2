@@ -46,7 +46,3 @@ void AddRectAction::Execute()
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
 }
-
-GfxInfo AddRectAction::GetGfxInfo() {
-	return RectGfxInfo;
-}

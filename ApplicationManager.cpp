@@ -5,6 +5,9 @@
 #include "Actions\AddHexAction.h"
 #include "Actions\AddCrcAction.h"
 #include "Actions\SelectAction.h"
+#include "Actions\FillAction.h"
+#include "Actions\BorderAction.h"
+#include "Actions\ClearAllAction.h"
 
 #include "Figures\CFigure.h"
 
@@ -17,7 +20,10 @@ ApplicationManager::ApplicationManager()
 	pIn = pOut->CreateInput();
 	
 	FigCount = 0;
+	SelectedFigCount = 0;
 	FigerIndex = 0;
+
+	Color = BLACK;
 		
 	//Create an array of figure pointers and set them to NULL		
 	for(int i=0; i<MaxFigCount; i++)
@@ -58,6 +64,34 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case DRAW_CIRCL:
 			pAct = new AddCrcAction(this);
+			break;
+		case CHANGE_FILLING_COLOR:
+			pAct = new FillAction(this);
+			break;
+		case CHANGE_BORDER_COLOR:
+			pAct = new BorderAction(this);
+			break;
+		case CLEARALL:
+			pAct = new ClearAllAction(this);
+			break;
+		case COLOR_BLACK:
+			Color = BLACK;
+			break;
+		case COLOR_BLUE:
+			Color = BLUE;
+			break;
+		case COLOR_GREEN:
+			Color = GREEN;
+			break;
+		case COLOR_ORANGE:
+			Color = ORANGE;
+			break;
+		case COLOR_YELLOW:
+			Color = YELLOW;
+			break;
+		case COLOR_RED:
+			Color = RED;
+			break;
 		case EXIT:
 			///create ExitAction here
 			
@@ -112,17 +146,31 @@ int ApplicationManager::GetFigureCount() const
 	return FigCount; //returns actual number of figures
 }
 ////////////////////////////////////////////////////////////////////////////////////
-void ApplicationManager::Swaping(CFigure* f,int x,int y) {
-	for (int i = 0; i < FigCount;i++) {
-		if (GetFigure(x,y) == FigList[i]) {
-			FigerIndex = i;
+void ApplicationManager::SetFigCount(int n) {
+	FigCount = (n>=0) ? n:0;
+}
+////////////////////////////////////////////////////////////////////////////////////
+CFigure* ApplicationManager::GetSelectedFig() {
+	for (int i = 0; i < FigCount; i++) {
+		if (FigList[i]->IsSelected()) {
+			return FigList[i];
 		}
 	}
-	for (int i = FigerIndex; i <= FigCount+1; i++) {
-		FigList[FigerIndex] = FigList[FigCount + 1];
-		FigList[i] = FigList[i + 1];
-	}
 }
+int ApplicationManager::GetNumSelected()  {
+	SelectedFigCount = 0;
+	for (int i = 0; i < FigCount; i++){
+		if (FigList[i]->IsSelected()) {
+			SelectedFigCount++;
+		}
+	}
+	return SelectedFigCount;
+}
+////////////////////////////////////////////////////////////////////////////////////
+color ApplicationManager::GetColor() {
+	return Color;
+}
+
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//

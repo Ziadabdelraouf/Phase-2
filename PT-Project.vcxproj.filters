@@ -160,6 +160,9 @@
     <ClCompile Include="Actions\AddCrcAction.cpp" />
     <ClCompile Include="Figures\CCircle.cpp" />
     <ClCompile Include="Actions\FillAction.cpp" />
+    <ClCompile Include="Actions\BorderAction.cpp" />
+    <ClCompile Include="Actions\ClearAllAction.cpp" />
+    <ClCompile Include="Actions\SwapAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -259,6 +262,9 @@
     <ClInclude Include="Actions\AddCrcAction.h" />
     <ClInclude Include="Figures\CCircle.h" />
     <ClInclude Include="Actions\FillAction.h" />
+    <ClInclude Include="Actions\BorderAction.h" />
+    <ClInclude Include="Actions\ClearAllAction.h" />
+    <ClInclude Include="Actions\SwapAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
