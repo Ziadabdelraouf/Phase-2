@@ -167,6 +167,7 @@
     <ClCompile Include="Actions\ClearAllAction.cpp" />
     <ClCompile Include="Actions\SendBackAction.cpp" />
     <ClCompile Include="Actions\BringFrontAction.cpp" />
+    <ClCompile Include="Actions\PasteAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -265,14 +266,11 @@
     <ClInclude Include="Figures\CHexagon.h" />
     <ClInclude Include="Actions\AddCrcAction.h" />
     <ClInclude Include="Figures\CCircle.h" />
-    <ClInclude Include="Actions\FillAction.h" />
-    <ClInclude Include="Actions\BorderAction.h" />
-    <ClInclude Include="Actions\ClearAllAction.h" />
     <ClInclude Include="Actions\SendBackAction.h" />
-    <ClInclude Include="Actions\BringFrontAction.h" />
     <ClInclude Include="Actions\DeleteAction.h" />
     <ClInclude Include="Actions\CopyAction.h" />
     <ClInclude Include="Actions\CutAction.h" />
+    <ClInclude Include="Actions\PasteAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

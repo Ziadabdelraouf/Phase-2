@@ -31,12 +31,17 @@ void CutAction::Execute()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 	ReadActionParameters();
-	pManager->AddClipBoard(Pfig);
-	Pfig->SetSelected(false);
-	Pfig->ChngDrawClr(GRAY);
-	Pfig->ChngFillClr(GRAY);
-	
-	Pfig->Draw(pOut);
+	if (!IsCut) {
+		pManager->AddClipBoard(Pfig);
+        
+		Pfig->SetSelected(false);
+		tempDraw= pManager->GetColor();
+
+		Pfig->ChngDrawClr(GRAY);
+		Pfig->ChngFillClr(GRAY);
+		Pfig->Draw(pOut);
+	}
+
 
 }
 
