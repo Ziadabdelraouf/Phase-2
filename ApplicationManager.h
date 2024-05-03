@@ -20,36 +20,43 @@ private:
 	color Color;
 
 	//Pointers to Input and Output classes
-	Input *pIn;
-	Output *pOut;
+	Input* pIn;
+	Output* pOut;
 
 	CFigure* Clipboard;  //Pointer to copied/cut figure
 
 public:	
 
-	ApplicationManager(); 
+	ApplicationManager();
 	~ApplicationManager();
 
 	// -- Action-Related Functions
 	//Reads the input command from the user and returns the corresponding action type
 	ActionType GetUserAction() const;
-	void ExecuteAction(ActionType) ; //Creates an action and executes it
-	
+	void ExecuteAction(ActionType); //Creates an action and executes it
+
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
-	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
-	CFigure *GetFigure(int id) const; //Search for a figure given its ID
+	CFigure* GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
+	CFigure* GetFigure(int id) const; //Search for a figure given its ID
 	int GetFigureCount() const; //returns the number of figures
+	void AddClipBoard(CFigure* pFig);
+	CFigure* GetClipboard();
+	int GetNumSelected();
 	int GetNumSelected();
 	void UnselectAll();
 	void ClearAll();
 	// -- Interface Management Functions
-	Input *GetInput() const; //Return pointer to the input
-	Output *GetOutput() const; //Return pointer to the output
+	Input* GetInput() const; //Return pointer to the input
+	Output* GetOutput() const; //Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window
 	color GetColor();
 	CFigure* GetSelectedFig(); // Get current selected figure
 	void SetFigCount(int);
 	void Swaping(CFigure*, int, int);
+	color GetColor();
+	CFigure** getfiglist();
+	CFigure* GetSelectedFig(); // Get current selected figure
+	void SetFigCount(int);
 };
 #endif

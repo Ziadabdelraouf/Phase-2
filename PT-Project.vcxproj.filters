@@ -159,6 +159,9 @@
     <ClCompile Include="Figures\CHexagon.cpp" />
     <ClCompile Include="Actions\AddCrcAction.cpp" />
     <ClCompile Include="Figures\CCircle.cpp" />
+    <ClCompile Include="Actions\DeleteAction.cpp" />
+    <ClCompile Include="Actions\CopyAction.cpp" />
+    <ClCompile Include="Actions\CutAction.cpp" />
     <ClCompile Include="Actions\FillAction.cpp" />
     <ClCompile Include="Actions\BorderAction.cpp" />
     <ClCompile Include="Actions\ClearAllAction.cpp" />
@@ -267,6 +270,9 @@
     <ClInclude Include="Actions\ClearAllAction.h" />
     <ClInclude Include="Actions\SendBackAction.h" />
     <ClInclude Include="Actions\BringFrontAction.h" />
+    <ClInclude Include="Actions\DeleteAction.h" />
+    <ClInclude Include="Actions\CopyAction.h" />
+    <ClInclude Include="Actions\CutAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

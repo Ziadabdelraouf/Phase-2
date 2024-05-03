@@ -20,7 +20,12 @@ int CFigure::CircleTotalCount = 0; //initialise total count of circles
 int CFigure::CircleSelectedCount = 0; //initialise count of selected circles
 
 bool CFigure::IsSelected() const
-{	return Selected; }
+{
+	if (!NULL) {
+		return Selected;
+	}
+	else return false;
+}
 
 void CFigure::ChngDrawClr(color Dclr)
 {	
