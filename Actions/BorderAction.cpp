@@ -32,7 +32,6 @@ void BorderAction::Execute() {
 		pOut->PrintMessage("Select color to fill");
 		ReadActionParameters();
 		PFig->ChngDrawClr(color);
-		PFig->Draw(pOut);
 
 	}
 }
