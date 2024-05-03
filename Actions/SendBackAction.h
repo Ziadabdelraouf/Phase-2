@@ -2,11 +2,11 @@
 #include "Action.h"
 #include "../ApplicationManager.h"
 #include "../Figures/CFigure.h"
-class SwapAction:public Action{
+class SendBackAction :public Action{
 private:
 	CFigure* pFig;
 public:
-	SwapAction(ApplicationManager* papp);
+	SendBackAction(ApplicationManager* papp);
 
 	//Reads rectangle parameters
 	virtual void ReadActionParameters();

@@ -8,6 +8,8 @@
 #include "Actions\FillAction.h"
 #include "Actions\BorderAction.h"
 #include "Actions\ClearAllAction.h"
+#include "Actions\SendBackAction.h"
+#include "Actions\BringFrontAction.h"
 
 #include "Figures\CFigure.h"
 
@@ -73,6 +75,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case CLEARALL:
 			pAct = new ClearAllAction(this);
+			break;
+		case SENDBACK:
+			pAct = new SendBackAction(this);
+			break;
+		case BRINGFRONT:
+			pAct = new BringFrontAction(this);
 			break;
 		case COLOR_BLACK:
 			Color = BLACK;
@@ -156,6 +164,7 @@ CFigure* ApplicationManager::GetSelectedFig() {
 		}
 	}
 }
+////////////////////////////////////////////////////////////////////////////////////
 int ApplicationManager::GetNumSelected()  {
 	SelectedFigCount = 0;
 	for (int i = 0; i < FigCount; i++){
@@ -184,7 +193,28 @@ void ApplicationManager::ClearAll()
 color ApplicationManager::GetColor() {
 	return Color;
 }
+////////////////////////////////////////////////////////////////////////////////////
+void ApplicationManager::Swaping(CFigure*p, int x, int o) {
+	if(o==1){ // Bring Front
+		for (int i = x; i < FigCount; i++) {
+			FigList[i] = FigList[i + 1];
+			if (i == FigCount-1) {
+				break;
+			}
+		}
+		FigList[FigCount - 1] = p;
+	}
+	else if (o==2) { //Send Back
+		for (int i = x; i > 0; i--) {
+			FigList[i] = FigList[i-1];
+			if (i == 1) {
+				break;
+			}
+		}
 
+		FigList[0] = p;
+	}
+}
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//

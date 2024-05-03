@@ -133,10 +133,11 @@
     <ClCompile Include="Actions\AddSquareAction.cpp" />
     <ClCompile Include="Actions\AddTriAction.cpp" />
     <ClCompile Include="Actions\BorderAction.cpp" />
+    <ClCompile Include="Actions\BringFrontAction.cpp" />
     <ClCompile Include="Actions\ClearAllAction.cpp" />
     <ClCompile Include="Actions\FillAction.cpp" />
     <ClCompile Include="Actions\SelectAction.cpp" />
-    <ClCompile Include="Actions\SwapAction.cpp" />
+    <ClCompile Include="Actions\SendBackAction.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
@@ -191,10 +192,11 @@
     <ClInclude Include="Actions\AddSquareAction.h" />
     <ClInclude Include="Actions\AddTriAction.h" />
     <ClInclude Include="Actions\BorderAction.h" />
+    <ClInclude Include="Actions\BringFrontAction.h" />
     <ClInclude Include="Actions\ClearAllAction.h" />
     <ClInclude Include="Actions\FillAction.h" />
     <ClInclude Include="Actions\SelectAction.h" />
-    <ClInclude Include="Actions\SwapAction.h" />
+    <ClInclude Include="Actions\SendBackAction.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />

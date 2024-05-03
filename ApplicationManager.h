@@ -50,5 +50,6 @@ public:
 	color GetColor();
 	CFigure* GetSelectedFig(); // Get current selected figure
 	void SetFigCount(int);
+	void Swaping(CFigure*, int, int);
 };
 #endif

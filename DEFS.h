@@ -26,7 +26,8 @@ enum ActionType //The actions supported (you can add more if needed)
     COPYFIG,            //COPY FIGURE
     CUTFIG,                //CUT FIGURE
     PASTEFIG,            //PASTE FIGURE
-    SENDBACK_BRINGFRONT,
+    SENDBACK,
+    BRINGFRONT,
     PICK_HIDE,
     SAVE,
     LOAD,
