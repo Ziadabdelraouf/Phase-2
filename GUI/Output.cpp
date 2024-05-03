@@ -6,7 +6,7 @@ Output::Output()
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
 	
-	UI.width = 1250;
+	UI.width = 1350;
 	UI.height = 650;
 	UI.wx = 5;
 	UI.wy =5;
@@ -86,7 +86,7 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_TRI] = "images\\MenuItems\\Menu_Tri.jpg";
 	MenuItemImages[ITM_HEX] = "images\\MenuItems\\Menu_Hex.jpg";
 	MenuItemImages[ITM_CIRCL] = "images\\MenuItems\\Menu_Circ.jpg";
-	//COLOR
+	//COLORS
 	MenuItemImages[COLR_BLACK] = "images\\MenuItems\\Black.jpg";
 	MenuItemImages[COLR_YELLOW] = "images\\MenuItems\\Yellow.jpg";
 	MenuItemImages[COLR_ORANGE] = "images\\MenuItems\\Orange.jpg";
@@ -102,7 +102,8 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_COPYFIG] = "images\\MenuItems\\Copy.jpg";
 	MenuItemImages[ITM_CUTFIG] = "images\\MenuItems\\Cut.jpg";
 	MenuItemImages[ITM_PASTEFIG] = "images\\MenuItems\\Paste.jpg";
-	MenuItemImages[ITM_SENDBACK_BRINGFRONT] = "images\\MenuItems\\bring-to-front.jpg";
+	MenuItemImages[ITM_SENDBACK] = "images\\MenuItems\\bring-to-front.jpg";
+	MenuItemImages[ITM_BRINGFRONT] = "images\\MenuItems\\bring-to-front.jpg";
 	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\Save.jpg";
 	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\Load.jpg";
 	MenuItemImages[ITM_TO_PLAY] = "images\\MenuItems\\Play.jpg";

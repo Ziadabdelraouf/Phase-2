@@ -32,8 +32,6 @@ void FillAction::Execute() {
 		pOut->PrintMessage("Select color to fill");
 		ReadActionParameters();
 		PFig->ChngFillClr(color);
-		PFig->Draw(pOut);
 		
-		//PFig->
 	}
 }

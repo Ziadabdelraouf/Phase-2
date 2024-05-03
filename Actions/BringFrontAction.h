@@ -1,21 +1,17 @@
 #pragma once
 #include "Action.h"
 #include "../ApplicationManager.h"
-#include "SelectAction.h"
 #include "../Figures/CFigure.h"
-
-
-class ClearAllAction: public Action{
+class BringFrontAction :public Action {
 private:
 	CFigure* pFig;
 public:
-	ClearAllAction(ApplicationManager* pApp);
-	
+	BringFrontAction(ApplicationManager* papp);
+
 	//Reads rectangle parameters
 	virtual void ReadActionParameters();
 
 	//Add rectangle to the ApplicationManager
 	virtual void Execute();
-
 };
 

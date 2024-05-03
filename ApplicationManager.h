@@ -41,6 +41,8 @@ public:
 	CFigure *GetFigure(int id) const; //Search for a figure given its ID
 	int GetFigureCount() const; //returns the number of figures
 	int GetNumSelected();
+	void UnselectAll();
+	void ClearAll();
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
@@ -48,5 +50,6 @@ public:
 	color GetColor();
 	CFigure* GetSelectedFig(); // Get current selected figure
 	void SetFigCount(int);
+	void Swaping(CFigure*, int, int);
 };
 #endif

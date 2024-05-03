@@ -70,7 +70,8 @@ ActionType Input::GetUserAction() const
 			case ITM_COPYFIG: return COPYFIG;
 			case ITM_CUTFIG: return CUTFIG;
 			case ITM_PASTEFIG: return PASTEFIG;
-			case ITM_SENDBACK_BRINGFRONT: return SENDBACK_BRINGFRONT;
+			case ITM_SENDBACK: return SENDBACK;
+			case ITM_BRINGFRONT: return BRINGFRONT;
 			case ITM_SAVE: return SAVE;
 			case ITM_LOAD: return LOAD;
 			case ITM_TO_PLAY: return TO_PLAY;
