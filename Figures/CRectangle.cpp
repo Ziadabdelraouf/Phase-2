@@ -65,8 +65,6 @@ bool CRectangle::IsClickInside(int x, int y) const
 
 }
 
-
-
 void CRectangle::PrintInfo(Output* pOut) const
 {
 	//prints info of rectangle
@@ -81,16 +79,4 @@ void CRectangle::SetSelected(bool s)
 		CFigure::RecSelectedCount++; //increments count of selected rectangles by 1 when a rectangle is selected
 	else
 		CFigure::RecSelectedCount--; //decrements count of selected rectangles by 1 when a rectangle is deselected
-}
-
-char CRectangle::GetType()const {
-	return Type;
-}
-
-Point CRectangle::GetP1(){
-	return Corner1;
-}
-
-Point CRectangle::GetP2() {
-	return Corner2;
 }

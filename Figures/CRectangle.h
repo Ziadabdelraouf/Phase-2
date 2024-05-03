@@ -14,7 +14,6 @@ public:
 	virtual bool IsClickInside(int x, int y) const; //checks if click is inside the rectangle
 	virtual void PrintInfo(Output* pOut) const; //prints info of rectangle
 	virtual void SetSelected(bool s); 
-	virtual char GetType() const; //Return Type of the Figure.
 };
 
 #endif
