@@ -176,6 +176,7 @@ void ApplicationManager::UnselectAll()
 void ApplicationManager::ClearAll()
 {
 	for (int i = 0; i < GetFigureCount(); i++) {
+		FigList[i]->SetSelected(false);
 		FigList[i] = NULL;
 	}
 }
