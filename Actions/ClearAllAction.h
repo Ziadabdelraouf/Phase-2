@@ -10,8 +10,7 @@ private:
 	CFigure* pFig;
 public:
 	ClearAllAction(ApplicationManager* pApp);
-	//function to select all figures
-	void SelectAll();
+	
 	//Reads rectangle parameters
 	virtual void ReadActionParameters();
 

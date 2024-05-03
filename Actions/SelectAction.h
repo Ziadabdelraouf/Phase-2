@@ -18,8 +18,7 @@ public:
 	//Reads parameters required for action to execute (code depends on action type)
 	virtual void ReadActionParameters();
 	
-	//function to unselect all figures
-	void UnselectAll();
+	
 
 
 	

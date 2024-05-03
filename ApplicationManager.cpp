@@ -94,7 +94,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case EXIT:
 			///create ExitAction here
-			
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no action
@@ -165,6 +164,20 @@ int ApplicationManager::GetNumSelected()  {
 		}
 	}
 	return SelectedFigCount;
+}
+void ApplicationManager::UnselectAll()
+{
+	for (int i = 0; i < GetFigureCount(); i++)
+	{
+		FigList[i]->SetSelected(false);
+		FigList[i]->Draw(pOut);
+	}
+}
+void ApplicationManager::ClearAll()
+{
+	for (int i = 0; i < GetFigureCount(); i++) {
+		FigList[i] = NULL;
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 color ApplicationManager::GetColor() {
