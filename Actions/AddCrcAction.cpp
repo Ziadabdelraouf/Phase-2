@@ -16,11 +16,13 @@ void AddCrcAction::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	pOut->PrintMessage("New Circle: Click at the center of circle");
+	pManager->PlayAudio("Audio\\CircleCenter.wav");
 
 	//Read the center of the circle
 	pIn->GetPointClicked(C.x, C.y);
 
 	pOut->PrintMessage("New Circle: Click at the end of radius");
+	pManager->PlayAudio("Audio\\CircleRadius.wav");
 
 	//Read the radius of the circle
 	pIn->GetPointClicked(R.x, R.y);

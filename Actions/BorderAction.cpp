@@ -24,12 +24,14 @@ void BorderAction::Execute() {
 	Input* pIn = pManager->GetInput();
 	int n = pManager->GetNumSelected();
 	if (n > 1 || n == 0) {
-		string str = "You can't fill more than one figure, Select one figure and try again, Num: " + to_string(n);
+		string str = "You can't change color for more than one figure, Select one figure and try again";
+		pManager->PlayAudio("Audio\\ChangeColorError.wav");
 		pOut->PrintMessage(str);
 
 	}
 	else {
-		pOut->PrintMessage("Select color to fill");
+		pOut->PrintMessage("Select color to change border color");
+		pManager->PlayAudio("Audio\\BorderColor.wav");
 		ReadActionParameters();
 		PFig->ChngDrawClr(color);
 

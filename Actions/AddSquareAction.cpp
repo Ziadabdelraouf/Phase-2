@@ -16,6 +16,7 @@ void AddSquareAction::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	pOut->PrintMessage("New Square: Click at the center of square");
+	pManager->PlayAudio("Audio\\SquareCenter.wav");
 
 	//Read the center of the Square
 	pIn->GetPointClicked(C.x,C.y);

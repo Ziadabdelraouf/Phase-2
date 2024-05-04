@@ -16,6 +16,7 @@ void AddHexAction::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	pOut->PrintMessage("New Hexagon: Click at the center of Hexagon");
+	pManager->PlayAudio("Audio\\HexagonCenter.wav");
 
 	//Read the center of the Hexagon
 	pIn->GetPointClicked(C.x, C.y);

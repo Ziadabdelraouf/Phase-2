@@ -72,6 +72,7 @@ ActionType Input::GetUserAction() const
 			case ITM_PASTEFIG: return PASTEFIG;
 			case ITM_SENDBACK: return SENDBACK;
 			case ITM_BRINGFRONT: return BRINGFRONT;
+			case ITM_AUDIOPLAYER: return AUDIOPLAYER;
 			case ITM_SAVE: return SAVE;
 			case ITM_LOAD: return LOAD;
 			case ITM_TO_PLAY: return TO_PLAY;
