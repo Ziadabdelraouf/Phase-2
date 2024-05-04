@@ -12,10 +12,10 @@ private:
 public:
 	SaveAction(ApplicationManager* pApp);
 
-	//Reads rectangle parameters
+	//Reads file name
 	virtual void ReadActionParameters();
 
-	//Add rectangle to the ApplicationManager
+	//Creates file and saves info of figures
 	virtual void Execute();
 
 };

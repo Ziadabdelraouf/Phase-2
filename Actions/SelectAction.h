@@ -14,17 +14,11 @@ public:
 	//Constructor for SelectAction class
 	SelectAction(ApplicationManager* pApp); 
 
-
-	//Reads parameters required for action to execute (code depends on action type)
-	virtual void ReadActionParameters();
+	//Reads click of user 
+	virtual void ReadActionParameters();	
 	
-	
-
-
-	
-	//Execute action (code depends on action type)
+	//Selects figure and prints suitable information
 	virtual void Execute();
-
 };
 
 #endif

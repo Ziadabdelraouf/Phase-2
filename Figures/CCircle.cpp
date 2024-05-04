@@ -29,6 +29,7 @@ CCircle::CCircle(Point C, Point R, GfxInfo FigureGfxInfo, int id) :CFigure(Figur
 	
 	Center = cent1;
 	Radius = R;
+	CFigure::CircleTotalCount++;
 
 }
 

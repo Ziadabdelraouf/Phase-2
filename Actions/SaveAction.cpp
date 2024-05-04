@@ -12,17 +12,25 @@ SaveAction::SaveAction(ApplicationManager* pApp):Action(pApp)
 }
 
 void SaveAction::ReadActionParameters() {
+	//Get a Pointer to the Input / Output Interfaces
 	Input* pIn = pManager->GetInput();
 	Output* pOut = pManager->GetOutput();
-	pOut->PrintMessage("Enter Filename: ");
+
+	//Ask user to type the file name to save
+	pOut->PrintMessage("Saving Graph... Enter Filename: ");
 	str = pIn->GetString(pOut);
 }
 
 void SaveAction::Execute() {
-	ReadActionParameters();
-	Output* pOut = pManager->GetOutput();
+	ReadActionParameters(); //read input from user
+
+	Output* pOut = pManager->GetOutput(); // get a pointer to output interface
+
+	//prints info of the file the graph data was saved to
 	pOut->PrintMessage("Filename: " + str);
 	ofstream fout(str + ".txt");
+
+	//saves default draw color
 	if (UI.DrawColor == BLUE) {
 		fout << "BL\t";
 	}
@@ -42,6 +50,8 @@ void SaveAction::Execute() {
 		fout << "OR\t";
 	}
 	
+
+	//saves default fill color
 	if (UI.FillColor == BLUE) {
 		fout << "BL";
 	}
@@ -62,6 +72,8 @@ void SaveAction::Execute() {
 	}
 
 	fout << "\n";
+
+	//saves number of figures
 	fout << to_string(pManager->GetFigureCount()) << "\n";
 
 	pManager->SaveAll(fout);
