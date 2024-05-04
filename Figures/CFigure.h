@@ -52,6 +52,14 @@ public:
 	int getHexSelectedCount();
 	int getCircleTotalCount();
 	int getCircleSelectedCount();
+// temporary by omar 
+int getBlackCount();
+int getYellowCount();
+int getOrangeCount();
+int getRedCount();
+int getBlueCount();
+int getGreenCount();
+////
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
 
