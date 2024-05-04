@@ -51,6 +51,10 @@ bool CCircle::IsClickInside(int x, int y) const
 	return true;
 }
 
+void CCircle::Save(ofstream& OutFile)
+{
+}
+
 void CCircle::PrintInfo(Output* pOut) const
 {
 	string str = "Circle, ID: " + to_string(ID) + ", Center : (" + to_string(Center.x) + ", " + to_string(Center.y) + ")";

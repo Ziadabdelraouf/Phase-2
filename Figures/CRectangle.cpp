@@ -1,4 +1,5 @@
 #include "CRectangle.h"
+#include <fstream>
 
 CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo, int id):CFigure(FigureGfxInfo, id)
 {
@@ -64,6 +65,67 @@ bool CRectangle::IsClickInside(int x, int y) const
 	return true;
 
 }
+
+
+void CRectangle::Save(ofstream& fout)
+{
+	fout << "REC\t";
+	fout << ID << "\t";
+
+	fout << Corner1.x << "\t";
+	fout << Corner1.y << "\t";
+
+	fout << Corner2.x << "\t";
+	fout << Corner2.y << "\t";
+
+	if (FigGfxInfo.DrawClr == BLUE) {
+		fout << "BL\t";
+	}
+	else if (FigGfxInfo.DrawClr == BLACK) {
+		fout << "BK\t";
+	}
+	else if (FigGfxInfo.DrawClr == GREEN) {
+		fout << "GN\t";
+	}
+	else if (FigGfxInfo.DrawClr == RED) {
+		fout << "RD\t";
+	}
+	else if (FigGfxInfo.DrawClr == YELLOW) {
+		fout << "YL\t";
+	}
+	else if (FigGfxInfo.DrawClr == ORANGE) {
+		fout << "OR\t";
+	}
+
+	if (FigGfxInfo.isFilled) {
+		fout << "Y" << "\t";
+	}
+	else {
+		fout << "N" << "\t";
+	}
+
+
+	if (FigGfxInfo.FillClr == BLUE) {
+		fout << "BL\t";
+	}
+	else if (FigGfxInfo.FillClr == BLACK) {
+		fout << "BK\t";
+	}
+	else if (FigGfxInfo.FillClr == GREEN) {
+		fout << "GN\t";
+	}
+	else if (FigGfxInfo.FillClr == RED) {
+		fout << "RD\t";
+	}
+	else if (FigGfxInfo.FillClr == YELLOW) {
+		fout << "YL\t";
+	}
+	else if (FigGfxInfo.FillClr == ORANGE) {
+		fout << "OR\t";
+	}
+	fout << "\n";
+}
+
 
 void CRectangle::PrintInfo(Output* pOut) const
 {

@@ -10,6 +10,7 @@
 #include "Actions\ClearAllAction.h"
 #include "Actions\SendBackAction.h"
 #include "Actions\BringFrontAction.h"
+#include "Actions\SaveAction.h"
 
 #include "Figures\CFigure.h"
 
@@ -81,6 +82,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case BRINGFRONT:
 			pAct = new BringFrontAction(this);
+			break;
+		case SAVE:
+			pAct = new SaveAction(this);
 			break;
 		case COLOR_BLACK:
 			Color = BLACK;
@@ -213,6 +217,12 @@ void ApplicationManager::Swaping(CFigure*p, int x, int o) {
 		}
 
 		FigList[0] = p;
+	}
+}
+void ApplicationManager::SaveAll(ofstream& fout)
+{
+	for (int i = 0; i < GetFigureCount(); i++) {
+		FigList[i]->Save(fout);
 	}
 }
 //==================================================================================//

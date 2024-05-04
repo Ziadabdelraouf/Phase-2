@@ -77,6 +77,10 @@ bool CTriangle::IsClickInside(int x, int y) const
 	return false;
 }
 
+void CTriangle::Save(ofstream& OutFile)
+{
+}
+
 void CTriangle::PrintInfo(Output* pOut) const
 {
 	string str = "Triangle, ID: " + to_string(ID); //add more info

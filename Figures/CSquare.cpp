@@ -64,6 +64,10 @@ bool CSquare::IsClickInside(int x, int y) const
 	return true;
 }
 
+void CSquare::Save(ofstream& OutFile)
+{
+}
+
 void CSquare::PrintInfo(Output* pOut) const
 {
 	string str = "Square, ID: " + to_string(ID) + ", Center: (" + to_string(Center.x) + ", " + to_string(Center.y) + "), SideLength = " + to_string(sidelength) + "px";
