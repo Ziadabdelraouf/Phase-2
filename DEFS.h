@@ -46,6 +46,24 @@ enum ActionType //The actions supported (you can add more if needed)
 	///TODO: Add the other action types of the two modes
 };
 
+enum RNGshape // include all the shapes that can be used in the playmode
+{
+    triangle,
+    square,
+    rectangle,
+    circle,
+    hexagon
+};
+enum RNGcolor // include all the color that can be used in the playmode
+{
+    pBLACK,
+    pYELLOW,
+    pORANGE,
+    pRED,
+    pGREEN,
+    pBLUE
+};
+
 struct Point	//To be used for figures points
 { int x,y; };
 
