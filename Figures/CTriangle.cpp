@@ -47,6 +47,9 @@ CTriangle::CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo, int id
 	Corner1 = p1;
 	Corner2 = p2;
 	Corner3 = p3;
+
+	CFigure::TriTotalCount++;
+
 }
 
 

@@ -18,6 +18,9 @@ CSquare::CSquare(Point C, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo,
 		C.y = UI.height - UI.StatusBarHeight - sidelength / 2;
 	}
 	Center = C;
+
+	CFigure::SqrTotalCount++;
+
 }
 
 
