@@ -30,6 +30,33 @@ void CSquare::Draw(Output* pOut) const
 bool CSquare::IsClickInside(int x, int y) const
 {
 	//add conditions to return false if click is outside square
+	Point Corner1, Corner2;
+	Point C = Center;
+
+	Corner1.x = C.x - sidelength / 2;
+	Corner1.y = C.y - sidelength / 2;
+	Corner2.x = C.x + sidelength / 2;
+	Corner2.y = C.y + sidelength / 2;
+	
+	if (Corner1.x < Corner2.x) {
+		if (x < Corner1.x || x > Corner2.x)
+			return false;
+	}
+
+	if (Corner2.x < Corner1.x) {
+		if (x > Corner1.x || x < Corner2.x)
+			return false;
+	}
+
+	if (Corner1.y < Corner2.y) {
+		if (y < Corner1.y || y > Corner2.y)
+			return false;
+	}
+
+	if (Corner2.y < Corner1.y) {
+		if (y > Corner1.y || y < Corner2.y)
+			return false;
+	}
 
 	return true;
 }
