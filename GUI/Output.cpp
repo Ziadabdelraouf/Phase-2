@@ -299,9 +299,7 @@ void Output::DrawHex(Point C, GfxInfo HexGfxInfo, bool selected) const
 }
 
 
-void Output::DrawCrc(Point cent, Point rad, GfxInfo crcGfxInfo, bool selcrc) {
-	Point cent1;
-	int  radius;
+void Output::DrawCrc(Point cent, int rad, GfxInfo crcGfxInfo, bool selcrc) {
 	color crc;
 	if (selcrc) {
 		crc = UI.HighlightColor;
@@ -319,15 +317,8 @@ void Output::DrawCrc(Point cent, Point rad, GfxInfo crcGfxInfo, bool selcrc) {
 	else
 		ds = FRAME;
 
-	cent1.x = cent.x;
-	cent1.y = cent.y;
-	radius = sqrt((rad.x - cent.x) * (rad.x - cent.x) + (rad.y - cent.y) * (rad.y - cent.y));
-	if (radius > (UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / 2) {
-		radius = (UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / 2;
-		cent1.y = UI.ToolBarHeight + (UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / 2;
-	}
 
-	pWind->DrawCircle(cent1.x, cent1.y, radius, ds);
+	pWind->DrawCircle(cent.x, cent.y, rad, ds);
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////
