@@ -16,13 +16,13 @@ void AddCrcAction::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	pOut->PrintMessage("New Circle: Click at the center of circle");
-	pManager->PlayAudio("Audio\\CircleCenter.wav");
+	pManager->PlayAudio("Audio\\CircleCenter.wav"); //circle center voice acting
 
 	//Read the center of the circle
 	pIn->GetPointClicked(C.x, C.y);
 
 	pOut->PrintMessage("New Circle: Click at the end of radius");
-	pManager->PlayAudio("Audio\\CircleRadius.wav");
+	pManager->PlayAudio("Audio\\CircleRadius.wav");  //circel radius voice acting
 
 	//Read the radius of the circle
 	pIn->GetPointClicked(R.x, R.y);
@@ -32,7 +32,7 @@ void AddCrcAction::ReadActionParameters()
 	CircleGfxInfo.DrawClr = pOut->getCrntDrawColor();
 	CircleGfxInfo.FillClr = pOut->getCrntFillColor();
 
-	pOut->ClearStatusBar();
+	pOut->ClearStatusBar(); //To clean status bar after drawing finished
 
 }
 
