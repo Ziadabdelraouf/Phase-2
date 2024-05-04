@@ -19,6 +19,16 @@ int CFigure::HexSelectedCount = 0; //initialise count of selected hexagons
 int CFigure::CircleTotalCount = 0; //initialise total count of circles
 int CFigure::CircleSelectedCount = 0; //initialise count of selected circles
 
+// temporary changes by omar
+int CFigure::blackCount = 0;      //initialise count of black filled figures
+int CFigure::yellowCount = 0;     //initialise count of yellow filled figures
+int CFigure::orangeCount = 0;    //initialise count of oragne filled figures
+int CFigure::redCount = 0;      //initialise count of red filled figures
+int CFigure::blueCount = 0;      //initialise count of blue filled figures
+int CFigure::greenCount = 0;    //initialise count of green filled figures
+
+//
+
 bool CFigure::IsSelected() const
 {	return Selected; }
 
@@ -82,4 +92,26 @@ int CFigure::getCircleSelectedCount()
 {
 	return CircleSelectedCount;
 }
+
+// temporary by Omar //start
+int CFigure::getBlackCount() {
+	return blackCount;
+}
+int CFigure::getYellowCount() {
+	return yellowCount;
+}
+int CFigure::getOrangeCount() {
+	return orangeCount;
+}
+int CFigure::getRedCount() {
+	return redCount;
+}
+int CFigure::getBlueCount() {
+	return blueCount;
+}
+int CFigure::getGreenCount() {
+	return greenCount;
+}
+// end
+
 
