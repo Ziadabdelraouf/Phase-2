@@ -28,6 +28,7 @@ enum ActionType //The actions supported (you can add more if needed)
     PASTEFIG,            //PASTE FIGURE
     SENDBACK,
     BRINGFRONT,
+    AUDIOPLAYER,      
     PICK_HIDE,
     SAVE,
     LOAD,

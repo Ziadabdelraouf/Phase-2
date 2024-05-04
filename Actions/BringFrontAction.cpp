@@ -16,8 +16,9 @@ void BringFrontAction::Execute() {
 	int n = pManager->GetNumSelected();
 	int place = 0;
 	if (n > 1 || n == 0) {
-		string str = "please select one figure, Num: " + to_string(n);
+		string str = "You can't swap more than on figure, please select one figure";
 		pOut->PrintMessage(str);
+		pManager->PlayAudio("Audio\\SwapingError.wav");
 
 	}
 	else {
@@ -31,5 +32,6 @@ void BringFrontAction::Execute() {
 		pFig = pManager->GetFigure(place);
 		pManager->Swaping(pFig, place,1);
 		pOut->PrintMessage("Bring selected figure to front.....");
+		pManager->PlayAudio("Audio\\BringToFront.wav");
 	}
 }

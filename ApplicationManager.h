@@ -19,6 +19,8 @@ private:
 	int FigerIndex;      //The index of the figure in the Figure list.
 	color Color;
 
+	char* Audio;
+
 	//Pointers to Input and Output classes
 	Input *pIn;
 	Output *pOut;
@@ -52,5 +54,6 @@ public:
 	void SetFigCount(int);
 	void Swaping(CFigure*, int, int);
 	void SaveAll(ofstream & fout);
+	void PlayAudio(char*);
 };
 #endif

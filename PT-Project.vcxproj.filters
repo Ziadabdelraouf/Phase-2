@@ -165,6 +165,7 @@
     <ClCompile Include="Actions\SendBackAction.cpp" />
     <ClCompile Include="Actions\BringFrontAction.cpp" />
     <ClCompile Include="Actions\SaveAction.cpp" />
+    <ClCompile Include="Actions\VoiceAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -269,6 +270,7 @@
     <ClInclude Include="Actions\SendBackAction.h" />
     <ClInclude Include="Actions\BringFrontAction.h" />
     <ClInclude Include="Actions\SaveAction.h" />
+    <ClInclude Include="Actions\VoiceAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

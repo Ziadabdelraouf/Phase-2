@@ -10,7 +10,10 @@
 #include "Actions\ClearAllAction.h"
 #include "Actions\SendBackAction.h"
 #include "Actions\BringFrontAction.h"
+
 #include "Actions\SaveAction.h"
+
+#include "Actions\VoiceAction.h"
 
 #include "Figures\CFigure.h"
 
@@ -83,9 +86,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case BRINGFRONT:
 			pAct = new BringFrontAction(this);
 			break;
+
 		case SAVE:
 			pAct = new SaveAction(this);
 			break;
+
+		case AUDIOPLAYER:
+			pAct = new VoiceAction(this);
+			break;
+
 		case COLOR_BLACK:
 			Color = BLACK;
 			break;
@@ -208,6 +217,7 @@ void ApplicationManager::Swaping(CFigure*p, int x, int o) {
 		}
 		FigList[FigCount - 1] = p;
 	}
+
 	else if (o==2) { //Send Back
 		for (int i = x; i > 0; i--) {
 			FigList[i] = FigList[i-1];
@@ -219,12 +229,18 @@ void ApplicationManager::Swaping(CFigure*p, int x, int o) {
 		FigList[0] = p;
 	}
 }
+
 void ApplicationManager::SaveAll(ofstream& fout)
 {
 	for (int i = 0; i < GetFigureCount(); i++) {
 		FigList[i]->Save(fout);
 	}
 }
+
+void ApplicationManager::PlayAudio(char* a){
+	VoiceAction::AudioPlayer(a);
+}
+
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//

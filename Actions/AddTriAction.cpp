@@ -15,17 +15,20 @@ void AddTriAction::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
-	pOut->PrintMessage("New Rectangle: Click at first corner");
+	pOut->PrintMessage("New Triangle: Click at first corner");
+	pManager->PlayAudio("Audio\\TriangleFirstCorner.wav");
 
 	//Read 1st corner and store in point P1
 	pIn->GetPointClicked(P1.x, P1.y);
 
-	pOut->PrintMessage("New Rectangle: Click at second corner");
+	pOut->PrintMessage("Click at second corner");
+	pManager->PlayAudio("Audio\\TriangleSecondCorner.wav");
 
 	//Read 2nd corner and store in point P2
 	pIn->GetPointClicked(P2.x, P2.y);
 
-	pOut->PrintMessage("New Rectangle: Click at third corner");
+	pOut->PrintMessage("Click at third corner");
+	pManager->PlayAudio("Audio\\TriangleThirdCorner.wav");
 
 	//Read 3rd corner and store in point P3
 	pIn->GetPointClicked(P3.x, P3.y);
