@@ -8,7 +8,7 @@ private:
 	Point R; //Circle radius
 	GfxInfo CircleGfxInfo;
 public:
-	AddCrcAction(ApplicationManager* pApp);
+	AddCrcAction(ApplicationManager* pApp); //conistructor
 
 	//Reads Circle parameters
 	virtual void ReadActionParameters();
