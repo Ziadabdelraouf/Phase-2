@@ -59,6 +59,11 @@ int getOrangeCount();
 int getRedCount();
 int getBlueCount();
 int getGreenCount();
+
+bool IsFilled();
+/*color getFillClr();*/   //temporary it might be needed or not in the future made by (Omar)
+
+
 ////
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
