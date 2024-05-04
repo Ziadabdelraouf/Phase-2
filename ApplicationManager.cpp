@@ -114,74 +114,74 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			Color = RED;
 			break;
 		case SHAPE:
-	if (0 == R->getTriTotalCount() && 0 == R->getSqrTotalCount() &&
+	    if (0 == R->getTriTotalCount() && 0 == R->getSqrTotalCount() &&
 		0 == R->getRecTotalCount() && 0 == R->getCircleTotalCount() &&
 		0 == R->getHexTotalCount()) {
 		pOut->ClearStatusBar();
 		pOut->PrintMessage("Error there is no shapes to start the play mode with");
 		break;
-	}
-	do {
-		temp1 = r.shapeRNG();
-	} while ((0 == temp1 && 0 == R->getTriTotalCount())||
-		(1 == temp1 && 0 == R->getSqrTotalCount())||
-		(2 == temp1 && 0 == R->getRecTotalCount())||
-		(3 == temp1 && 0 == R->getCircleTotalCount())||
-		(4 == temp1 && 0 == R->getHexTotalCount()));
-	pOut->ClearStatusBar();
-	switch (temp1)
-	{
-	case triangle:
-		pOut->PrintMessage("Select all triangles");
-		break;
-	case square:
-		pOut->PrintMessage("Select all squares");
-		break;
-	case rectangle:
-		pOut->PrintMessage("Select all rectangles");
-		break;
-	case circle:
-		pOut->PrintMessage("Select all circles");
-		break;
-	case hexagon:
-		pOut->PrintMessage("Select all hexagons");
-		break;
-	}
-	break;
-case COLOR:
-	temp2 = -2;
-	for (int i = 0; i < FigCount; i++)
-	{
-		if (FigList[i]->IsFilled()) {
-			temp2 = -1;
-			break;
-		}
-	}
-	if (-2 == temp2) {
-		pOut->ClearStatusBar();
-		pOut->PrintMessage("there is no filled shape");
-		break;
-	}
-	else{
-		do {
+	    }
+	     do {
+		      temp1 = r.shapeRNG();
+	      } while ((0 == temp1 && 0 == R->getTriTotalCount())||
+		  (1 == temp1 && 0 == R->getSqrTotalCount())||
+		  (2 == temp1 && 0 == R->getRecTotalCount())||
+		  (3 == temp1 && 0 == R->getCircleTotalCount())||
+		  (4 == temp1 && 0 == R->getHexTotalCount()));
+	       pOut->ClearStatusBar();
+	      switch (temp1)
+	      {
+	       case triangle:
+	 	         pOut->PrintMessage("Select all triangles");
+		     break;
+	       case square:
+		         pOut->PrintMessage("Select all squares");
+		     break;
+	       case rectangle:
+		         pOut->PrintMessage("Select all rectangles");
+		     break;
+	       case circle:
+		         pOut->PrintMessage("Select all circles");
+		     break;
+	      case hexagon:
+		         pOut->PrintMessage("Select all hexagons");
+		     break;
+	       }
+	         break;
+        case COLOR:
+	        temp2 = -2;
+	         for (int i = 0; i < FigCount; i++)
+	            {
+		         if (FigList[i]->IsFilled()) {
+			       temp2 = -1;
+			      break;
+		          }
+	            }
+	       if (-2 == temp2) {
+		      pOut->ClearStatusBar();
+		      pOut->PrintMessage("there is no filled shape");
+		    break;
+	        }
+	      else{
+		 do {
 			temp1 = r.colorRNG();
-		} while ((temp1 == 0 && 0 == R->getBlackCount()) ||
+		  } while ((temp1 == 0 && 0 == R->getBlackCount()) ||
 			(1 == temp1 && 0 == R->getYellowCount()) ||
 			(2 == temp1 && 0 == R->getOrangeCount()) ||
 			(3 == temp1 && 0 == R->getRedCount()) ||
 			(4 == temp1 && 0 == R->getGreenCount()) ||
 			(5 == temp1 && 0 == R->getBlueCount()));
-	}
-	switch (temp1)
-	{
-	case pBLACK:
-		pOut->ClearStatusBar();
-		pOut->PrintMessage("pick all black filled shapes");
-		break;
-	case pYELLOW:
-		pOut->ClearStatusBar();
-		pOut->PrintMessage("pick all yellow filled shapes");
-		break;
+	      }
+	     switch (temp1)
+	      {
+	        case pBLACK:
+		     pOut->ClearStatusBar();
+		     pOut->PrintMessage("pick all black filled shapes");
+		    break;
+	        case pYELLOW:
+		     pOut->ClearStatusBar();
+		     pOut->PrintMessage("pick all yellow filled shapes");
+		    break;
 	case pORANGE:
 		pOut->ClearStatusBar();
 		pOut->PrintMessage("pick all orange filled shapes");

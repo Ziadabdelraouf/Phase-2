@@ -166,6 +166,7 @@
     <ClCompile Include="Actions\BringFrontAction.cpp" />
     <ClCompile Include="Actions\SaveAction.cpp" />
     <ClCompile Include="Actions\VoiceAction.cpp" />
+    <ClCompile Include="RNG.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -271,6 +272,7 @@
     <ClInclude Include="Actions\BringFrontAction.h" />
     <ClInclude Include="Actions\SaveAction.h" />
     <ClInclude Include="Actions\VoiceAction.h" />
+    <ClInclude Include="RNG.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
