@@ -23,6 +23,16 @@ protected:
 	static int CircleTotalCount;
 	static int CircleSelectedCount;
 
+//made by omar temporarly 
+ 
+static int blackCount;
+static int yellowCount;
+static int orangeCount;
+static int redCount;
+static int blueCount;
+static int greenCount;
+
+//
 
 public:
 	CFigure(GfxInfo FigureGfxInfo, int id);
