@@ -164,6 +164,7 @@
     <ClCompile Include="Actions\ClearAllAction.cpp" />
     <ClCompile Include="Actions\SendBackAction.cpp" />
     <ClCompile Include="Actions\BringFrontAction.cpp" />
+    <ClCompile Include="Actions\SaveAction.cpp" />
     <ClCompile Include="Actions\VoiceAction.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -268,6 +269,7 @@
     <ClInclude Include="Actions\ClearAllAction.h" />
     <ClInclude Include="Actions\SendBackAction.h" />
     <ClInclude Include="Actions\BringFrontAction.h" />
+    <ClInclude Include="Actions\SaveAction.h" />
     <ClInclude Include="Actions\VoiceAction.h" />
   </ItemGroup>
   <ItemGroup>

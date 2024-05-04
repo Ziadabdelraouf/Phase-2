@@ -102,6 +102,10 @@ bool CHexagon::IsClickInside(int x, int y) const
 	return true;
 }
 
+void CHexagon::Save(ofstream& OutFile)
+{
+}
+
 void CHexagon::PrintInfo(Output* pOut) const
 {
 	string str = "Hexagon, ID: " + to_string(ID) + ", Center: (" + to_string(Center.x) + ", " + to_string(Center.y) + "), SideLength = " + to_string(sidelength) + "px";
