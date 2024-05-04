@@ -4,7 +4,7 @@
 #include "DEFS.h"
 #include "Figures\CFigure.h"
 #include "GUI\input.h"
-
+#include "RNG.h"
 
 //Main class that manages everything in the application.
 class ApplicationManager
@@ -20,6 +20,13 @@ private:
 	color Color;
 
 	char* Audio;
+
+        RNG r;          // RNG obj to access the function
+        int temp1;
+        int temp2;
+        int temp3;
+        CFigure* R;     // it's only use is for the RNG part to access CFigure function and static members
+
 
 	//Pointers to Input and Output classes
 	Input *pIn;
