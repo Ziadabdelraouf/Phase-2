@@ -39,6 +39,35 @@ void CFigure::ChngDrawClr(color Dclr)
 
 void CFigure::ChngFillClr(color Fclr)
 {	
+	//    temporary changes by Omar
+if (FigGfxInfo.isFilled == true) {            // dec the num of the old fill color if it was filled
+	if (BLACK == FigGfxInfo.FillClr)
+		blackCount--;
+	else if (YELLOW == FigGfxInfo.FillClr)
+		yellowCount--;
+	else if (ORANGE == FigGfxInfo.FillClr)
+		orangeCount--;
+	else if (BLUE == FigGfxInfo.FillClr)
+		blueCount--;
+	else if (GREEN == FigGfxInfo.FillClr)
+		greenCount--;
+	else if (RED == FigGfxInfo.FillClr)
+		redCount--;
+}
+
+if (BLACK == Fclr)                          // inc the num of the fill color for the static member 
+	blackCount++;
+else if (YELLOW == Fclr)
+	yellowCount++;
+else if (ORANGE == Fclr)
+	orangeCount++;
+else if (BLUE == Fclr)
+	blueCount++;
+else if (GREEN == Fclr)
+	greenCount++;
+else if (RED == Fclr)
+	redCount++;
+//
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr; 
 }
