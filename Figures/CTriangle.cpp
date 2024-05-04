@@ -77,13 +77,67 @@ bool CTriangle::IsClickInside(int x, int y) const
 	return false;
 }
 
-void CTriangle::Save(ofstream& OutFile)
+void CTriangle::Save(ofstream& fout)
 {
+	fout << "TRI\t";
+	fout << ID << "\t";
+
+	fout << Corner1.x << "\t";
+	fout << Corner1.y << "\t";
+
+	fout << Corner2.x << "\t";
+	fout << Corner2.y << "\t";
+
+	fout << Corner3.x << "\t";
+	fout << Corner3.y << "\t";
+
+	if (FigGfxInfo.DrawClr == BLUE) {
+		fout << "BL\t";
+	}
+	else if (FigGfxInfo.DrawClr == BLACK) {
+		fout << "BK\t";
+	}
+	else if (FigGfxInfo.DrawClr == GREEN) {
+		fout << "GN\t";
+	}
+	else if (FigGfxInfo.DrawClr == RED) {
+		fout << "RD\t";
+	}
+	else if (FigGfxInfo.DrawClr == YELLOW) {
+		fout << "YL\t";
+	}
+	else if (FigGfxInfo.DrawClr == ORANGE) {
+		fout << "OR\t";
+	}
+
+	if (!FigGfxInfo.isFilled)
+	{
+		fout << "NF";
+	}
+	else if (FigGfxInfo.FillClr == BLUE) {
+		fout << "BL";
+	}
+	else if (FigGfxInfo.FillClr == BLACK) {
+		fout << "BK";
+	}
+	else if (FigGfxInfo.FillClr == GREEN) {
+		fout << "GN";
+	}
+	else if (FigGfxInfo.FillClr == RED) {
+		fout << "RD";
+	}
+	else if (FigGfxInfo.FillClr == YELLOW) {
+		fout << "YL";
+	}
+	else if (FigGfxInfo.FillClr == ORANGE) {
+		fout << "OR";
+	}
+	fout << "\n";
 }
 
 void CTriangle::PrintInfo(Output* pOut) const
 {
-	string str = "Triangle, ID: " + to_string(ID); //add more info
+	string str = "Triangle, ID: " + to_string(ID) + ", Corner1: (" + to_string(Corner1.x) + ", " + to_string(Corner1.y) +"), Corner2: (" + to_string(Corner2.x) + ", " + to_string(Corner2.y) + "), Corner3: (" + to_string(Corner3.x) + ", " + to_string(Corner3.y) + ")"; //add more info
 	pOut->PrintMessage(str);
 }
 

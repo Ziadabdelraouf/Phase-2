@@ -97,31 +97,27 @@ void CRectangle::Save(ofstream& fout)
 		fout << "OR\t";
 	}
 
-	if (FigGfxInfo.isFilled) {
-		fout << "Y" << "\t";
+	if (!FigGfxInfo.isFilled) 
+	 {
+		fout << "NF";
 	}
-	else {
-		fout << "N" << "\t";
-	}
-
-
-	if (FigGfxInfo.FillClr == BLUE) {
-		fout << "BL\t";
+	else if (FigGfxInfo.FillClr == BLUE) {
+		fout << "BL";
 	}
 	else if (FigGfxInfo.FillClr == BLACK) {
-		fout << "BK\t";
+		fout << "BK";
 	}
 	else if (FigGfxInfo.FillClr == GREEN) {
-		fout << "GN\t";
+		fout << "GN";
 	}
 	else if (FigGfxInfo.FillClr == RED) {
-		fout << "RD\t";
+		fout << "RD";
 	}
 	else if (FigGfxInfo.FillClr == YELLOW) {
-		fout << "YL\t";
+		fout << "YL";
 	}
 	else if (FigGfxInfo.FillClr == ORANGE) {
-		fout << "OR\t";
+		fout << "OR";
 	}
 	fout << "\n";
 }

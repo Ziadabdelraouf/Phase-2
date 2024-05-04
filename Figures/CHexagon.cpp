@@ -102,8 +102,55 @@ bool CHexagon::IsClickInside(int x, int y) const
 	return true;
 }
 
-void CHexagon::Save(ofstream& OutFile)
+void CHexagon::Save(ofstream& fout)
 {
+	fout << "HEX\t";
+	fout << ID << "\t";
+
+	fout << Center.x << "\t";
+	fout << Center.y << "\t";
+	
+	if (FigGfxInfo.DrawClr == BLUE) {
+		fout << "BL\t";
+	}
+	else if (FigGfxInfo.DrawClr == BLACK) {
+		fout << "BK\t";
+	}
+	else if (FigGfxInfo.DrawClr == GREEN) {
+		fout << "GN\t";
+	}
+	else if (FigGfxInfo.DrawClr == RED) {
+		fout << "RD\t";
+	}
+	else if (FigGfxInfo.DrawClr == YELLOW) {
+		fout << "YL\t";
+	}
+	else if (FigGfxInfo.DrawClr == ORANGE) {
+		fout << "OR\t";
+	}
+
+	if (!FigGfxInfo.isFilled) {
+		fout << "NF";
+	}
+	else if (FigGfxInfo.FillClr == BLUE) {
+		fout << "BL";
+	}
+	else if (FigGfxInfo.FillClr == BLACK) {
+		fout << "BK";
+	}
+	else if (FigGfxInfo.FillClr == GREEN) {
+		fout << "GN";
+	}
+	else if (FigGfxInfo.FillClr == RED) {
+		fout << "RD";
+	}
+	else if (FigGfxInfo.FillClr == YELLOW) {
+		fout << "YL";
+	}
+	else if (FigGfxInfo.FillClr == ORANGE) {
+		fout << "OR";
+	}
+	fout << "\n";
 }
 
 void CHexagon::PrintInfo(Output* pOut) const
