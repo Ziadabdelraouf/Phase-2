@@ -1,6 +1,5 @@
 #include "SelectAction.h"
-#include "..\Figures\Cfigure.h"
-#include "..\Figures\CRectangle.h"
+#include "..\Figures\CFigure.h"
 
 #include "..\ApplicationManager.h"
 
@@ -40,8 +39,12 @@ void SelectAction::Execute()
 		}
 		else {
 			pFig->SetSelected(true);
-			if(pManager->GetNumSelected() == 1)
-				pFig->PrintInfo(pOut); //displays info if only one is selected
+			if (pManager->GetNumSelected() == 1) {
+				if (pFig != NULL)
+				{
+					//pFig->PrintInfo(pOut); //displays info if only one is selected
+				}
+			}
 			else {
 				string str;
 				str = "Selected: ";

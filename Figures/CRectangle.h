@@ -13,6 +13,7 @@ public:
 	virtual void Draw(Output* pOut) const; 
 	virtual bool IsClickInside(int x, int y) const; //checks if click is inside the rectangle
 	virtual void PrintInfo(Output* pOut) const; //prints info of rectangle
+	virtual void Save(ofstream& OutFile);
 	virtual void SetSelected(bool s); 
 };
 

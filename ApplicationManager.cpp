@@ -10,6 +10,7 @@
 #include "Actions\ClearAllAction.h"
 #include "Actions\SendBackAction.h"
 #include "Actions\BringFrontAction.h"
+#include "Actions\SaveAction.h"
 
 #include "Figures\CFigure.h"
 
@@ -82,6 +83,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case BRINGFRONT:
 			pAct = new BringFrontAction(this);
 			break;
+		case SAVE:
+			pAct = new SaveAction(this);
 		case COLOR_BLACK:
 			Color = BLACK;
 			break;
@@ -100,6 +103,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case COLOR_RED:
 			Color = RED;
 			break;
+		
 		case EXIT:
 			///create ExitAction here
 			break;
@@ -214,6 +218,7 @@ void ApplicationManager::Swaping(CFigure*p, int x, int o) {
 		FigList[0] = p;
 	}
 }
+
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
@@ -234,6 +239,21 @@ Input *ApplicationManager::GetInput() const
 Output *ApplicationManager::GetOutput() const
 {	return pOut; }
 
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+void ApplicationManager::SaveAll(ofstream& fout)
+{
+	for (int i = 0; i < GetFigureCount(); i++) {
+		FigList[i]->Save(fout);
+	}
+}
+
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////
 //Destructor
 ApplicationManager::~ApplicationManager()
@@ -243,3 +263,6 @@ ApplicationManager::~ApplicationManager()
 	delete pIn;
 	delete pOut;
 }
+
+
+

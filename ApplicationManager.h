@@ -51,5 +51,8 @@ public:
 	CFigure* GetSelectedFig(); // Get current selected figure
 	void SetFigCount(int);
 	void Swaping(CFigure*, int, int);
+
+	// -- File Management Functions
+	void SaveAll(ofstream& fout);
 };
 #endif

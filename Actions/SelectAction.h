@@ -17,8 +17,6 @@ public:
 
 	//Reads parameters required for action to execute (code depends on action type)
 	virtual void ReadActionParameters();
-	
-	
 
 
 	

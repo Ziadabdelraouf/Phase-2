@@ -1,4 +1,5 @@
 #include "CCircle.h"
+#include <fstream>
 
 CCircle::CCircle(Point C, Point R, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
@@ -25,11 +26,71 @@ bool CCircle::IsClickInside(int x, int y) const
 	return true;
 }
 
+void CCircle::Save(ofstream& fout)
+{
+	fout << "CIR\t";
+	fout << ID << "\t";
+	fout << Center.x << "\t";
+	fout << Center.y << "\t";
+	fout << Radius.x << "\t";
+	fout << Radius.y << "\t";
+	if (FigGfxInfo.DrawClr == BLUE) {
+		fout << "BL\t";
+	}
+	else if (FigGfxInfo.DrawClr == BLACK) {
+		fout << "BK\t";
+	}
+	else if (FigGfxInfo.DrawClr == GREEN) {
+		fout << "GN\t";
+	}
+	else if (FigGfxInfo.DrawClr == RED) {
+		fout << "RD\t";
+	}
+	else if (FigGfxInfo.DrawClr == YELLOW) {
+		fout << "YL\t";
+	}
+	else if (FigGfxInfo.DrawClr == ORANGE) {
+		fout << "OR\t";
+	}
+
+	if (FigGfxInfo.isFilled) {
+		fout << "Y" << "\t";
+	}
+	else {
+		fout << "N" << "\t";
+	}
+
+
+	if (FigGfxInfo.FillClr == BLUE) {
+		fout << "BL\t";
+	}
+	else if (FigGfxInfo.FillClr == BLACK) {
+		fout << "BK\t";
+	}
+	else if (FigGfxInfo.FillClr == GREEN) {
+		fout << "GN\t";
+	}
+	else if (FigGfxInfo.FillClr == RED) {
+		fout << "RD\t";
+	}
+	else if (FigGfxInfo.FillClr == YELLOW) {
+		fout << "YL\t";
+	}
+	else if (FigGfxInfo.FillClr == ORANGE) {
+		fout << "OR\t";
+	}
+}
+
 void CCircle::PrintInfo(Output* pOut) const
 {
 	string str = "Circle, ID: " + to_string(ID) + ", Center : (" + to_string(Center.x) + ", " + to_string(Center.y) + ")";
 	pOut->PrintMessage(str);
 }
+
+
+
+
+
 
 void CCircle::SetSelected(bool s)
 {
@@ -39,3 +100,4 @@ void CCircle::SetSelected(bool s)
 	else
 		CFigure::CircleSelectedCount--; //decrements count of selected squares by 1 when a square is deselected
 }
+
