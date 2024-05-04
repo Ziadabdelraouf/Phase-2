@@ -111,7 +111,15 @@ int CFigure::getBlueCount() {
 }
 int CFigure::getGreenCount() {
 	return greenCount;
+}//static members fucntions
+//members functions
+bool CFigure::IsFilled() {
+	return FigGfxInfo.isFilled;
 }
+
+//color CFigure::getFillClr() {
+//	return FigGfxInfo.FillClr;
+//}
 // end
 
 
