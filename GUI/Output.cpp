@@ -103,9 +103,9 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_COPYFIG] = "images\\MenuItems\\Copy.jpg";
 	MenuItemImages[ITM_CUTFIG] = "images\\MenuItems\\Cut.jpg";
 	MenuItemImages[ITM_PASTEFIG] = "images\\MenuItems\\Paste.jpg";
-	MenuItemImages[ITM_SENDBACK] = "images\\MenuItems\\bring-to-front.jpg";
+	MenuItemImages[ITM_SENDBACK] = "images\\MenuItems\\send-to-back.jpg";
 	MenuItemImages[ITM_BRINGFRONT] = "images\\MenuItems\\bring-to-front.jpg";
-	MenuItemImages[ITM_AUDIOPLAYER] = "images\\MenuItems\\bring-to-front.jpg";
+	MenuItemImages[ITM_AUDIOPLAYER] = "images\\MenuItems\\voice-action.jpg";
 	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\Save.jpg";
 	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\Load.jpg";
 	MenuItemImages[ITM_TO_PLAY] = "images\\MenuItems\\Play.jpg";
