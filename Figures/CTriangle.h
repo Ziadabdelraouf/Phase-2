@@ -14,6 +14,9 @@ public:
 	virtual void Save(ofstream& fout);
 	virtual void PrintInfo(Output* pOut) const; //prints info of triangle
 	virtual void SetSelected(bool s);
+//omar
+virtual RNGshape getType(); //return the type of the shape
+//
 };
 
 #endif
