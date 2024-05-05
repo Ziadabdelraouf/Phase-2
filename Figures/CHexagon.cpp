@@ -167,3 +167,9 @@ void CHexagon::SetSelected(bool s)
 	else
 		CFigure::HexSelectedCount--; //decrements count of selected hexagons by 1 when a hexagon is deselected
 }
+//omar
+RNGshape CHexagon::getType() {
+	return hexagon;    
+}
+
+//
