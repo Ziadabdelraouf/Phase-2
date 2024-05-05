@@ -27,5 +27,7 @@ public:
 
 	virtual void Execute();
 
+	void Delete(CFigure*);
+
 };
 #endif

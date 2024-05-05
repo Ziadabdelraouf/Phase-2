@@ -26,6 +26,7 @@ public:
 	virtual void ReadActionParameters();
 
 	virtual void Execute();
+	void UnCut();
 	
 	
 };

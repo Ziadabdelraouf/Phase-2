@@ -213,7 +213,8 @@ CFigure** ApplicationManager::getfiglist() {
 }
 void ApplicationManager::PasteFigure()
 {
-
+	Action* pAct = NULL;
+	pAct = new PasteAction(this);
 }
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -236,6 +237,13 @@ void ApplicationManager::ClearAll()
 		FigList[i]->SetSelected(false);
 		FigList[i] = NULL;
 	}
+}
+void ApplicationManager::Delete()
+{
+	
+	Action* pAct = NULL;
+	pAct = new DeleteAction(this);
+    pAct->Execute();
 }
 ////////////////////////////////////////////////////////////////////////////////////
 color ApplicationManager::GetColor() {

@@ -16,7 +16,8 @@ public:
 	virtual void SetSelected(bool s);
 	GfxInfo GetGfxInfo()const;
 	Point GetCenter();
-
+	virtual bool Wascut() const;
+	virtual CFigure* CreateCopy(CFigure*) const;
 	CFigure* Paste(Point, int) const;
 
 };

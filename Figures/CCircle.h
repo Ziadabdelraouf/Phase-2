@@ -8,6 +8,7 @@ private:
 	Point Center;
 	Point Radius;
 	int radius;
+	bool IsCut;
 public:
 	CCircle(Point, Point, GfxInfo FigureGfxInfo, int id);
 	virtual void Draw(Output* pOut) const;
@@ -15,6 +16,8 @@ public:
 	virtual void Save(ofstream& fout);
 	virtual void PrintInfo(Output* pOut) const; //prints info of circle
 	virtual void SetSelected(bool s);
+	virtual bool Wascut() const;
+	virtual CFigure* CreateCopy(CFigure*) const;
 	CFigure* Paste(Point, int) const;
 	GfxInfo GetGfxInfo() const;
 	Point GetCenter() const;

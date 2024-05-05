@@ -179,6 +179,17 @@ Point CHexagon::GetCenter()
 	return Center;
 }
 
+bool CHexagon::Wascut() const
+{
+	return WasCut;
+}
+
+CFigure* CHexagon::CreateCopy(CFigure*Pfig) const
+{
+	CHexagon* HH = new CHexagon(Center, FigGfxInfo, ID);
+	return HH ;
+}
+
 
 
 CFigure* CHexagon::Paste(Point NewCnt,int ID) const

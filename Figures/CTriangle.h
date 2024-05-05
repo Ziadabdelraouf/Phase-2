@@ -14,6 +14,8 @@ public:
 	virtual void Save(ofstream& fout);
 	virtual void PrintInfo(Output* pOut) const; //prints info of triangle
 	virtual void SetSelected(bool s);
+	virtual bool Wascut() const;
+	virtual CFigure* CreateCopy(CFigure*) const;
 	 CFigure* Paste(Point, int) const;
 };
 

@@ -69,5 +69,11 @@ void DeleteAction::Execute()
 	
 	
 }
+void DeleteAction::Delete(CFigure*Temp) {
+	
+	delete Temp;
+	Temp = NULL;
+	
+}
 
 

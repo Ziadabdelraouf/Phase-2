@@ -121,14 +121,23 @@ void CCircle::SetSelected(bool s)
 	else
 		CFigure::CircleSelectedCount--; //decrements count of selected squares by 1 when a square is deselected
 }
+bool CCircle::Wascut() const
+{
+	return WasCut;
+}
+CFigure* CCircle::CreateCopy(CFigure*) const
+{
+	CCircle* CC = new CCircle(Center, Radius, FigGfxInfo, ID);
+	return CC;
+}
 CFigure* CCircle::Paste(Point NewCnt, int ID) const
 {
 	Point PTemp;
 	PTemp.x = NewCnt.x + radius;
 	PTemp.y = NewCnt.y;
-	CCircle* HH = new CCircle(NewCnt,PTemp,FigGfxInfo,ID);
+	CCircle* CC = new CCircle(NewCnt,PTemp,FigGfxInfo,ID);
    CFigure::CircleTotalCount++;
-	return HH;
+	return CC;
 }
 GfxInfo CCircle::GetGfxInfo() const
 {

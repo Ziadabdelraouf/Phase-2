@@ -59,6 +59,17 @@ Point CSquare::GetCenter()
 	return Center;
 }
 
+bool CSquare::Wascut() const
+{
+	return WasCut;
+}
+
+CFigure* CSquare::CreateCopy(CFigure*) const
+{
+	CSquare* SS = new CSquare(Center, FigGfxInfo, ID);
+	return SS;
+}
+
 
 CFigure* CSquare::Paste(Point NewCnt, int ID) const
 {

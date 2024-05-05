@@ -11,7 +11,7 @@ protected:
 	int ID;		//Each figure has an ID
 	bool Selected;	//true if the figure is selected
 	GfxInfo FigGfxInfo;	//Figure graphics info
-	
+	bool WasCut;
 	static int RecTotalCount; //total number of rectangles
 	static int RecSelectedCount; //number of selected rectangles
 	static int SqrTotalCount;
@@ -34,6 +34,8 @@ public:
 	
 	GfxInfo GetGfxInfo() const;
 	virtual CFigure* Paste(Point NewCnt,int x) const=0;
+	virtual CFigure* CreateCopy(CFigure*) const =0;
+	virtual bool Wascut() const=0;
 	Point GetCenter();
 	double GetRaduis() const;
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color

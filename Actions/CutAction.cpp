@@ -36,7 +36,7 @@ void CutAction::ReadActionParameters()
 			}
 		
 			
-			Pfig->Draw(pOut);
+			
 			pOut->PrintMessage("Cut1");
 			Pfig = pManager->GetSelectedFig();
 
@@ -61,10 +61,10 @@ void CutAction::Execute()
 			WasFill = true;
 
 		}
-		
-		
-		pManager->AddClipBoard(Pfig);
-		Pfig->Draw(pOut);
+		pManager->SetIsCut(true);
+		CFigure* Temp = Pfig->CreateCopy(Pfig);
+		pManager->AddClipBoard(Temp);
+		pManager->SetIsCut(true);
 		Pfig->ChngDrawClr(GRAY);
 		if (Pfig->IsFilled()) {
 			Pfig->ChngFillClr(GRAY);
@@ -72,8 +72,13 @@ void CutAction::Execute()
 		pManager->UpdateInterface();
 		
 		
+		
 	}
 
 }
 
+void CutAction::UnCut(){
+
+
+}
 

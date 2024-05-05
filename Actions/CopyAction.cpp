@@ -32,7 +32,8 @@ void CopyAction::Execute()
 
 			Pfig = pManager->GetSelectedFig();
 			pOut->PrintMessage("figure cpoied");
-			pManager->AddClipBoard(Pfig);
+			CFigure* Temp = Pfig->CreateCopy(Pfig);
+			pManager->AddClipBoard(Temp);
 			Pfig->SetSelected(false);
 		}
 	}

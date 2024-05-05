@@ -151,6 +151,17 @@ void CTriangle::SetSelected(bool s)
 		CFigure::TriSelectedCount--; //decrements count of selected triangles by 1 when a triangles is deselected
 }
 
+bool CTriangle::Wascut() const
+{
+	return WasCut;
+}
+
+CFigure* CTriangle::CreateCopy(CFigure*) const
+{
+	CTriangle* TT = new CTriangle(Corner1, Corner2, Corner3, FigGfxInfo, ID);
+	return TT;
+}
+
 CFigure* CTriangle::Paste(Point NewCorner, int ID) const
 {
 	Point PTemp1, PTemp2;

@@ -46,6 +46,7 @@ public:
 	int GetNumSelected();
 	void UnselectAll();
 	void ClearAll();
+	void Delete();
 	// -- Interface Management Functions
 	Input* GetInput() const; //Return pointer to the input
 	Output* GetOutput() const; //Return pointer to the output
