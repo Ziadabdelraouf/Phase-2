@@ -18,12 +18,13 @@ private:
 	CFigure* SelectedFig; //Pointer to the selected figure
 	int FigerIndex;      //The index of the figure in the Figure list.
 	color Color;
-
+	bool IsCut;
 	//Pointers to Input and Output classes
 	Input* pIn;
 	Output* pOut;
 
 	CFigure* Clipboard;  //Pointer to copied/cut figure
+
 
 public:	
 
@@ -53,9 +54,12 @@ public:
 	CFigure* GetSelectedFig(); // Get current selected figure
 	void SetFigCount(int);
 	void Swaping(CFigure*, int, int);
-	
+	bool GetIsCut();
+	void SetIsCut(bool);
 	CFigure** getfiglist();
-	
+	void PasteFigure();
 	
 };
 #endif
+
+

@@ -34,5 +34,8 @@ void CopyAction::ReadActionParameters()
 void CopyAction::Execute()
 {
 	ReadActionParameters();
+	if (Pfig != NULL) {
+		Pfig->SetSelected(false);
+	}
 	pManager->AddClipBoard(Pfig);
 }

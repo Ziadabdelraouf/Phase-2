@@ -90,3 +90,8 @@ void CTriangle::SetSelected(bool s)
 		CFigure::TriSelectedCount--; //decrements count of selected triangles by 1 when a triangles is deselected
 }
 
+char CTriangle::FigType() const
+{
+	return 'T';
+}
+

@@ -13,7 +13,7 @@
 #include "Actions\ClearAllAction.h"
 #include "Actions\SendBackAction.h"
 #include "Actions\BringFrontAction.h"
-
+#include "Actions\PasteAction.h"
 #include "Figures\CFigure.h"
 
 
@@ -29,6 +29,7 @@ ApplicationManager::ApplicationManager()
 	SelectedFigCount = 0;
 	FigerIndex = 0;
 	Clipboard = NULL;
+	IsCut = false;
 		
 
 	Color = BLACK;
@@ -116,6 +117,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case CUTFIG:
 			pAct = new CutAction(this);
 			break;
+		case PASTEFIG:
+			pAct = new PasteAction(this);
+			break;
 		case EXIT:
 			///create ExitAction here
 			break;
@@ -181,6 +185,7 @@ CFigure* ApplicationManager::GetSelectedFig() {
 			return FigList[i];
 		}
 	}
+	return NULL;
 }
 void ApplicationManager::AddClipBoard(CFigure*pFig)
 {
@@ -200,10 +205,15 @@ int ApplicationManager::GetNumSelected() {
 	}
 	return SelectedFigCount;
 }
+
 ////////////////////////////////////////////////////////////////////////////////////
 
 CFigure** ApplicationManager::getfiglist() {
 	return FigList;
+}
+void ApplicationManager::PasteFigure()
+{
+
 }
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -252,6 +262,14 @@ void ApplicationManager::Swaping(CFigure*p, int x, int o) {
 
 		FigList[0] = p;
 	}
+}
+bool ApplicationManager::GetIsCut()
+{
+	return IsCut;
+}
+void ApplicationManager::SetIsCut(bool temp)
+{
+	IsCut = temp;
 }
 //==================================================================================//
 //							Interface Management Functions							//

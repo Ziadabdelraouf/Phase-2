@@ -14,17 +14,19 @@ class CutAction :
     public Action
 {
 	SelectAction* pSelct;
-	CFigure* Pfig;
-	bool IsCut = false;
-	color tempFill;
-	color tempDraw;
+	 CFigure* Pfig;
+	bool IsCut ;
+	static color tempFill;
+	static color tempDraw;
+	static bool WasFill;
 public:
 	CutAction(ApplicationManager* pApp);
 
 	virtual void ReadActionParameters();
 
 	virtual void Execute();
-	void UnCut();
+	
+	
 };
 
 

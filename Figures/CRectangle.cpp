@@ -80,3 +80,8 @@ void CRectangle::SetSelected(bool s)
 	else
 		CFigure::RecSelectedCount--; //decrements count of selected rectangles by 1 when a rectangle is deselected
 }
+
+char CRectangle::FigType() const
+{
+	return 'R';
+}

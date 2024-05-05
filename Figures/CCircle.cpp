@@ -3,6 +3,8 @@
 CCircle::CCircle(Point C, Point R, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
 	Center = C;
+	float r1 =sqrt((R.x - C.x) * (R.x - C.x) + (R.y - C.y) * (R.y - C.y));
+	Rad1 = r1;
 	Radius = R;
 }
 
@@ -17,6 +19,7 @@ bool CCircle::IsClickInside(int x, int y) const
 {
 	float r1 = sqrt((Center.x - Radius.x)*(Center.x - Radius.x) + (Center.y - Radius.y)* (Center.y - Radius.y));
 	float r2 = sqrt((Center.x - x)*(Center.x - x) + (Center.y - y)*(Center.y - y));
+	
 	if (r2 > r1)
 	{
 		return false;
@@ -39,3 +42,25 @@ void CCircle::SetSelected(bool s)
 	else
 		CFigure::CircleSelectedCount--; //decrements count of selected squares by 1 when a square is deselected
 }
+
+GfxInfo CCircle::GetGfxInfo() const
+{
+	return FigGfxInfo;
+}
+
+Point CCircle::GetCenter() const
+{
+	return Center;
+}
+
+double CCircle::GetRaduis() const
+{
+	return Rad1;
+}
+
+char CCircle::FigType() const
+{
+	return 'C';
+}
+
+

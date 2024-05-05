@@ -1,6 +1,6 @@
 #ifndef CFIGURE_H
 #define CFIGURE_H
-
+#pragma once
 #include "..\defs.h"
 #include "..\GUI\Output.h"
 
@@ -9,7 +9,7 @@ class CFigure
 {
 protected:
 	int ID;		//Each figure has an ID
-	bool Selected;	//true if the figure is selected.
+	bool Selected;	//true if the figure is selected
 	GfxInfo FigGfxInfo;	//Figure graphics info
 	
 	static int RecTotalCount; //total number of rectangles
@@ -28,10 +28,17 @@ public:
 	CFigure(GfxInfo FigureGfxInfo, int id);
 	virtual void SetSelected(bool s) = 0;	//select/unselect the figure
 	bool IsSelected() const;	//check whether fig is selected
+	bool IsFilled();
 	virtual bool IsClickInside(int x, int y) const =0;
-	virtual void Draw(Output* pOut) const  = 0 ;		//Draw the figure
+	virtual void Draw(Output* pOut) const  = 0 ;   //Draw the figure
+	virtual char FigType()const = 0 ;
+	GfxInfo GetGfxInfo() const;
+	Point GetCenter();
+	double GetRaduis() const;
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
+	color GetFillClr();
+	color GetDrawClr();
 	int getRecTotalCount(); //returns total number of rectangles
 	int getRecSelectedCount(); //returns number of selected rectangles
 	int getSqrTotalCount();

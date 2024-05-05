@@ -38,6 +38,7 @@ void CHexagon::PrintInfo(Output* pOut) const
 	pOut->PrintMessage(str);
 }
 
+
 void CHexagon::SetSelected(bool s)
 {
 	Selected = s;
@@ -46,3 +47,22 @@ void CHexagon::SetSelected(bool s)
 	else
 		CFigure::HexSelectedCount--; //decrements count of selected hexagons by 1 when a hexagon is deselected
 }
+
+GfxInfo CHexagon::GetGfxInfo() const
+{
+	return FigGfxInfo;
+}
+
+Point CHexagon::GetCenter()
+{
+	return Center;
+}
+
+char CHexagon::FigType() const
+{
+	return 'H';
+}
+
+
+
+
