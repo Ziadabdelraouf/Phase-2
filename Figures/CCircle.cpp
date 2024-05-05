@@ -117,3 +117,9 @@ void CCircle::SetSelected(bool s)
 	else
 		CFigure::CircleSelectedCount--; //decrements count of selected squares by 1 when a square is deselected
 }
+//omar
+RNGshape CCircle::getType() {
+	return circle;
+}
+
+//
