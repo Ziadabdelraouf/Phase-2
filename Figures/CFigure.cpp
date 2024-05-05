@@ -26,7 +26,7 @@ int CFigure::orangeCount = 0;    //initialise count of oragne filled figures
 int CFigure::redCount = 0;      //initialise count of red filled figures
 int CFigure::blueCount = 0;      //initialise count of blue filled figures
 int CFigure::greenCount = 0;    //initialise count of green filled figures
-
+int CFigure::filledCount = 0;   //initialise count of filled figures 
 //
 
 bool CFigure::IsSelected() const
@@ -40,7 +40,7 @@ void CFigure::ChngDrawClr(color Dclr)
 void CFigure::ChngFillClr(color Fclr)
 {	
 	//    temporary changes by Omar
-if (FigGfxInfo.isFilled == true) {            // dec the num of the old fill color if it was filled
+if (FigGfxInfo.isFilled == true) {  // dec the num of the old fill color if it was filled
 	if (BLACK == FigGfxInfo.FillClr)
 		blackCount--;
 	else if (YELLOW == FigGfxInfo.FillClr)
@@ -53,6 +53,9 @@ if (FigGfxInfo.isFilled == true) {            // dec the num of the old fill col
 		greenCount--;
 	else if (RED == FigGfxInfo.FillClr)
 		redCount--;
+}
+else {
+	filledCount++;
 }
 
 if (BLACK == Fclr)                          // inc the num of the fill color for the static member 
@@ -122,7 +125,7 @@ int CFigure::getCircleSelectedCount()
 	return CircleSelectedCount;
 }
 
-// temporary by Omar //start
+// temporary by Omar //start //static members fucntions
 int CFigure::getBlackCount() {
 	return blackCount;
 }
@@ -140,7 +143,10 @@ int CFigure::getBlueCount() {
 }
 int CFigure::getGreenCount() {
 	return greenCount;
-}//static members fucntions
+}
+int CFigure::getFilledCount() {
+	return filledCount;
+}
 //members functions
 bool CFigure::IsFilled() {
 	return FigGfxInfo.isFilled;
