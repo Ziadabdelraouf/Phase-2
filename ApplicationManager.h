@@ -21,13 +21,6 @@ private:
 
 	char* Audio;
 
-        RNG r;          // RNG obj to access the function
-        int temp1;
-        int temp2;
-        int temp3;
-        CFigure* R;     // it's only use is for the RNG part to access CFigure function and static members
-
-
 	//Pointers to Input and Output classes
 	Input *pIn;
 	Output *pOut;

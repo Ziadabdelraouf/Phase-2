@@ -1,8 +1,13 @@
-#include "RNG.h"
-void RNG::shapeRNG() {
-	if (0 == rshape) {
+#include "ShapeRNG.h"
+void ShapeRNG::Execute() {
+	pManager->UnselectAll();
+	Output* pOut = pManager->GetOutput();
+	Input* pIn = pManager->GetInput();
+	
+	if (0==pManager->GetFigureCount()) {
 		pOut->ClearStatusBar();
 		pOut->PrintMessage("Error there is no shapes to start the play mode with");
+		return;
 	}
 	do {
 		srand(time(nullptr));
@@ -31,14 +36,15 @@ void RNG::shapeRNG() {
 		pOut->PrintMessage("Select all hexagons");
 		break;
 	}
-    return;
+	return;
 }
-int RNG::colorRNG() {
-    srand(time(nullptr));
-    rcolor = rand() % 6;
-    return rcolor;
+
+ShapeRNG::ShapeRNG(ApplicationManager* pApp) : Action(pApp){
 }
-RNG::RNG() {
-    rshape = -1;
-    rcolor = -1;
+
+
+void ShapeRNG::ReadActionParameters() {
+	Output* pOut = pManager->GetOutput();
+	Input* pIn = pManager->GetInput();
+	return;
 }

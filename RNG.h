@@ -1,14 +1,17 @@
 #pragma once
 #include <iostream>
 #include "DEFS.h"
-class RNG
+#include "Figures/CFigure.h"
+#include "Actions/Action.h"
+class RNG: public Action
 {
 protected:
     int rshape;
     int rcolor;
-    
+    Output* pOut;
+    CFigure *R;
 public:
     RNG();
-    int shapeRNG();
-    int colorRNG();
+   virtual void shapeRNG();
+   virtual int colorRNG();
 };

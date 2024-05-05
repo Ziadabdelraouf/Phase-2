@@ -25,12 +25,13 @@ protected:
 
 //made by omar temporarly 
  
-static int blackCount;
-static int yellowCount;
-static int orangeCount;
-static int redCount;
-static int blueCount;
-static int greenCount;
+    static int blackCount;
+    static int yellowCount;
+    static int orangeCount;
+    static int redCount;
+    static int blueCount;
+    static int greenCount;
+	static int filledCount;
 
 //
 
@@ -59,7 +60,7 @@ int getOrangeCount();
 int getRedCount();
 int getBlueCount();
 int getGreenCount();
-
+int getFilledCount();
 bool IsFilled();
 /*color getFillClr();*/   //temporary it might be needed or not in the future made by (Omar)
 
