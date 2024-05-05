@@ -16,6 +16,7 @@
 #include "BothRNG.h"
 #include "Actions\VoiceAction.h"
 #include "Actions\LoadAction.h"
+#include "PlayShape.h"
 
 #include "Figures\CFigure.h"
 
@@ -130,7 +131,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pOut->PrintMessage("Red");
 			break;
 		case SHAPE:
-			pAct = new ShapeRNG(this);
+			pAct = new PlayShape(this);
 	         break;
         case COLOR:
 			pAct = new ColorRNG(this);
