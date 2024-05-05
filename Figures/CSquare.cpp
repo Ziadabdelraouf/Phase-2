@@ -131,3 +131,9 @@ void CSquare::SetSelected(bool s)
 	else
 		CFigure::SqrSelectedCount--; //decrements count of selected squares by 1 when a square is deselected
 }
+//omar
+RNGshape CSquare::getType() {
+	return square;
+}
+
+//
