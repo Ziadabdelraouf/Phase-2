@@ -15,6 +15,8 @@ void SaveAction::ReadActionParameters() {
 	//Get a Pointer to the Input / Output Interfaces
 	Input* pIn = pManager->GetInput();
 	Output* pOut = pManager->GetOutput();
+	pOut->PrintMessage("Enter Filename: ");
+	pManager->PlayAudio("Audio\\EnterFileName.wav");
 
 	//Ask user to type the file name to save
 	pOut->PrintMessage("Saving Graph... Enter Filename: ");
@@ -28,6 +30,8 @@ void SaveAction::Execute() {
 
 	//prints info of the file the graph data was saved to
 	pOut->PrintMessage("Filename: " + str);
+	pOut->PrintMessage("File has been saved successfully");
+	pManager->PlayAudio("Audio\\FileSaved.wav");
 	ofstream fout(str + ".txt");
 
 	//saves default draw color

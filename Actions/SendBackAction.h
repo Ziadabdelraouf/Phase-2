@@ -3,8 +3,6 @@
 #include "../ApplicationManager.h"
 #include "../Figures/CFigure.h"
 class SendBackAction :public Action{
-private:
-	CFigure* pFig;
 public:
 	SendBackAction(ApplicationManager* papp);
 

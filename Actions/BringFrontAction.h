@@ -3,8 +3,6 @@
 #include "../ApplicationManager.h"
 #include "../Figures/CFigure.h"
 class BringFrontAction :public Action {
-private:
-	CFigure* pFig;
 public:
 	BringFrontAction(ApplicationManager* papp);
 

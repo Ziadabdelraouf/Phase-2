@@ -59,7 +59,7 @@ public:
 	color GetColor();
 	CFigure* GetSelectedFig(); // Get current selected figure
 	void SetFigCount(int);
-	void Swaping(CFigure*, int, int);
+	void Swaping(int);
 	void SaveAll(ofstream & fout);
 	void PlayAudio(char*);
 };

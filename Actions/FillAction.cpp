@@ -24,12 +24,14 @@ void FillAction::Execute() {
 	Input* pIn = pManager->GetInput();
 	int n = pManager->GetNumSelected();
 	if (n > 1 ||n == 0) {
-		string str = "You can't fill more than one figure, Select one figure and try again, Num: " + to_string(n) ;
+		string str = "Please select only one figure";
+		pManager->PlayAudio("Audio\\SelectOneFigure.wav");
 		pOut->PrintMessage(str);
 		
 	}
 	else {
 		pOut->PrintMessage("Select color to fill");
+		pManager->PlayAudio("Audio\\SelectColor.wav");
 		ReadActionParameters();
 		PFig->ChngFillClr(color);
 		

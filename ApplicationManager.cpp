@@ -97,21 +97,33 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case COLOR_BLACK:
 			Color = BLACK;
+			PlayAudio("Audio\\Black.wav");
+			pOut->PrintMessage("Black");
 			break;
 		case COLOR_BLUE:
 			Color = BLUE;
+			PlayAudio("Audio\\Blue.wav");
+			pOut->PrintMessage("Blue");
 			break;
 		case COLOR_GREEN:
 			Color = GREEN;
+			PlayAudio("Audio\\Green.wav");
+			pOut->PrintMessage("Green");
 			break;
 		case COLOR_ORANGE:
 			Color = ORANGE;
+			PlayAudio("Audio\\Orange.wav");
+			pOut->PrintMessage("Orange");
 			break;
 		case COLOR_YELLOW:
 			Color = YELLOW;
+			PlayAudio("Audio\\Yellow.wav");
+			pOut->PrintMessage("Yellow");
 			break;
 		case COLOR_RED:
 			Color = RED;
+			PlayAudio("Audio\\Red.wav");
+			pOut->PrintMessage("Red");
 			break;
 		case SHAPE:
 	    if (0 == R->getTriTotalCount() && 0 == R->getSqrTotalCount() &&
@@ -302,26 +314,49 @@ color ApplicationManager::GetColor() {
 	return Color;
 }
 ////////////////////////////////////////////////////////////////////////////////////
-void ApplicationManager::Swaping(CFigure*p, int x, int o) {
-	if(o==1){ // Bring Front
-		for (int i = x; i < FigCount; i++) {
-			FigList[i] = FigList[i + 1];
-			if (i == FigCount-1) {
-				break;
-			}
-		}
-		FigList[FigCount - 1] = p;
+void ApplicationManager::Swaping(int Op) {
+	//Check the number of the selected figures
+	if (GetNumSelected() > 1 || GetNumSelected() == 0) {
+		string str = "please select only one figure";
+		PlayAudio("Audio\\SelectOneFigure.wav");
+		pOut->PrintMessage(str);
 	}
-
-	else if (o==2) { //Send Back
-		for (int i = x; i > 0; i--) {
-			FigList[i] = FigList[i-1];
-			if (i == 1) {
-				break;
+	else {
+		//Op: the number of the operation(1:Bring front, 2:send back)
+		CFigure* pFig = GetSelectedFig(); //Geting the selected figure
+		int x=0;
+		//Loop to get the index of the selected figure
+		for (int i = 0; i < FigCount; i++) {
+			if (FigList[i]->IsSelected()) {
+				x = i;
 			}
 		}
-
-		FigList[0] = p;
+		//Bring Front
+		if (Op == 1) {
+			for (int i = x; i < FigCount; i++) {
+				FigList[i] = FigList[i + 1];
+				if (i == FigCount - 1) {
+					break;
+				}
+			}
+			FigList[FigCount - 1] = pFig; //Replace the selceted figure to its new index
+			pOut->PrintMessage("Bring selected figure to front.....");
+			PlayAudio("Audio\\BringToFront.wav");
+		}
+		//Send Back
+		else if (Op == 2) {
+			pFig = GetSelectedFig();
+			for (int i = x; i > 0; i--) {
+				FigList[i] = FigList[i - 1];
+				if (i == 1) {
+					break;
+				}
+			}
+			FigList[0] = pFig;//Replace the selceted figure to its new index
+			pOut->PrintMessage("Sending selected figure back...");
+			PlayAudio("Audio\\sendBack.wav");
+		}
+		
 	}
 }
 

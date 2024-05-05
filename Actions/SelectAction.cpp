@@ -20,6 +20,7 @@ void SelectAction::ReadActionParameters()
 	//Ask user to click on a figure
 	
 	pOut->PrintMessage("Select Tool: Click on a figure");
+	pManager->PlayAudio("Audio\\Select.wav");
 	pIn->GetPointClicked(P1.x, P1.y);
 	
 

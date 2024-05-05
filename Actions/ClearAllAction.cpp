@@ -16,6 +16,8 @@ void ClearAllAction::ReadActionParameters() {
 void ClearAllAction::Execute() {
 	
 	Output* pOut = pManager->GetOutput();
+	pOut->PrintMessage("The drawing area has been cleared successfully");
+	pManager->PlayAudio("Audio\\CleaningDrawingArea.wav");
 	pManager->ClearAll();
 	pOut->ClearDrawArea();
 	pManager->SetFigCount(0);
