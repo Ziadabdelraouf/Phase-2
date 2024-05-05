@@ -31,22 +31,35 @@ void LoadAction::Execute() {
 
 	Output* pOut = pManager->GetOutput(); // get a pointer to output interface
 
-	//prints info of the file the graph data was saved to
-	pOut->PrintMessage("Filename: " + str);
+	//prints info of the file the graph data was loaded from
+	pOut->PrintMessage("Loaded from: " + str + ".txt");
 
+
+	//opens file for reading
 	ifstream fin(str + ".txt");
 
+
+	//check whether file exists or not
 	if (!fin.is_open()) {
-		pOut->PrintMessage("Error! No file with this name.");
+		pOut->PrintMessage("Error! No file with this name. Please try again.");
 		return;
 	}
 	
+
+	//clear drawing area before loading graph
 	pManager->ClearAll();
 	pOut->ClearDrawArea();
+	
+
+	//extra measure to ensure figure count is correct
 	pManager->SetFigCount(0);
 
+
+	//string to temporarily store input
 	string var;
 
+
+	//reads the draw color and sets the default draw color to this value
 	fin >> var;
 
 	if (var == "BL") {
@@ -68,6 +81,8 @@ void LoadAction::Execute() {
 		UI.DrawColor = ORANGE;
 	}
 
+
+	//reads the fill color and sets the default fill color to this value
 	fin >> var;
 
 	if (var == "BL") {
@@ -89,16 +104,25 @@ void LoadAction::Execute() {
 		UI.FillColor = ORANGE;
 	}
 
+
+	//reads number of figures
 	int num;
 	fin >> num;
+
+	//some more temp variables to store information
 	string Shape, Border, Fill;
 	Point P1, P2, P3;
 	int radius, ID;
 	GfxInfo FigGfxInfo;
 
+
+	//Loop through the lines including the figure information
+	//Data is read differently depending on figure type
+	//Figure is created using the data read
 	for (int i = 0; i < num; i++)
 	{
-		fin >> Shape;
+		fin >> Shape; //reads type of shape
+
 		if (Shape == "TRI")
 		{
 			fin >> ID >> P1.x >> P1.y >> P2.x >> P2.y >> P3.x >> P3.y >> Border >> Fill;
@@ -145,9 +169,8 @@ void LoadAction::Execute() {
 
 			CTriangle* T = new CTriangle(P1, P2, P3, FigGfxInfo, ID);
 			pManager->AddFigure(T);
-		}
-		
-		if (Shape == "REC")
+		}		
+		else if (Shape == "REC")
 		{
 			fin >> ID >> P1.x >> P1.y >> P2.x >> P2.y >> Border >> Fill;
 			if (Border == "BL") {
@@ -194,7 +217,7 @@ void LoadAction::Execute() {
 			CRectangle* R = new CRectangle(P1, P2, FigGfxInfo, ID);
 			pManager->AddFigure(R);
 		}
-		if (Shape == "SQR")
+		else if (Shape == "SQR")
 		{
 			fin >> ID >> P1.x >> P1.y >> Border >> Fill;
 			if (Border == "BL") {
@@ -241,7 +264,7 @@ void LoadAction::Execute() {
 			CSquare* S = new CSquare(P1, FigGfxInfo, ID);
 			pManager->AddFigure(S);
 		}
-		if (Shape == "HEX")
+		else if (Shape == "HEX")
 		{
 			fin >> ID >> P1.x >> P1.y >> Border >> Fill;
 			if (Border == "BL") {
@@ -288,7 +311,7 @@ void LoadAction::Execute() {
 			CHexagon* H = new CHexagon(P1, FigGfxInfo, ID);
 			pManager->AddFigure(H);
 		}
-		if (Shape == "CIR")
+		else if (Shape == "CIR")
 		{
 			fin >> ID >> P1.x >> P1.y >> radius >> Border >> Fill;
 			if (Border == "BL") {
@@ -335,6 +358,5 @@ void LoadAction::Execute() {
 			CCircle* CR = new CCircle(P1, radius, FigGfxInfo, ID);
 			pManager->AddFigure(CR);
 		}
-
 	}
 }

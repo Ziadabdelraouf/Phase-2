@@ -54,6 +54,8 @@ window* Output::CreateWind(int w, int h, int x, int y) const
 	pW->DrawRectangle(0, UI.ToolBarHeight, w, h);	
 	return pW;
 }
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::CreateStatusBar() const
 {
@@ -61,6 +63,8 @@ void Output::CreateStatusBar() const
 	pWind->SetBrush(UI.StatusBarColor);
 	pWind->DrawRectangle(0, UI.height - UI.StatusBarHeight, UI.width, UI.height);
 }
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::ClearStatusBar() const
 {
@@ -69,6 +73,8 @@ void Output::ClearStatusBar() const
 	pWind->SetBrush(UI.StatusBarColor);
 	pWind->DrawRectangle(0, UI.height - UI.StatusBarHeight, UI.width, UI.height);
 }
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::CreateDrawToolBar() const
 {
@@ -123,24 +129,31 @@ void Output::CreateDrawToolBar() const
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 
 }
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::clearToolBar() const {
 	pWind->SetPen(UI.bkgToolBar, 1);
 	pWind->SetBrush(UI.bkgToolBar);
 	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight, FILLED);
 }
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
-void Output::ClearDrawArea() const
+void Output::ClearDrawArea() const //redraws rectangle for drawing area, clearing any leftover graphics
 {
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->SetBrush(UI.BkGrndColor);
 	pWind->DrawRectangle(0, UI.ToolBarHeight + UI.LineUnderTBWidth, UI.width, UI.height - UI.StatusBarHeight);
+	pWind->SetPen(RED, UI.LineUnderTBWidth);
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::CreatePlayToolBar() const
 {
 	UI.InterfaceMode = MODE_PLAY;
-	///TODO: write code to create Play mode menu
 	clearToolBar();
 	string playModeImages[PLAY_ITM_COUNT];
 	playModeImages[PLAY_ITM_SHAPE] = "images\\Menuitems\\pickshape.jpg";
@@ -158,8 +171,8 @@ void Output::CreatePlayToolBar() const
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////////////////////////////////////
 void Output::PrintMessage(string msg) const	//Prints a message on status bar
 {
 	ClearStatusBar();	//First clear the status bar
@@ -168,45 +181,27 @@ void Output::PrintMessage(string msg) const	//Prints a message on status bar
 	pWind->SetFont(20, BOLD , BY_NAME, "Arial");   
 	pWind->DrawString(10, UI.height - (int)(UI.StatusBarHeight/1.5), msg);
 }
-//////////////////////////////////////////////////////////////////////////////////////////
 
+
+//////////////////////////////////////////////////////////////////////////////////////////
 color Output::getCrntDrawColor() const	//get current drawing color
 {	return UI.DrawColor;	}
-//////////////////////////////////////////////////////////////////////////////////////////
 
+
+//////////////////////////////////////////////////////////////////////////////////////////
 color Output::getCrntFillColor() const	//get current filling color
 {	return UI.FillColor;	}
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
-	
 int Output::getCrntPenWidth() const		//get current pen width
 {	return UI.PenWidth;	}
+
 
 //======================================================================================//
 //								Figures Drawing Functions								//
 //======================================================================================//
 
-//void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const
-//{
-//	color DrawingClr;
-//	if(selected)	
-//		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
-//	else			
-//		DrawingClr = RectGfxInfo.DrawClr;
-//	
-//	pWind->SetPen(DrawingClr,1);
-//	drawstyle style;
-//	if (RectGfxInfo.isFilled)	
-//	{
-//		style = FILLED;		
-//		pWind->SetBrush(RectGfxInfo.FillClr);
-//	}
-//	else	
-//		style = FRAME;
-//
-//	
-//	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
-//	
-//}
 void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const
 {
 	color DrawingClr;
@@ -225,24 +220,31 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	else
 		style = FRAME;
 	
-	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
+	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style); //Figure drawn using two corner points
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////
 void Output::DrawSquare(Point C, GfxInfo SquareGfxInfo, bool selected) const
 {
 	const int sidelength = 4 * UI.ToolBarHeight;	//pre-set sidelength for square
 	
 	Point P1;
 	Point P2;
+	
+	//two corner points calculated from center
 	P1.x = C.x - sidelength / 2;
 	P1.y = C.y - sidelength / 2;
 	P2.x = C.x + sidelength / 2;
 	P2.y = C.y + sidelength / 2;
 
 
-	DrawRect(P1, P2, SquareGfxInfo, selected);
+	DrawRect(P1, P2, SquareGfxInfo, selected); //Figure drawn using two corner points
 
 }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
 void Output::Drawtri(Point p1, Point p2, Point p3, GfxInfo triGfxInfo, bool selected) const {
 	color DrawingClr;
 	if (selected)
@@ -259,9 +261,11 @@ void Output::Drawtri(Point p1, Point p2, Point p3, GfxInfo triGfxInfo, bool sele
 	else
 		style = FRAME;
 	
-	pWind->DrawTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, style);
+	pWind->DrawTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, style); //Figure drawn using 3 corner points
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////
 void Output::DrawHex(Point C, GfxInfo HexGfxInfo, bool selected) const
 {
 	color DrawingClr;
@@ -281,6 +285,8 @@ void Output::DrawHex(Point C, GfxInfo HexGfxInfo, bool selected) const
 		style = FRAME;
 
 	int sidelength = 2 * UI.ToolBarHeight;
+
+	//TO BE REMOVED -Yousef
 	if (C.x < sidelength) {
 		C.x = sidelength;
 	}
@@ -295,12 +301,16 @@ void Output::DrawHex(Point C, GfxInfo HexGfxInfo, bool selected) const
 	else if (C.y > UI.height - UI.StatusBarHeight - (sqrt(3 / 4.0) * sidelength)) {
 		C.y = UI.height - UI.StatusBarHeight - (sqrt(3 / 4.0) * sidelength);
 	}
+
+	//Two arrays used to store the coordinates of the points
 	int const Px[6] = { C.x + sidelength, C.x + 0.5 * sidelength, C.x - 0.5 * sidelength, C.x - sidelength, C.x - 0.5 * sidelength, C.x + 0.5 * sidelength };
 	int const Py[6] = { C.y, C.y - (sqrt(3 / 4.0) * sidelength), C.y - (sqrt(3 / 4.0) * sidelength), C.y, C.y + (sqrt(3 / 4.0) * sidelength), C.y + (sqrt(3 / 4.0) * sidelength) };
-	pWind->DrawPolygon(Px, Py, 6, style);
+	
+	pWind->DrawPolygon(Px, Py, 6, style); //Figure drawn using 2 arrays containing the coordinates
 }
 
 
+//////////////////////////////////////////////////////////////////////////////////////////
 void Output::DrawCrc(Point cent, int rad, GfxInfo crcGfxInfo, bool selcrc) {
 	color crc;
 	if (selcrc) {
@@ -320,9 +330,11 @@ void Output::DrawCrc(Point cent, int rad, GfxInfo crcGfxInfo, bool selcrc) {
 		ds = FRAME;
 
 
-	pWind->DrawCircle(cent.x, cent.y, rad, ds);
+	pWind->DrawCircle(cent.x, cent.y, rad, ds); //Figure drawn using center point and radius
 
 }
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
 Output::~Output()
 {

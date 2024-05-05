@@ -37,7 +37,7 @@ void SelectAction::Execute()
 
 	if (pFig != NULL) {
 		if (pFig->IsSelected()) {
-			pFig->SetSelected(false); //unselects figure
+			pFig->SetSelected(false); //unselects figure if selected
 		}
 		else {
 			pFig->SetSelected(true);

@@ -47,6 +47,8 @@ ActionType ApplicationManager::GetUserAction() const
 	//Ask the input to get the action from the user
 	return pIn->GetUserAction();
 }
+
+
 ////////////////////////////////////////////////////////////////////////////////////
 //Creates an action and executes it
 void ApplicationManager::ExecuteAction(ActionType ActType) 
@@ -165,6 +167,8 @@ case TO_PLAY:
 		pAct = NULL;
 	}
 }
+
+
 //==================================================================================//
 //						Figures Management Functions								//
 //==================================================================================//
@@ -175,6 +179,8 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 	if(FigCount < MaxFigCount )
 		FigList[FigCount++] = pFig;	
 }
+
+
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
@@ -188,49 +194,67 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	//If this point (x,y) does not belong to any figure return NULL
 	return NULL;
 }
+
+
 ////////////////////////////////////////////////////////////////////////////////////
-CFigure* ApplicationManager::GetFigure(int id) const
+CFigure* ApplicationManager::GetFigure(int id) const //TO BE REMOVED -Yousef
 {
 	if (id <= FigCount)
 		return FigList[id]; //return pointer to figure if found
 	else
 		return NULL; //return NULL if figure not found
 }
+
+
 ////////////////////////////////////////////////////////////////////////////////////
 int ApplicationManager::GetFigureCount() const
 {
 	return FigCount; //returns actual number of figures
 }
+
+
 ////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::SetFigCount(int n) {
-	FigCount = (n>=0) ? n:0;
+	FigCount = (n>=0) ? n:0; //sets actual number of figures
 }
+
+
 ////////////////////////////////////////////////////////////////////////////////////
+//Used to return the selected figure when only one figure is selected
 CFigure* ApplicationManager::GetSelectedFig() {
 	for (int i = 0; i < FigCount; i++) {
 		if (FigList[i]->IsSelected()) {
-			return FigList[i];
+			return FigList[i];  
 		}
 	}
 }
+
+
 ////////////////////////////////////////////////////////////////////////////////////
 int ApplicationManager::GetNumSelected()  {
 	SelectedFigCount = 0;
 	for (int i = 0; i < FigCount; i++){
 		if (FigList[i]->IsSelected()) {
-			SelectedFigCount++;
+			SelectedFigCount++; //increments counter if figure is selected
 		}
 	}
-	return SelectedFigCount;
+	return SelectedFigCount; //returns number of selected figures
 }
+
+
+////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::UnselectAll()
 {
 	for (int i = 0; i < GetFigureCount(); i++)
 	{
 		if (FigList[i]->IsSelected())
-			FigList[i]->SetSelected(false);
+			FigList[i]->SetSelected(false); //unselects figure if selected
 	}
 }
+
+
+////////////////////////////////////////////////////////////////////////////////////
+//Deletes all figures
 void ApplicationManager::ClearAll()
 {
 	for (int i = 0; i < GetFigureCount(); i++) {
@@ -239,10 +263,14 @@ void ApplicationManager::ClearAll()
 		FigList[i] = NULL;
 	}
 }
+
+
 ////////////////////////////////////////////////////////////////////////////////////
 color ApplicationManager::GetColor() {
 	return Color;
 }
+
+
 ////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::Swaping(int Op) {
 	//Check the number of the selected figures
@@ -290,16 +318,21 @@ void ApplicationManager::Swaping(int Op) {
 	}
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::SaveAll(ofstream& fout)
 {
 	for (int i = 0; i < GetFigureCount(); i++) {
-		FigList[i]->Save(fout);
+		FigList[i]->Save(fout); //calls save function for each figure
 	}
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::PlayAudio(char* a){
 	VoiceAction::AudioPlayer(a);
 }
+
 
 //==================================================================================//
 //							Interface Management Functions							//
@@ -311,8 +344,9 @@ void ApplicationManager::UpdateInterface() const
 	for(int i=0; i<GetFigureCount(); i++)
 		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
 }
-////////////////////////////////////////////////////////////////////////////////////
 
+
+////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
 Input *ApplicationManager::GetInput() const
 {	return pIn; }
@@ -320,6 +354,7 @@ Input *ApplicationManager::GetInput() const
 //Return a pointer to the output
 Output *ApplicationManager::GetOutput() const
 {	return pOut; }
+
 
 ////////////////////////////////////////////////////////////////////////////////////
 //Destructor

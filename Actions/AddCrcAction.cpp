@@ -24,10 +24,11 @@ void AddCrcAction::ReadActionParameters()
 	pOut->PrintMessage("New Circle: Click at the end of radius");
 	pManager->PlayAudio("Audio\\CircleRadius.wav");  //circel radius voice acting
 
-	//Read the radius of the circle
+	//Read the point on radius of the circle
 	pIn->GetPointClicked(R.x, R.y);
 
-	radius = sqrt((R.x - C.x) * (R.x - C.x) + (R.y - C.y) * (R.y - C.y));
+	radius = sqrt((R.x - C.x) * (R.x - C.x) + (R.y - C.y) * (R.y - C.y)); //calculates radius of circle
+
 
 	CircleGfxInfo.isFilled = false;	//default is not filled
 	//get drawing, filling colors and pen width from the interface
@@ -45,7 +46,7 @@ void AddCrcAction::Execute()
 	ReadActionParameters();
 
 	//Create a circle with the parameters read from the user
-	CCircle*CR = new CCircle(C,radius, CircleGfxInfo, pManager->GetFigureCount());
+	CCircle*CR = new CCircle(C, radius, CircleGfxInfo, pManager->GetFigureCount());
 
 	//Add the Circle to the list of figures
 	pManager->AddFigure(CR);

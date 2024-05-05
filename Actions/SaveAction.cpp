@@ -15,24 +15,30 @@ void SaveAction::ReadActionParameters() {
 	//Get a Pointer to the Input / Output Interfaces
 	Input* pIn = pManager->GetInput();
 	Output* pOut = pManager->GetOutput();
-	pOut->PrintMessage("Enter Filename: ");
+	
+
 	pManager->PlayAudio("Audio\\EnterFileName.wav");
 
 	//Ask user to type the file name to save
-	pOut->PrintMessage("Saving Graph... Enter Filename: ");
+	pOut->PrintMessage("Saving Graph..., Enter Filename: ");
 	str = pIn->GetString(pOut);
 }
 
 void SaveAction::Execute() {
 	ReadActionParameters(); //read input from user
 
+
 	Output* pOut = pManager->GetOutput(); // get a pointer to output interface
 
+
 	//prints info of the file the graph data was saved to
-	pOut->PrintMessage("Filename: " + str);
-	pOut->PrintMessage("File has been saved successfully");
+	pOut->PrintMessage("Filename: " + str + ".txt, File has been saved successfully.");
 	pManager->PlayAudio("Audio\\FileSaved.wav");
+	
+	
+	//opens file for writing
 	ofstream fout(str + ".txt");
+
 
 	//saves default draw color
 	if (UI.DrawColor == BLUE) {
@@ -75,10 +81,15 @@ void SaveAction::Execute() {
 		fout << "OR";
 	}
 
+
+	//new line
 	fout << "\n";
+
 
 	//saves number of figures
 	fout << to_string(pManager->GetFigureCount()) << "\n";
 
+
+	//calls function to save the information of all figures
 	pManager->SaveAll(fout);
 }
