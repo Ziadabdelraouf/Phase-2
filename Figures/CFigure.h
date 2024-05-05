@@ -41,6 +41,9 @@ public:
 	bool IsSelected() const;	//check whether fig is selected
 	virtual bool IsClickInside(int x, int y) const =0;
 	virtual void Draw(Output* pOut) const  = 0 ;		//Draw the figure
+        //omar
+        virtual RNGshape getType()=0 ; //return the type of the shape
+        //
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 	int getRecTotalCount(); //returns total number of rectangles
