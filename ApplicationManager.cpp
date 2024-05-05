@@ -340,7 +340,7 @@ void ApplicationManager::Swaping(int Op) {
 					break;
 				}
 			}
-			FigList[FigCount - 1] = pFig; //Replace the selceted figure to its new index
+			FigList[(FigCount - 1)] = pFig; //Replace the selceted figure to its new index
 			pOut->PrintMessage("Bring selected figure to front.....");
 			PlayAudio("Audio\\BringToFront.wav");
 		}
