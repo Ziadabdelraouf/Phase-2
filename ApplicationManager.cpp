@@ -17,7 +17,7 @@
 #include "Actions\VoiceAction.h"
 #include "Actions\LoadAction.h"
 #include "PlayShape.h"
-
+#include "PlayColor.h"	
 #include "Figures\CFigure.h"
 
 
@@ -134,23 +134,23 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case SHAPE:
 			pAct = new PlayShape(this);
+	          break;
+                case COLOR:
+			pAct = new PlayColor(this);
 	         break;
-        case COLOR:
-			pAct = new ColorRNG(this);
-	    break;
 		case BOTH:
 			pAct = new BothRNG(this);
-	    break;
-case TO_DRAW:
-	pOut->CreateDrawToolBar();
-	pOut->ClearStatusBar();
-	UI.InterfaceMode = MODE_DRAW;
-	break;
-case TO_PLAY:
-	pOut->CreatePlayToolBar();
-	pOut->ClearStatusBar();
-	UI.InterfaceMode = MODE_PLAY;
-	break;
+	        break;
+                case TO_DRAW:
+	          pOut->CreateDrawToolBar();
+	          pOut->ClearStatusBar();
+	          UI.InterfaceMode = MODE_DRAW;
+	          break;
+               case TO_PLAY:
+	         pOut->CreatePlayToolBar();
+	         pOut->ClearStatusBar();
+	        UI.InterfaceMode = MODE_PLAY;
+	         break;
 		case EXIT:
 			///create ExitAction here
 			break;
