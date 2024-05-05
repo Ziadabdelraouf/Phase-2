@@ -188,6 +188,7 @@
     <ClCompile Include="GUI\Input.cpp" />
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
+    <ClCompile Include="Actions\LoadAction.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ShapeRNG.cpp" />
   </ItemGroup>
@@ -239,6 +240,7 @@
     <ClInclude Include="GUI\UI_Info.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="Actions\LoadAction.h" />
     <ClInclude Include="ShapeRNG.h" />
   </ItemGroup>
   <ItemGroup>

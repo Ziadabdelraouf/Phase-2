@@ -1,13 +1,10 @@
 #include "CCircle.h"
 
-CCircle::CCircle(Point C, Point R, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
+CCircle::CCircle(Point C, int r, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
 	Point cent = C;
 	Point cent1 = cent;
-	Point rad = R;
-
-	radius = sqrt((rad.x - cent.x) * (rad.x - cent.x) + (rad.y - cent.y) * (rad.y - cent.y));
-
+	radius = r;
 	if (radius > (UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / 2) {
 		radius = (UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / 2;
 		cent1.y = UI.ToolBarHeight + (UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / 2;
@@ -28,7 +25,6 @@ CCircle::CCircle(Point C, Point R, GfxInfo FigureGfxInfo, int id) :CFigure(Figur
 	}
 	
 	Center = cent1;
-	Radius = R;
 	CFigure::CircleTotalCount++;
 
 }

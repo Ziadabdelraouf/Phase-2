@@ -169,6 +169,7 @@
     <ClCompile Include="ShapeRNG.cpp" />
     <ClCompile Include="ColorRNG.cpp" />
     <ClCompile Include="BothRNG.cpp" />
+    <ClCompile Include="Actions\LoadAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -277,6 +278,7 @@
     <ClInclude Include="ShapeRNG.h" />
     <ClInclude Include="ColorRNG.h" />
     <ClInclude Include="BothRNG.h" />
+    <ClInclude Include="Actions\LoadAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

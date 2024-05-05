@@ -6,6 +6,7 @@ class AddCrcAction: public Action{
 private:
 	Point C; //Circle center
 	Point R; //Circle radius
+	int radius;
 	GfxInfo CircleGfxInfo;
 public:
 	AddCrcAction(ApplicationManager* pApp); //conistructor

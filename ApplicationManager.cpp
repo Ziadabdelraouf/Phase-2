@@ -15,6 +15,7 @@
 #include "ColorRNG.h"
 #include "BothRNG.h"
 #include "Actions\VoiceAction.h"
+#include "Actions\LoadAction.h"
 
 #include "Figures\CFigure.h"
 
@@ -95,6 +96,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case AUDIOPLAYER:
 			pAct = new VoiceAction(this);
 			break;
+		case LOAD:
+			pAct = new LoadAction(this);
 
 		case COLOR_BLACK:
 			Color = BLACK;

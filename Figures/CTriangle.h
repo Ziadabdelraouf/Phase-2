@@ -1,5 +1,5 @@
-#ifndef CRECT_H
-#define CRECT_H
+#ifndef CTRI_H
+#define CTRI_H
 #include "CFigure.h"
 
 class CTriangle: public CFigure{

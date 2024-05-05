@@ -1,7 +1,7 @@
 #ifndef CFIGURE_H
 #define CFIGURE_H
 #include <fstream>
-#include "..\defs.h"
+#include "..\Defs.h"
 #include "..\GUI\Output.h"
 
 //Base class for all figures
