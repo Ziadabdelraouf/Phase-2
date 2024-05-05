@@ -4,7 +4,6 @@
 #include "DEFS.h"
 #include "Figures\CFigure.h"
 #include "GUI\input.h"
-#include "RNG.h"
 
 //Main class that manages everything in the application.
 class ApplicationManager
