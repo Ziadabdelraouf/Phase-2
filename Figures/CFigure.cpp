@@ -152,9 +152,9 @@ bool CFigure::IsFilled() {
 	return FigGfxInfo.isFilled;
 }
 
-//color CFigure::getFillClr() {
-//	return FigGfxInfo.FillClr;
-//}
+color CFigure::getFillClr() {
+	return FigGfxInfo.FillClr;
+}
 // end
 
 
