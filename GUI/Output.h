@@ -24,7 +24,7 @@ public:
 	void Drawtri(Point p1, Point p2, Point p3, GfxInfo triGfxInfo, bool selected) const; //Draw a circle 
 	void DrawSquare(Point C, GfxInfo SquareGfxInfo, bool selected = false) const; //Draw a square
 	void DrawHex(Point C, GfxInfo HexGfxInfo, bool selected = false) const; //Draw a hexagon
-	void DrawCrc(Point cent, Point rad, GfxInfo crcGfxInfo, bool); //Draw a circle
+	void DrawCrc(Point cent, int rad, GfxInfo crcGfxInfo, bool); //Draw a circle
 	///TODO:Make similar functions for drawing all other figure types.
 	
 	void PrintMessage(string msg) const;	//Print a message on Status bar

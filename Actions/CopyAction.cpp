@@ -15,16 +15,8 @@ void CopyAction::ReadActionParameters()
 	if (temp > 1) {
 		pOut->PrintMessage("Can't copy more than one figure");
 	}
-	else if (temp == 1) {
-		for (int i = 0; i < pManager->GetFigureCount(); i++)
-		{
-
-			Pfig=pManager->GetSelectedFig();
-			pOut->PrintMessage("figure cpoied");
-		}
-	}
+	
 	else {
-		
 		pOut->PrintMessage("No figures selected");
 	}
 	
@@ -33,9 +25,16 @@ void CopyAction::ReadActionParameters()
 
 void CopyAction::Execute()
 {
+	Output* pOut = pManager->GetOutput();
 	ReadActionParameters();
-	if (Pfig != NULL) {
-		Pfig->SetSelected(false);
+	if (Pfig != NULL && pManager->GetNumSelected()) {
+		
+
+			Pfig = pManager->GetSelectedFig();
+			pOut->PrintMessage("figure cpoied");
+			pManager->AddClipBoard(Pfig);
+			Pfig->SetSelected(false);
+		}
 	}
-	pManager->AddClipBoard(Pfig);
-}
+	
+	

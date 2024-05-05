@@ -1,6 +1,7 @@
 #include "CRectangle.h"
+#include <fstream>
 
-CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo, int id):CFigure(FigureGfxInfo, id)
+CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
 	if (P1.y < UI.ToolBarHeight || P2.y < UI.ToolBarHeight) {
 		if (P1.y < P2.y) {
@@ -24,15 +25,15 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo, int id):CFigur
 	}
 	Corner1 = P1;
 	Corner2 = P2;
-	
+
 	CFigure::RecTotalCount++;
 }
-	
+
 
 void CRectangle::Draw(Output* pOut) const
 {
 	//Call Output::DrawRect to draw a rectangle on the screen	
-	
+
 	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, Selected);
 
 }
@@ -65,10 +66,67 @@ bool CRectangle::IsClickInside(int x, int y) const
 
 }
 
+
+void CRectangle::Save(ofstream& fout)
+{
+	fout << "REC\t";
+	fout << ID << "\t";
+
+	fout << Corner1.x << "\t";
+	fout << Corner1.y << "\t";
+
+	fout << Corner2.x << "\t";
+	fout << Corner2.y << "\t";
+
+	if (FigGfxInfo.DrawClr == BLUE) {
+		fout << "BL\t";
+	}
+	else if (FigGfxInfo.DrawClr == BLACK) {
+		fout << "BK\t";
+	}
+	else if (FigGfxInfo.DrawClr == GREEN) {
+		fout << "GN\t";
+	}
+	else if (FigGfxInfo.DrawClr == RED) {
+		fout << "RD\t";
+	}
+	else if (FigGfxInfo.DrawClr == YELLOW) {
+		fout << "YL\t";
+	}
+	else if (FigGfxInfo.DrawClr == ORANGE) {
+		fout << "OR\t";
+	}
+
+	if (!FigGfxInfo.isFilled)
+	{
+		fout << "NF";
+	}
+	else if (FigGfxInfo.FillClr == BLUE) {
+		fout << "BL";
+	}
+	else if (FigGfxInfo.FillClr == BLACK) {
+		fout << "BK";
+	}
+	else if (FigGfxInfo.FillClr == GREEN) {
+		fout << "GN";
+	}
+	else if (FigGfxInfo.FillClr == RED) {
+		fout << "RD";
+	}
+	else if (FigGfxInfo.FillClr == YELLOW) {
+		fout << "YL";
+	}
+	else if (FigGfxInfo.FillClr == ORANGE) {
+		fout << "OR";
+	}
+	fout << "\n";
+}
+
+
 void CRectangle::PrintInfo(Output* pOut) const
 {
 	//prints info of rectangle
-	string str = "Rectangle, ID: " + to_string(ID) + ", Start: (" + to_string(Corner1.x) + ", " + to_string(Corner1.y) + "), End: (" + to_string(Corner2.x) + ", " + to_string(Corner2.y) + "), Width = " + to_string(abs(Corner2.x - Corner1.x)) + "px, Height = " + to_string(abs(Corner2.y-Corner1.y)) + "px";
+	string str = "Rectangle, ID: " + to_string(ID) + ", Start: (" + to_string(Corner1.x) + ", " + to_string(Corner1.y) + "), End: (" + to_string(Corner2.x) + ", " + to_string(Corner2.y) + "), Width = " + to_string(abs(Corner2.x - Corner1.x)) + "px, Height = " + to_string(abs(Corner2.y - Corner1.y)) + "px";
 	pOut->PrintMessage(str);
 }
 
@@ -80,8 +138,14 @@ void CRectangle::SetSelected(bool s)
 	else
 		CFigure::RecSelectedCount--; //decrements count of selected rectangles by 1 when a rectangle is deselected
 }
-
-char CRectangle::FigType() const
+CFigure* CRectangle::Paste(Point NewCorner, int ID) const
 {
-	return 'R';
+	Point PTemp;
+	PTemp.x = NewCorner.x + (Corner2.x - Corner1.x);
+	PTemp.y = NewCorner.y + (Corner2.y - Corner1.y);
+	CRectangle* RR = new CRectangle(NewCorner,PTemp,  FigGfxInfo, ID);
+
+	CFigure::RecTotalCount++;
+	return RR;
 }
+

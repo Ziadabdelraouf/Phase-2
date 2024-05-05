@@ -41,6 +41,11 @@ GfxInfo CFigure::GetGfxInfo() const
 	return FigGfxInfo;
 }
 
+//void CFigure::Paste(Point, int) const
+//{
+//	
+//}
+
 Point CFigure::GetCenter()
 {
 	return Point();

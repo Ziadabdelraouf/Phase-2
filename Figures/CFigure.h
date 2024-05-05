@@ -31,8 +31,9 @@ public:
 	bool IsFilled();
 	virtual bool IsClickInside(int x, int y) const =0;
 	virtual void Draw(Output* pOut) const  = 0 ;   //Draw the figure
-	virtual char FigType()const = 0 ;
+	
 	GfxInfo GetGfxInfo() const;
+	virtual CFigure* Paste(Point NewCnt,int x) const=0;
 	Point GetCenter();
 	double GetRaduis() const;
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color

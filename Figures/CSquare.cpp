@@ -59,9 +59,14 @@ Point CSquare::GetCenter()
 	return Center;
 }
 
-char CSquare::FigType() const
+
+CFigure* CSquare::Paste(Point NewCnt, int ID) const
 {
-	return 'S';
+
+	CSquare* SS = new CSquare(NewCnt, FigGfxInfo, ID);
+
+	CFigure::SqrTotalCount++;
+	return SS;
 }
 
 

@@ -46,7 +46,7 @@ void SelectAction::Execute()
 		else {
 			pFig->SetSelected(true);
 			pFig->Draw(pOut);
-			if(pManager->GetNumSelected() == 1)
+			if (pManager->GetNumSelected() == 1)
 				pFig->PrintInfo(pOut); //displays info if only one is selected
 			if (pManager->GetNumSelected() == 1)
 				pFig->PrintInfo(pOut); //displays info if only one is selected

@@ -63,10 +63,14 @@ void CutAction::Execute()
 		}
 		
 		
-	
-		Pfig->ChngDrawClr(GRAY);
-		/*Pfig->ChngFillClr(GRAY);*/
 		pManager->AddClipBoard(Pfig);
+		Pfig->Draw(pOut);
+		Pfig->ChngDrawClr(GRAY);
+		if (Pfig->IsFilled()) {
+			Pfig->ChngFillClr(GRAY);
+		}
+		pManager->UpdateInterface();
+		
 		
 	}
 

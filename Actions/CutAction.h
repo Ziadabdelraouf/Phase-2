@@ -10,6 +10,7 @@
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 #include "SelectAction.h"
+
 class CutAction :
     public Action
 {

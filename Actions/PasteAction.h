@@ -20,7 +20,7 @@ class PasteAction :
 {
 	CFigure* Pfig;
 	Point P2 ;
-
+	int x;
 
 public:
     PasteAction(ApplicationManager*);

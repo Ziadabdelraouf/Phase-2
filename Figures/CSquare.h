@@ -14,6 +14,7 @@ public:
 	virtual void SetSelected(bool s);
 	GfxInfo GetGfxInfo();
 	Point GetCenter();
-	virtual char FigType() const;
+
+	CFigure* Paste(Point, int) const;
 };
 #endif
