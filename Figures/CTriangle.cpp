@@ -150,4 +150,9 @@ void CTriangle::SetSelected(bool s)
 	else
 		CFigure::TriSelectedCount--; //decrements count of selected triangles by 1 when a triangles is deselected
 }
+ //omar
+RNGshape CTriangle::getType() {
+	return triangle;
+}
 
+  //
