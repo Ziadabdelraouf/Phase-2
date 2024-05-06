@@ -20,6 +20,7 @@
 #include "PlayColor.h"	
 #include "Figures\CFigure.h"
 #include "PlayBoth.h"
+#include "GUI/UI_Info.h"
 
 
 //Constructor
@@ -29,11 +30,11 @@ ApplicationManager::ApplicationManager()
 	pOut = new Output;
 	pIn = pOut->CreateInput();
 	
-	FigCount = 0;
+	FigCount = 0;  //Set initially fig num to 0.
 	SelectedFigCount = 0;
 	FigerIndex = 0;
 
-	Color = BLACK;
+	Color = BLACK;  //Set initially color to black.
 		
 	//Create an array of figure pointers and set them to NULL		
 	for(int i=0; i<MaxFigCount; i++)
@@ -103,45 +104,17 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case LOAD:
 			pAct = new LoadAction(this);
 
-		case COLOR_BLACK:
-			Color = BLACK;
-			PlayAudio("Audio\\Black.wav");
-			pOut->PrintMessage("Black");
-			break;
-		case COLOR_BLUE:
-			Color = BLUE;
-			PlayAudio("Audio\\Blue.wav");
-			pOut->PrintMessage("Blue");
-			break;
-		case COLOR_GREEN:
-			Color = GREEN;
-			PlayAudio("Audio\\Green.wav");
-			pOut->PrintMessage("Green");
-			break;
-		case COLOR_ORANGE:
-			Color = ORANGE;
-			PlayAudio("Audio\\Orange.wav");
-			pOut->PrintMessage("Orange");
-			break;
-		case COLOR_YELLOW:
-			Color = YELLOW;
-			PlayAudio("Audio\\Yellow.wav");
-			pOut->PrintMessage("Yellow");
-			break;
-		case COLOR_RED:
-			Color = RED;
-			PlayAudio("Audio\\Red.wav");
-			pOut->PrintMessage("Red");
-			break;
 		case SHAPE:
 			pAct = new PlayShape(this);
 	          break;
                 case COLOR:
 			pAct = new PlayColor(this);
 	         break;
+
 		case BOTH:
 			pAct = new BothRNG(this);
 	        break;
+
                 case TO_DRAW:
 	          pOut->CreateDrawToolBar();
 	          pOut->ClearStatusBar();
@@ -258,16 +231,53 @@ void ApplicationManager::UnselectAll()
 //Deletes all figures
 void ApplicationManager::ClearAll()
 {
+	//Loop at each figure in the figure list and set all pointers to null
 	for (int i = 0; i < GetFigureCount(); i++) {
-		if(FigList[i]->IsSelected())
-			FigList[i]->SetSelected(false);
-		FigList[i] = NULL;
+		FigList[i] = NULL;  
 	}
 }
 
 
 ////////////////////////////////////////////////////////////////////////////////////
 color ApplicationManager::GetColor() {
+	ActionType ActType;
+	ActType = GetUserAction();
+	switch (ActType)
+	{
+	case COLOR_BLACK:
+		Color = BLACK;
+		PlayAudio("Audio\\Black.wav");
+		pOut->PrintMessage("Black");
+		break;
+	case COLOR_BLUE:
+		Color = BLUE;
+		PlayAudio("Audio\\Blue.wav");
+		pOut->PrintMessage("Blue");
+		break;
+	case COLOR_GREEN:
+		Color = GREEN;
+		PlayAudio("Audio\\Green.wav");
+		pOut->PrintMessage("Green");
+		break;
+	case COLOR_ORANGE:
+		Color = ORANGE;
+		PlayAudio("Audio\\Orange.wav");
+		pOut->PrintMessage("Orange");
+		break;
+	case COLOR_YELLOW:
+		Color = YELLOW;
+		PlayAudio("Audio\\Yellow.wav");
+		pOut->PrintMessage("Yellow");
+		break;
+	case COLOR_RED:
+		Color = RED;
+		PlayAudio("Audio\\Red.wav");
+		pOut->PrintMessage("Red");
+		break;
+	default:
+		Color = UI.FillColor;
+		break;
+	}
 	return Color;
 }
 

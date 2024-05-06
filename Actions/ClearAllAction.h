@@ -7,7 +7,7 @@
 
 class ClearAllAction: public Action{
 private:
-	CFigure* pFig;
+	CFigure* pFig;  //Pointer to the figure that the action will implemented on.
 public:
 	ClearAllAction(ApplicationManager* pApp);
 	

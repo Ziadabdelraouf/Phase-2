@@ -7,33 +7,33 @@
 
 
 BorderAction::BorderAction(ApplicationManager* pApp) :Action(pApp) {
+
 	color = BLACK;
-	PFig = pManager->GetSelectedFig();
+	PFig = pManager->GetSelectedFig();   //Set the pointer to the selected figure.
 }
 void BorderAction::ReadActionParameters() {
 
-
-
-	color = pManager->GetColor();
-
-
+	color = pManager->GetColor();  //Get the selected color.
 }
 void BorderAction::Execute() {
 
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	int n = pManager->GetNumSelected();
+	int n = pManager->GetNumSelected();  
+	//Check for the number of selected figure.
 	if (n > 1 || n == 0) {
-		string str = "Please select only one figure";
 		pManager->PlayAudio("Audio\\SelectOneFigure.wav");
-		pOut->PrintMessage(str);
+		pOut->PrintMessage("Please select only one figure");
 
 	}
 	else {
-		pOut->PrintMessage("Select color to change border color");
+		pOut->PrintMessage("Select color to change border color: ");
 		pManager->PlayAudio("Audio\\BorderColor.wav");
-		ReadActionParameters();
+		ReadActionParameters();  //Get the color before change border color action.
+		if (color == UI.FillColor) {
+			color = UI.DrawColor;
+		}
 		PFig->ChngDrawClr(color);
-
+		pManager->UnselectAll();  //Unselect the figure to show the action.
 	}
 }

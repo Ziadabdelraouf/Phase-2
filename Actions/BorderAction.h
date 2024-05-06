@@ -7,8 +7,8 @@
 
 class BorderAction : public Action {
 private:
-	CFigure* PFig;
-	color color;
+	CFigure* PFig;  //Pointer to the figure that the action will implemented on.
+	color color;   //Color of the figure.
 public:
 	BorderAction(ApplicationManager* papp);
 

@@ -11,14 +11,14 @@ class ApplicationManager
 	enum{ MaxFigCount = 200 }; //max number of figures
 private:
 	int FigCount;		//Actual number of figures
-	int SelectedFigCount;
+	int SelectedFigCount;  //Get the count of the selected figure.
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 
 	CFigure* SelectedFig; //Pointer to the selected figure
 	int FigerIndex;      //The index of the figure in the Figure list.
-	color Color;
+	color Color;       //Store the selected color.
 
-	char* Audio;
+	char* Audio;   //The name of the audio file that will be played "it should be .wav file"
 
 	//Pointers to Input and Output classes
 	Input *pIn;
@@ -55,11 +55,11 @@ public:
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window
-	color GetColor();
+	color GetColor();    
 	CFigure* GetSelectedFig(); //Get current selected figure
-	void SetFigCount(int);
-	void Swaping(int);
+	void SetFigCount(int);  //Reset the figure manually if we need.
+	void Swaping(int);  //Swaping between the layers of figures.
 	void SaveAll(ofstream & fout); //Saves all figures
-	void PlayAudio(char*);
+	void PlayAudio(char*);   //Play the filename audio ".wav"
 };
 #endif
