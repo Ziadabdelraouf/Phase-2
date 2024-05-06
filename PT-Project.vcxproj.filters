@@ -159,11 +159,15 @@
     <ClCompile Include="Figures\CHexagon.cpp" />
     <ClCompile Include="Actions\AddCrcAction.cpp" />
     <ClCompile Include="Figures\CCircle.cpp" />
+    <ClCompile Include="Actions\DeleteAction.cpp" />
+    <ClCompile Include="Actions\CopyAction.cpp" />
+    <ClCompile Include="Actions\CutAction.cpp" />
     <ClCompile Include="Actions\FillAction.cpp" />
     <ClCompile Include="Actions\BorderAction.cpp" />
     <ClCompile Include="Actions\ClearAllAction.cpp" />
     <ClCompile Include="Actions\SendBackAction.cpp" />
     <ClCompile Include="Actions\BringFrontAction.cpp" />
+    <ClCompile Include="Actions\PasteAction.cpp" />
     <ClCompile Include="Actions\SaveAction.cpp" />
     <ClCompile Include="Actions\VoiceAction.cpp" />
     <ClCompile Include="ShapeRNG.cpp" />
@@ -271,20 +275,8 @@
     <ClInclude Include="Figures\CHexagon.h" />
     <ClInclude Include="Actions\AddCrcAction.h" />
     <ClInclude Include="Figures\CCircle.h" />
-    <ClInclude Include="Actions\FillAction.h" />
-    <ClInclude Include="Actions\BorderAction.h" />
-    <ClInclude Include="Actions\ClearAllAction.h" />
     <ClInclude Include="Actions\SendBackAction.h" />
     <ClInclude Include="Actions\BringFrontAction.h" />
-    <ClInclude Include="Actions\SaveAction.h" />
-    <ClInclude Include="Actions\VoiceAction.h" />
-    <ClInclude Include="ShapeRNG.h" />
-    <ClInclude Include="ColorRNG.h" />
-    <ClInclude Include="BothRNG.h" />
-    <ClInclude Include="Actions\LoadAction.h" />
-    <ClInclude Include="PlayColor.h" />
-    <ClInclude Include="PlayShape.h" />
-    <ClInclude Include="PlayBoth.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

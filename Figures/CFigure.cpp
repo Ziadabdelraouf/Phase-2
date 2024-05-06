@@ -6,6 +6,7 @@ CFigure::CFigure(GfxInfo FigureGfxInfo, int id)
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false; //default status is not-selected
 	ID = id; //set id of the figure
+	
 }
  
 int CFigure::RecTotalCount = 0; //initialise total count of rectangles
@@ -30,12 +31,46 @@ int CFigure::filledCount = 0;   //initialise count of filled figures
 //
 
 bool CFigure::IsSelected() const
-{	return Selected; }
+{
+	if (!NULL) {
+		return Selected;
+	}
+	else return false;
+}
+
+bool CFigure::IsFilled()
+{
+	return FigGfxInfo.isFilled ;
+}
+
+
+
+
+GfxInfo CFigure::GetGfxInfo() const
+{
+	return FigGfxInfo;
+}
+
+//void CFigure::Paste(Point, int) const
+//{
+//	
+//}
+
+Point CFigure::GetCenter()
+{
+	return Point();
+}
+
+double CFigure::GetRaduis() const
+{
+	return 1;
+}
 
 void CFigure::ChngDrawClr(color Dclr)
 {	
 	FigGfxInfo.DrawClr = Dclr;
 }
+
 
 void CFigure::ChngFillClr(color Fclr)
 {	
@@ -73,6 +108,16 @@ else if (RED == Fclr)
 //
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr; 
+}
+
+color CFigure::GetFillClr()
+{
+	return FigGfxInfo.FillClr;
+}
+
+color CFigure::GetDrawClr()
+{
+	return FigGfxInfo.DrawClr;
 }
 
 int CFigure::getRecTotalCount()

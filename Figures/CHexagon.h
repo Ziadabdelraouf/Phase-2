@@ -2,11 +2,10 @@
 #define CHEX_H
 #include "CFigure.h"
 
-class CHexagon:public CFigure{
+class CHexagon :public CFigure {
 private:
 	Point Center;
 	int sidelength;
-	
 public:
 	CHexagon(Point, GfxInfo FigureGfxInfo, int id);
 	virtual void Draw(Output* pOut) const;
@@ -14,6 +13,12 @@ public:
 	virtual void Save(ofstream& fout);
 	virtual void PrintInfo(Output* pOut) const; //prints info of hexagon
 	virtual void SetSelected(bool s);
+	GfxInfo GetGfxInfo()const;
+	Point GetCenter();
+	virtual bool Wascut() const;
+	virtual CFigure* CreateCopy(CFigure*) const;
+	CFigure* Paste(Point, int) const;
+
 //omar
 virtual RNGshape getType(); //return the type of the shape
 //

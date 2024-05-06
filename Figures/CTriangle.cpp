@@ -1,5 +1,5 @@
 #include "CTriangle.h"
-
+#include <fstream>
 CTriangle::CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
 	if (p1.y < UI.ToolBarHeight || p2.y < UI.ToolBarHeight || p3.y < UI.ToolBarHeight) {
@@ -43,7 +43,7 @@ CTriangle::CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo, int id
 		}
 	}
 
-	
+
 	Corner1 = p1;
 	Corner2 = p2;
 	Corner3 = p3;
@@ -64,16 +64,16 @@ bool CTriangle::IsClickInside(int x, int y) const
 	//calculates total area of triangle, then the area if the triangle is divided into 3 triangles with the point passed being the shared point between them,
 	//if areas are equal then the click is inside and the function returns true value 
 
-	float TotalArea = 0.5*abs(Corner1.x*(Corner2.y-Corner3.y) + Corner2.x*(Corner3.y-Corner1.y) + Corner3.x*(Corner1.y-Corner2.y));
+	float TotalArea = 0.5 * abs(Corner1.x * (Corner2.y - Corner3.y) + Corner2.x * (Corner3.y - Corner1.y) + Corner3.x * (Corner1.y - Corner2.y));
 	float A1 = 0.5 * abs(x * (Corner2.y - Corner3.y) + Corner2.x * (Corner3.y - y) + Corner3.x * (y - Corner2.y));
 	float A2 = 0.5 * abs(Corner1.x * (y - Corner3.y) + x * (Corner3.y - Corner1.y) + Corner3.x * (Corner1.y - y));
 	float A3 = 0.5 * abs(Corner1.x * (Corner2.y - y) + Corner2.x * (y - Corner1.y) + x * (Corner1.y - Corner2.y));
-	
-	if (TotalArea == A1+A2+A3)
+
+	if (TotalArea == A1 + A2 + A3)
 	{
 		return true;
 	}
-	
+
 	return false;
 }
 
@@ -155,4 +155,29 @@ RNGshape CTriangle::getType() {
 	return triangle;
 }
 
+bool CTriangle::Wascut() const
+{
+	return WasCut;
+}
+
+CFigure* CTriangle::CreateCopy(CFigure*) const
+{
+	CTriangle* TT = new CTriangle(Corner1, Corner2, Corner3, FigGfxInfo, ID);
+	return TT;
+}
+
+CFigure* CTriangle::Paste(Point NewCorner, int ID) const
+{
+	Point PTemp1, PTemp2;
+	PTemp1.x = NewCorner.x + (Corner2.x - Corner1.x);
+	PTemp1.y = NewCorner.y + (Corner2.y - Corner1.y);
+	PTemp2.x = NewCorner.x + (Corner3.x - Corner1.x);
+	PTemp2.y = NewCorner.y + (Corner3.y- Corner1.y);
+	CTriangle* TT = new CTriangle(NewCorner,PTemp1,PTemp2, FigGfxInfo, ID);
+
+	CFigure::TriTotalCount++;
+	return TT;
+}
+
+//CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo, int id)
   //

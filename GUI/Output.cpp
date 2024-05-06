@@ -76,6 +76,14 @@ void Output::ClearStatusBar() const
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
+void Output::ClearDrawArea() const
+{
+	pWind->SetPen(UI.BkGrndColor, 1);
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->DrawRectangle(0, UI.ToolBarHeight + UI.LineUnderTBWidth, UI.width, UI.height - UI.StatusBarHeight);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
 void Output::CreateDrawToolBar() const
 {
 	UI.InterfaceMode = MODE_DRAW;
@@ -137,8 +145,6 @@ void Output::clearToolBar() const {
 	pWind->SetBrush(UI.bkgToolBar);
 	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight, FILLED);
 }
-
-
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::ClearDrawArea() const //redraws rectangle for drawing area, clearing any leftover graphics
 {
@@ -334,6 +340,7 @@ void Output::DrawCrc(Point cent, int rad, GfxInfo crcGfxInfo, bool selcrc) {
 
 }
 
+	pWind->DrawCircle(cent1.x, cent1.y, radius, ds);
 
 //////////////////////////////////////////////////////////////////////////////////////////
 Output::~Output()

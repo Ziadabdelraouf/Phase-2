@@ -5,11 +5,14 @@
 #include "Actions\AddHexAction.h"
 #include "Actions\AddCrcAction.h"
 #include "Actions\SelectAction.h"
+#include "Actions\DeleteAction.h"
+#include "Actions\CopyAction.h"
 #include "Actions\FillAction.h"
 #include "Actions\BorderAction.h"
 #include "Actions\ClearAllAction.h"
 #include "Actions\SendBackAction.h"
 #include "Actions\BringFrontAction.h"
+#include "Actions\PasteAction.h"
 #include "ShapeRNG.h"
 #include "Actions\SaveAction.h"
 #include "ColorRNG.h"
@@ -19,8 +22,10 @@
 #include "PlayShape.h"
 #include "PlayColor.h"	
 #include "Figures\CFigure.h"
+#include "Actions/CutAction.h"
 #include "PlayBoth.h"
 #include "GUI/UI_Info.h"
+
 
 
 //Constructor
@@ -33,6 +38,9 @@ ApplicationManager::ApplicationManager()
 	FigCount = 0;  //Set initially fig num to 0.
 	SelectedFigCount = 0;
 	FigerIndex = 0;
+	Clipboard = NULL;
+	IsCut = false;
+		
 
 	Color = BLACK;  //Set initially color to black.
 		
@@ -101,6 +109,31 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case AUDIOPLAYER:
 			pAct = new VoiceAction(this);
 			break;
+		case COLOR_GREEN:
+			Color = GREEN;
+			break;
+		case COLOR_ORANGE:
+			Color = ORANGE;
+			break;
+		case COLOR_YELLOW:
+			Color = YELLOW;
+			break;
+		case COLOR_RED:
+			Color = RED;
+			break;
+			break;
+		case DELETEFIG:
+			pAct = new DeleteAction(this);
+			break;
+		case COPYFIG:
+			pAct = new CopyAction(this);
+			break;
+		case CUTFIG:
+			pAct = new CutAction(this);
+			break;
+		case PASTEFIG:
+			pAct = new PasteAction(this);
+			break;
 		case LOAD:
 			pAct = new LoadAction(this);
 
@@ -160,8 +193,10 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
 	//If a figure is found return a pointer to it
 	for (int i = FigCount-1; i >=0 ; i--) {
-		if (FigList[i]->IsClickInside(x, y)){
-			return FigList[i];
+		if (FigList[i] != NULL) {
+			if (FigList[i]->IsClickInside(x, y)) {
+				return FigList[i];
+			}
 		}
 	}
 	
@@ -201,13 +236,24 @@ CFigure* ApplicationManager::GetSelectedFig() {
 			return FigList[i];  
 		}
 	}
+	return NULL;
 }
+void ApplicationManager::AddClipBoard(CFigure*pFig)
+{
+	Clipboard = pFig;
+}
+CFigure* ApplicationManager::GetClipboard()
+{
+	return Clipboard;
+	
+}
+int ApplicationManager::GetNumSelected() {
 
 
 ////////////////////////////////////////////////////////////////////////////////////
 int ApplicationManager::GetNumSelected()  {
 	SelectedFigCount = 0;
-	for (int i = 0; i < FigCount; i++){
+	for (int i = 0; i < FigCount; i++) {
 		if (FigList[i]->IsSelected()) {
 			SelectedFigCount++; //increments counter if figure is selected
 		}
@@ -217,6 +263,32 @@ int ApplicationManager::GetNumSelected()  {
 
 
 ////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////
+
+CFigure** ApplicationManager::GetAllSelected() {
+	CFigure* Selected[MaxFigCount];
+	for (int i = 0; i < MaxFigCount; i++)
+	{
+		Selected[i] = NULL;
+	}
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->IsSelected())
+			Selected[i] = FigList[i];
+	}
+	return Selected;
+}
+void ApplicationManager::PasteFigure()
+{
+	Action* pAct = NULL;
+	pAct = new PasteAction(this);
+}
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 void ApplicationManager::UnselectAll()
 {
 	for (int i = 0; i < GetFigureCount(); i++)
@@ -235,6 +307,18 @@ void ApplicationManager::ClearAll()
 	for (int i = 0; i < GetFigureCount(); i++) {
 		FigList[i] = NULL;  
 	}
+}
+void ApplicationManager::UnCut() {
+	CutAction* pAct = NULL;
+	pAct = new CutAction(this);
+	pAct->UnCut();
+}
+void ApplicationManager::Delete()
+{
+	
+	DeleteAction* pAct = NULL;
+	pAct = new DeleteAction(this);
+    pAct->Execute();
 }
 
 
@@ -355,9 +439,14 @@ int ApplicationManager::getColoredTypeNum(int sh,int c) {
 	return x;
 
 }
-
-////////////////////////////////////////////////////////////////////////////////////
-
+bool ApplicationManager::GetIsCut()
+{
+	return IsCut;
+}
+void ApplicationManager::SetIsCut(bool temp)
+{
+	IsCut = temp;
+}
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
@@ -365,8 +454,13 @@ int ApplicationManager::getColoredTypeNum(int sh,int c) {
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {	
+	pOut->ClearDrawArea();
 	for(int i=0; i<GetFigureCount(); i++)
-		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+		if (NULL!=FigList[i])
+		{
+			FigList[i]->Draw(pOut); //Call Draw function (virtual member fn)
+		}
+				
 }
 
 
@@ -385,7 +479,11 @@ Output *ApplicationManager::GetOutput() const
 ApplicationManager::~ApplicationManager()
 {
 	for(int i=0; i<FigCount; i++)
-		delete FigList[i];
+		if (FigList[i]!=NULL)
+		{
+			delete FigList[i];
+		}
+		
 	delete pIn;
 	delete pOut;
 }

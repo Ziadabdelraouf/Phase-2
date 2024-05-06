@@ -44,7 +44,7 @@ bool CCircle::IsClickInside(int x, int y) const
 	{
 		return false;
 	}
-	
+
 	return true;
 }
 
@@ -58,6 +58,61 @@ void CCircle::Save(ofstream& fout)
 
 	fout << radius << "\t";
 	
+
+	if (FigGfxInfo.DrawClr == BLUE) {
+		fout << "BL\t";
+	}
+	else if (FigGfxInfo.DrawClr == BLACK) {
+		fout << "BK\t";
+	}
+	else if (FigGfxInfo.DrawClr == GREEN) {
+		fout << "GN\t";
+	}
+	else if (FigGfxInfo.DrawClr == RED) {
+		fout << "RD\t";
+	}
+	else if (FigGfxInfo.DrawClr == YELLOW) {
+		fout << "YL\t";
+	}
+	else if (FigGfxInfo.DrawClr == ORANGE) {
+		fout << "OR\t";
+	}
+
+	if (!FigGfxInfo.isFilled)
+	{
+		fout << "NF";
+	}
+	else if (FigGfxInfo.FillClr == BLUE) {
+		fout << "BL";
+	}
+	else if (FigGfxInfo.FillClr == BLACK) {
+		fout << "BK";
+	}
+	else if (FigGfxInfo.FillClr == GREEN) {
+		fout << "GN";
+	}
+	else if (FigGfxInfo.FillClr == RED) {
+		fout << "RD";
+	}
+	else if (FigGfxInfo.FillClr == YELLOW) {
+		fout << "YL";
+	}
+	else if (FigGfxInfo.FillClr == ORANGE) {
+		fout << "OR";
+	}
+	fout << "\n";
+}
+
+void CCircle::Save(ofstream& fout)
+{
+	fout << "CIR\t";
+	fout << ID << "\t";
+
+	fout << Center.x << "\t";
+	fout << Center.y << "\t";
+
+	fout << radius << "\t";
+
 
 	if (FigGfxInfo.DrawClr == BLUE) {
 		fout << "BL\t";
@@ -117,6 +172,42 @@ void CCircle::SetSelected(bool s)
 	else
 		CFigure::CircleSelectedCount--; //decrements count of selected squares by 1 when a square is deselected
 }
+bool CCircle::Wascut() const
+{
+	return WasCut;
+}
+CFigure* CCircle::CreateCopy(CFigure*) const
+{
+	CCircle* CC = new CCircle(Center, Radius, FigGfxInfo, ID);
+	return CC;
+}
+CFigure* CCircle::Paste(Point NewCnt, int ID) const
+{
+	Point PTemp;
+	PTemp.x = NewCnt.x + radius;
+	PTemp.y = NewCnt.y;
+	CCircle* CC = new CCircle(NewCnt,PTemp,FigGfxInfo,ID);
+   CFigure::CircleTotalCount++;
+	return CC;
+}
+GfxInfo CCircle::GetGfxInfo() const
+{
+	return FigGfxInfo;
+}
+
+Point CCircle::GetCenter() const
+{
+	return Center;
+}
+
+double CCircle::GetRaduis() const
+{
+	return radius;
+}
+
+
+
+
 //omar
 RNGshape CCircle::getType() {
 	return circle;

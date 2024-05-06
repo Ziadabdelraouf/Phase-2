@@ -16,19 +16,18 @@ private:
 
 	CFigure* SelectedFig; //Pointer to the selected figure
 	int FigerIndex;      //The index of the figure in the Figure list.
-	color Color;       //Store the selected color.
-
-	char* Audio;   //The name of the audio file that will be played "it should be .wav file"
-
+	color Color;
+	bool IsCut;
 	//Pointers to Input and Output classes
-	Input *pIn;
-	Output *pOut;
+	Input* pIn;
+	Output* pOut;
 
 	CFigure* Clipboard;  //Pointer to copied/cut figure
 
+
 public:	
 
-	ApplicationManager(); 
+	ApplicationManager();
 	~ApplicationManager();
 
 	// -- Action-Related Functions
@@ -38,22 +37,19 @@ public:
 
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
-	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
-	CFigure *GetFigure(int id) const; //Search for a figure given its ID
+	CFigure* GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
+	CFigure* GetFigure(int id) const; //Search for a figure given its ID
 	int GetFigureCount() const; //returns the number of figures
-	int GetNumSelected(); //returns number of selected figures
-	void UnselectAll(); //unselects all figures
-	void ClearAll(); //deletes all figures
-	
-	// might be out of the guide line just it is now for testing for playboth till we find a solution
-
-	int getColoredTypeNum(int shape,int color);            //gets the number of certain shape with certain color
-
-	//
-	
+	void AddClipBoard(CFigure* pFig);
+	CFigure* GetClipboard();
+	int GetNumSelected();
+	void UnselectAll();
+	void ClearAll();
+	void UnCut();
+	void Delete();
 	// -- Interface Management Functions
-	Input *GetInput() const; //Return pointer to the input
-	Output *GetOutput() const; //Return pointer to the output
+	Input* GetInput() const; //Return pointer to the input
+	Output* GetOutput() const; //Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window
 	color GetColor();    
 	CFigure* GetSelectedFig(); //Get current selected figure
@@ -61,5 +57,16 @@ public:
 	void Swaping(int);  //Swaping between the layers of figures.
 	void SaveAll(ofstream & fout); //Saves all figures
 	void PlayAudio(char*);   //Play the filename audio ".wav"
+	color GetColor();
+	CFigure* GetSelectedFig(); // Get current selected figure
+	void SetFigCount(int);
+	void Swaping(CFigure*, int, int);
+	bool GetIsCut();
+	void SetIsCut(bool);
+	CFigure** GetAllSelected();
+	void PasteFigure();
+	
 };
 #endif
+
+

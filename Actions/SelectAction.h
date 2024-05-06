@@ -1,3 +1,4 @@
+#pragma once
 #ifndef SELECT_ACTION_H
 #define SELECT_ACTION_H
 

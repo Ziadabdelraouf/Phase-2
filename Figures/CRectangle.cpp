@@ -1,7 +1,7 @@
 #include "CRectangle.h"
 #include <fstream>
 
-CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo, int id):CFigure(FigureGfxInfo, id)
+CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
 	if (P1.y < UI.ToolBarHeight || P2.y < UI.ToolBarHeight) {
 		if (P1.y < P2.y) {
@@ -25,15 +25,15 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo, int id):CFigur
 	}
 	Corner1 = P1;
 	Corner2 = P2;
-	
+
 	CFigure::RecTotalCount++;
 }
-	
+
 
 void CRectangle::Draw(Output* pOut) const
 {
 	//Call Output::DrawRect to draw a rectangle on the screen	
-	
+
 	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, Selected);
 
 }
@@ -126,7 +126,7 @@ void CRectangle::Save(ofstream& fout)
 void CRectangle::PrintInfo(Output* pOut) const
 {
 	//prints info of rectangle
-	string str = "Rectangle, ID: " + to_string(ID) + ", Start: (" + to_string(Corner1.x) + ", " + to_string(Corner1.y) + "), End: (" + to_string(Corner2.x) + ", " + to_string(Corner2.y) + "), Width = " + to_string(abs(Corner2.x - Corner1.x)) + "px, Height = " + to_string(abs(Corner2.y-Corner1.y)) + "px";
+	string str = "Rectangle, ID: " + to_string(ID) + ", Start: (" + to_string(Corner1.x) + ", " + to_string(Corner1.y) + "), End: (" + to_string(Corner2.x) + ", " + to_string(Corner2.y) + "), Width = " + to_string(abs(Corner2.x - Corner1.x)) + "px, Height = " + to_string(abs(Corner2.y - Corner1.y)) + "px";
 	pOut->PrintMessage(str);
 }
 
@@ -138,6 +138,26 @@ void CRectangle::SetSelected(bool s)
 	else
 		CFigure::RecSelectedCount--; //decrements count of selected rectangles by 1 when a rectangle is deselected
 }
+bool CRectangle::Wascut() const
+{
+	return WasCut;
+}
+CFigure* CRectangle::CreateCopy(CFigure*) const
+{
+	CRectangle* RR = new CRectangle(Corner1, Corner2, FigGfxInfo, ID);
+	return RR;
+}
+CFigure* CRectangle::Paste(Point NewCorner, int ID) const
+{
+	Point PTemp;
+	PTemp.x = NewCorner.x + (Corner2.x - Corner1.x);
+	PTemp.y = NewCorner.y + (Corner2.y - Corner1.y);
+	CRectangle* RR = new CRectangle(NewCorner,PTemp,  FigGfxInfo, ID);
+
+	CFigure::RecTotalCount++;
+	return RR;
+}
+
 //omar
 RNGshape CRectangle::getType() {
 	return rectangle;

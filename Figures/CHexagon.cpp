@@ -1,5 +1,6 @@
 #include "CHexagon.h"
-
+#include <fstream>
+#include "..\ApplicationManager.h"
 CHexagon::CHexagon(Point C, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
 	sidelength = 2 * UI.ToolBarHeight;
@@ -18,7 +19,7 @@ CHexagon::CHexagon(Point C, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInf
 		C.y = UI.height - UI.StatusBarHeight - (sqrt(3 / 4.0) * sidelength);
 	}
 	Center = C;
-	
+
 	CFigure::HexTotalCount++;
 
 }
@@ -158,6 +159,58 @@ void CHexagon::PrintInfo(Output* pOut) const
 	string str = "Hexagon, ID: " + to_string(ID) + ", Center: (" + to_string(Center.x) + ", " + to_string(Center.y) + "), SideLength = " + to_string(sidelength) + "px";
 	pOut->PrintMessage(str);
 }
+void CHexagon::Save(ofstream& fout)
+{
+	fout << "HEX\t";
+	fout << ID << "\t";
+
+	fout << Center.x << "\t";
+	fout << Center.y << "\t";
+
+	if (FigGfxInfo.DrawClr == BLUE) {
+		fout << "BL\t";
+	}
+	else if (FigGfxInfo.DrawClr == BLACK) {
+		fout << "BK\t";
+	}
+	else if (FigGfxInfo.DrawClr == GREEN) {
+		fout << "GN\t";
+	}
+	else if (FigGfxInfo.DrawClr == RED) {
+		fout << "RD\t";
+	}
+	else if (FigGfxInfo.DrawClr == YELLOW) {
+		fout << "YL\t";
+	}
+	else if (FigGfxInfo.DrawClr == ORANGE) {
+		fout << "OR\t";
+	}
+
+	if (!FigGfxInfo.isFilled) {
+		fout << "NF";
+	}
+	else if (FigGfxInfo.FillClr == BLUE) {
+		fout << "BL";
+	}
+	else if (FigGfxInfo.FillClr == BLACK) {
+		fout << "BK";
+	}
+	else if (FigGfxInfo.FillClr == GREEN) {
+		fout << "GN";
+	}
+	else if (FigGfxInfo.FillClr == RED) {
+		fout << "RD";
+	}
+	else if (FigGfxInfo.FillClr == YELLOW) {
+		fout << "YL";
+	}
+	else if (FigGfxInfo.FillClr == ORANGE) {
+		fout << "OR";
+	}
+	fout << "\n";
+}
+
+
 
 void CHexagon::SetSelected(bool s)
 {
@@ -173,3 +226,38 @@ RNGshape CHexagon::getType() {
 }
 
 //
+
+GfxInfo CHexagon::GetGfxInfo() const
+{
+	return FigGfxInfo;
+}
+
+Point CHexagon::GetCenter()
+{
+	return Center;
+}
+
+bool CHexagon::Wascut() const
+{
+	return WasCut;
+}
+
+CFigure* CHexagon::CreateCopy(CFigure*Pfig) const
+{
+	CHexagon* HH = new CHexagon(Center, FigGfxInfo, ID);
+	return HH ;
+}
+
+
+
+CFigure* CHexagon::Paste(Point NewCnt,int ID) const
+{
+	CHexagon* HH = new CHexagon(NewCnt,FigGfxInfo,ID);
+
+	CFigure::HexTotalCount++;
+	return HH;
+}
+
+
+
+
