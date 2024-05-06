@@ -11,14 +11,13 @@ void PlayShape::Execute(){
 	ShapeRNG::Execute();
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	int j=0;
 	switch (rshape)
 	{
 	case triangle:
 		hmark = R->getTriTotalCount();
 		break;
 	case square:
-		hmark = R->getSqrSelectedCount();
+		hmark = R->getSqrTotalCount();
 		break;
 	case rectangle:
 		hmark = R->getRecTotalCount();
@@ -39,8 +38,6 @@ void PlayShape::Execute(){
 		{
 			score++;
 		}
-		
-	temp[j++] = pManager->GetFigure(x, y);
 		
 	}
 	pOut->ClearStatusBar();

@@ -45,6 +45,11 @@ public:
 	void UnselectAll(); //unselects all figures
 	void ClearAll(); //deletes all figures
 	
+	// might be out of the guide line just it is now for testing for playboth till we find a solution
+
+	int getColoredTypeNum(int shape,int color);            //gets the number of certain shape with certain color
+
+	//
 	
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input

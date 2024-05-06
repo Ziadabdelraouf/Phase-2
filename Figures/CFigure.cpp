@@ -152,8 +152,20 @@ bool CFigure::IsFilled() {
 	return FigGfxInfo.isFilled;
 }
 
-color CFigure::getFillClr() {
-	return FigGfxInfo.FillClr;
+int CFigure::getFillClr() {
+	if (BLACK==FigGfxInfo.FillClr)
+		return 0;
+	else if (YELLOW==FigGfxInfo.FillClr )
+		return 1;
+	else if (ORANGE==FigGfxInfo.FillClr)
+		return 2;
+	else if (RED == FigGfxInfo.FillClr )
+		return 3;
+	else if (GREEN == FigGfxInfo.FillClr)
+		return 4;
+	else if (BLUE == FigGfxInfo.FillClr) {
+		return 5;
+	}
 }
 // end
 

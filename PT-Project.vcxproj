@@ -190,6 +190,9 @@
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="Actions\LoadAction.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PlayBoth.cpp" />
+    <ClCompile Include="PlayColor.cpp" />
+    <ClCompile Include="PlayShape.cpp" />
     <ClCompile Include="ShapeRNG.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +244,9 @@
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="Actions\LoadAction.h" />
+    <ClInclude Include="PlayBoth.h" />
+    <ClInclude Include="PlayColor.h" />
+    <ClInclude Include="PlayShape.h" />
     <ClInclude Include="ShapeRNG.h" />
   </ItemGroup>
   <ItemGroup>

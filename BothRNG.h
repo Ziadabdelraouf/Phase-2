@@ -9,6 +9,7 @@ class BothRNG:public Action
 protected:
     int rcolor;
     int rshape;
+    int num;    //number of the figures to be clicked
     CFigure* R;
     string s1;
     string s2;

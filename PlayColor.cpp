@@ -1,6 +1,5 @@
 #include "PlayColor.h"
 void PlayColor::Execute() {
-	int j = 0;
 	ColorRNG::Execute();
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
@@ -31,12 +30,10 @@ void PlayColor::Execute() {
 		do {
 			pIn->GetPointClicked(x, y);
 		} while (pManager->GetFigure(x, y) == NULL);
-		if (pManager->GetFigure(x, y)->getFillClr() == rcolor)
+		if (rcolor==pManager->GetFigure(x, y)->getFillClr())
 		{
 			score++;
 		}
-
-		temp[j++] = pManager->GetFigure(x, y);
 
 	}
 	pOut->ClearStatusBar();

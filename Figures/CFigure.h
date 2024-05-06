@@ -65,7 +65,7 @@ int getBlueCount();
 int getGreenCount();
 int getFilledCount();
 bool IsFilled();
-color getFillClr();   //temporary it might be needed or not in the future made by (Omar)
+int getFillClr();   //temporary it might be needed or not in the future made by (Omar)
 
 
 ////

@@ -19,6 +19,7 @@
 #include "PlayShape.h"
 #include "PlayColor.h"	
 #include "Figures\CFigure.h"
+#include "PlayBoth.h"
 
 
 //Constructor
@@ -332,7 +333,20 @@ void ApplicationManager::SaveAll(ofstream& fout)
 void ApplicationManager::PlayAudio(char* a){
 	VoiceAction::AudioPlayer(a);
 }
+////////////////////////////////////////////////////////////////////////////////////
 
+int ApplicationManager::getColoredTypeNum(int sh,int c) {
+	int x=0;
+	for (int i = 0; i < MaxFigCount; i++)
+	{
+		if (c==FigList[i]->getFillClr() && FigList[i]->getType() == sh)
+			x++;
+	}
+	return x;
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////
 
 //==================================================================================//
 //							Interface Management Functions							//

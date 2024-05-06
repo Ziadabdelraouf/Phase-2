@@ -170,6 +170,9 @@
     <ClCompile Include="ColorRNG.cpp" />
     <ClCompile Include="BothRNG.cpp" />
     <ClCompile Include="Actions\LoadAction.cpp" />
+    <ClCompile Include="PlayColor.cpp" />
+    <ClCompile Include="PlayShape.cpp" />
+    <ClCompile Include="PlayBoth.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -279,6 +282,9 @@
     <ClInclude Include="ColorRNG.h" />
     <ClInclude Include="BothRNG.h" />
     <ClInclude Include="Actions\LoadAction.h" />
+    <ClInclude Include="PlayColor.h" />
+    <ClInclude Include="PlayShape.h" />
+    <ClInclude Include="PlayBoth.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
