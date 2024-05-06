@@ -2,6 +2,7 @@
 color CutAction::tempDraw = BLACK;
 color CutAction::tempFill = BLACK;
 bool CutAction::WasFill = false;
+CFigure* CutAction::Pfig = NULL;
 CutAction::CutAction(ApplicationManager* pApp):Action(pApp)
 {
 
@@ -79,6 +80,7 @@ void CutAction::Execute()
 
 void CutAction::UnCut(){
 
-
+	Pfig->SetSelected(true);
+	pManager->Delete();
 }
 

@@ -29,12 +29,12 @@ void DeleteAction::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
-	pOut->PrintMessage("Delete Tool: Click on a figure");
+	
 
 	
 
-	Pfig = pManager->getfiglist();
-	int temp = pManager->GetFigureCount();
+	Pfig = pManager->GetAllSelected();
+	
 	
 	if (pManager->GetNumSelected() == 0) {
 		pOut->PrintMessage("No figure selected");
@@ -43,22 +43,22 @@ void DeleteAction::ReadActionParameters()
 
 	if (pManager->GetNumSelected() != 0) {
 	
-		for (int i = 0; i < pManager->GetFigureCount() ; i++)
+		for (int i = 0; i < pManager->GetNumSelected(); i++)
 		{
 			if (Pfig[i]!=NULL) {
-				if (Pfig[i]->IsSelected()) {
+				 
 					Pfig[i]->SetSelected(false);
-					delete Pfig[i];
+					
 					Pfig[i] = NULL;
-				
-					for (int j = i; i < pManager->GetFigureCount(); i++)
+					pManager->SetFigCount(pManager->GetFigureCount() - 1);
+					/*for (int j = i; i < pManager->GetFigureCount(); i++)
 					{
 						Pfig[j] = Pfig[j + 1];
-					}
-					pManager->SetFigCount(pManager->GetFigureCount() - 1);
+					}*/
+					
 				}
 			}
-		}
+		
 	}
 	
 }
@@ -71,7 +71,7 @@ void DeleteAction::Execute()
 }
 void DeleteAction::Delete(CFigure*Temp) {
 	
-	delete Temp;
+	
 	Temp = NULL;
 	
 }

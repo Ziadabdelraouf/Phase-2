@@ -33,11 +33,11 @@ void PasteAction::Execute()
 	CFigure* Pasted=Pfig->Paste(P2, x);
 	pManager->AddFigure(Pasted);
 	
-	pOut->PrintMessage("Pasted");
+	/*pOut->PrintMessage("Pasted");*/
 	if (pManager->GetIsCut()) {
 		pManager->UnselectAll();
-		Pfig->SetSelected(true);
-		pManager->Delete();
+	
+		pManager->UnCut();
 		pManager->SetIsCut(false);
 	}
 	pManager->UpdateInterface();

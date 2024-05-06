@@ -46,6 +46,7 @@ public:
 	int GetNumSelected();
 	void UnselectAll();
 	void ClearAll();
+	void UnCut();
 	void Delete();
 	// -- Interface Management Functions
 	Input* GetInput() const; //Return pointer to the input
@@ -57,7 +58,7 @@ public:
 	void Swaping(CFigure*, int, int);
 	bool GetIsCut();
 	void SetIsCut(bool);
-	CFigure** getfiglist();
+	CFigure** GetAllSelected();
 	void PasteFigure();
 	
 };

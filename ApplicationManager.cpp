@@ -7,7 +7,6 @@
 #include "Actions\SelectAction.h"
 #include "Actions\DeleteAction.h"
 #include "Actions\CopyAction.h"
-#include "Actions\CutAction.h"
 #include "Actions\FillAction.h"
 #include "Actions\BorderAction.h"
 #include "Actions\ClearAllAction.h"
@@ -15,6 +14,7 @@
 #include "Actions\BringFrontAction.h"
 #include "Actions\PasteAction.h"
 #include "Figures\CFigure.h"
+#include "Actions/CutAction.h"
 
 
 
@@ -208,8 +208,18 @@ int ApplicationManager::GetNumSelected() {
 
 ////////////////////////////////////////////////////////////////////////////////////
 
-CFigure** ApplicationManager::getfiglist() {
-	return FigList;
+CFigure** ApplicationManager::GetAllSelected() {
+	CFigure* Selected[MaxFigCount];
+	for (int i = 0; i < MaxFigCount; i++)
+	{
+		Selected[i] = NULL;
+	}
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->IsSelected())
+			Selected[i] = FigList[i];
+	}
+	return Selected;
 }
 void ApplicationManager::PasteFigure()
 {
@@ -238,10 +248,15 @@ void ApplicationManager::ClearAll()
 		FigList[i] = NULL;
 	}
 }
+void ApplicationManager::UnCut() {
+	CutAction* pAct = NULL;
+	pAct = new CutAction(this);
+	pAct->UnCut();
+}
 void ApplicationManager::Delete()
 {
 	
-	Action* pAct = NULL;
+	DeleteAction* pAct = NULL;
 	pAct = new DeleteAction(this);
     pAct->Execute();
 }
@@ -288,7 +303,7 @@ void ApplicationManager::UpdateInterface() const
 {	
 	pOut->ClearDrawArea();
 	for(int i=0; i<GetFigureCount(); i++)
-		if (FigList[i]!=NULL)
+		if (NULL!=FigList[i])
 		{
 			FigList[i]->Draw(pOut); //Call Draw function (virtual member fn)
 		}

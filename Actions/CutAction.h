@@ -15,7 +15,7 @@ class CutAction :
     public Action
 {
 	SelectAction* pSelct;
-	 CFigure* Pfig;
+	static CFigure* Pfig;
 	bool IsCut ;
 	static color tempFill;
 	static color tempDraw;
