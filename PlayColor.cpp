@@ -3,6 +3,10 @@ void PlayColor::Execute() {
 	ColorRNG::Execute();
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
+	if (R->getFilledCount()==0)
+	{
+		return;
+	}
 	switch (rcolor)
 	{
 	case pBLACK:
