@@ -29,6 +29,10 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo, int id) :CFigu
 	CFigure::RecTotalCount++;
 }
 
+CRectangle::CRectangle(ifstream& fin, int ID) : CFigure(FigGfxInfo, ID)
+{
+	Load(fin);
+}
 
 void CRectangle::Draw(Output* pOut) const
 {
@@ -65,6 +69,7 @@ bool CRectangle::IsClickInside(int x, int y) const
 	return true;
 
 }
+
 
 
 void CRectangle::Save(ofstream& fout)
@@ -120,6 +125,53 @@ void CRectangle::Save(ofstream& fout)
 		fout << "OR";
 	}
 	fout << "\n";
+}
+
+void CRectangle::Load(ifstream& fin)
+{
+	string Border, Fill;
+	fin >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> Border >> Fill;
+	if (Border == "BL") {
+		FigGfxInfo.DrawClr = BLUE;
+	}
+	else if (Border == "BK") {
+		FigGfxInfo.DrawClr = BLACK;
+	}
+	else if (Border == "GN") {
+		FigGfxInfo.DrawClr = GREEN;
+	}
+	else if (Border == "RD") {
+		FigGfxInfo.DrawClr = RED;
+	}
+	else if (Border == "YL") {
+		FigGfxInfo.DrawClr = YELLOW;
+	}
+	else if (Border == "OR") {
+		FigGfxInfo.DrawClr = ORANGE;
+	}
+	FigGfxInfo.isFilled = true;
+	if (Fill == "NF") {
+		FigGfxInfo.isFilled = false;
+	}
+	else if (Fill == "BL") {
+		FigGfxInfo.FillClr = BLUE;
+	}
+	else if (Fill == "BK") {
+		FigGfxInfo.FillClr = BLACK;
+	}
+	else if (Fill == "GN") {
+		FigGfxInfo.FillClr = GREEN;
+	}
+	else if (Fill == "RD") {
+		FigGfxInfo.FillClr = RED;
+	}
+	else if (Fill == "YL") {
+		FigGfxInfo.FillClr = YELLOW;
+	}
+	else if (Fill == "OR") {
+		FigGfxInfo.FillClr = ORANGE;
+	}
+
 }
 
 
