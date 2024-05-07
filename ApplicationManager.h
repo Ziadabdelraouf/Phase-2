@@ -47,6 +47,14 @@ public:
 	void ClearAll();
 	void UnCut();
 	void Delete();
+        // Omar
+
+         void randNumGenBoth(int &shape,int &color);            //select a random shape and return the color and type if the shape is filled
+         void randNumGenBothS(int &shape); 
+         void randNumGenBoth( int& color);                      //select a random shape and return the color if the shape is filled
+         int getRandNumcount(int shape,int color);              //  
+
+        //
 	// -- Interface Management Functions
 	Input* GetInput() const; //Return pointer to the input
 	Output* GetOutput() const; //Return pointer to the output
