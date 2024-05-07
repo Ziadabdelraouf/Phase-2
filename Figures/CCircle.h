@@ -12,6 +12,8 @@ private:
 	bool IsCut;
 public:
 	CCircle(Point, int , GfxInfo FigureGfxInfo, int id);
+	CCircle(ifstream& fin, int ID);
+
 	virtual void Draw(Output* pOut) const;
 	virtual bool IsClickInside(int x, int y) const; //checks if click is inside the circle
 	virtual void Save(ofstream& fout);
