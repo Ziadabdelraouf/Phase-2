@@ -111,7 +111,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case LOAD:
 			pAct = new LoadAction(this);
-
+			break;
 		case SHAPE:
 			pAct = new PlayShape(this);
 	          break;
@@ -411,6 +411,15 @@ void ApplicationManager::SaveAll(ofstream& fout)
 {
 	for (int i = 0; i < GetFigureCount(); i++) {
 		FigList[i]->Save(fout); //calls save function for each figure
+	}
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////
+void ApplicationManager::LoadAll(ifstream& fin)
+{
+	for (int i = 0; i < GetFigureCount(); i++) {
+		FigList[i]->Load(fin); //calls load function for each figure
 	}
 }
 
