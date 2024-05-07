@@ -120,7 +120,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	         break;
 
 		case BOTH:
-			pAct = new BothRNG(this);
+			pAct = new PlayBoth(this);
 	        break;
 
                 case TO_DRAW:
