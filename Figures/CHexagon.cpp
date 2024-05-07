@@ -24,6 +24,11 @@ CHexagon::CHexagon(Point C, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInf
 
 }
 
+CHexagon::CHexagon(ifstream& fin, int ID) : CFigure(FigGfxInfo, ID)
+{
+	sidelength = 2 * UI.ToolBarHeight;
+	Load(fin);
+}
 
 void CHexagon::Draw(Output* pOut) const
 {
@@ -152,6 +157,53 @@ void CHexagon::Save(ofstream& fout)
 		fout << "OR";
 	}
 	fout << "\n";
+}
+
+void CHexagon::Load(ifstream& fin)
+{
+	string Border, Fill;
+	fin >> Center.x >> Center.y >> Border >> Fill;
+	if (Border == "BL") {
+		FigGfxInfo.DrawClr = BLUE;
+	}
+	else if (Border == "BK") {
+		FigGfxInfo.DrawClr = BLACK;
+	}
+	else if (Border == "GN") {
+		FigGfxInfo.DrawClr = GREEN;
+	}
+	else if (Border == "RD") {
+		FigGfxInfo.DrawClr = RED;
+	}
+	else if (Border == "YL") {
+		FigGfxInfo.DrawClr = YELLOW;
+	}
+	else if (Border == "OR") {
+		FigGfxInfo.DrawClr = ORANGE;
+	}
+	FigGfxInfo.isFilled = true;
+	if (Fill == "NF") {
+		FigGfxInfo.isFilled = false;
+	}
+	else if (Fill == "BL") {
+		FigGfxInfo.FillClr = BLUE;
+	}
+	else if (Fill == "BK") {
+		FigGfxInfo.FillClr = BLACK;
+	}
+	else if (Fill == "GN") {
+		FigGfxInfo.FillClr = GREEN;
+	}
+	else if (Fill == "RD") {
+		FigGfxInfo.FillClr = RED;
+	}
+	else if (Fill == "YL") {
+		FigGfxInfo.FillClr = YELLOW;
+	}
+	else if (Fill == "OR") {
+		FigGfxInfo.FillClr = ORANGE;
+	}
+
 }
 
 void CHexagon::PrintInfo(Output* pOut) const
