@@ -430,23 +430,62 @@ void ApplicationManager::PlayAudio(char* a){
 }
 ////////////////////////////////////////////////////////////////////////////////////
 
-int ApplicationManager::getColoredTypeNum(int sh,int c) {
+void ApplicationManager::randNumGenBoth(int& sh,int& c) {
+	if (SelectedFig->getFilledCount() == 0)
+		return;
+	int i;
+	do {
+		srand(time(nullptr));
+		i = rand()%FigCount;
+	} while (!FigList[i]->IsFilled());
+	c = FigList[i]->getFillClr();
+	sh = FigList[i]->getType();
+	return;
+}
+
+void ApplicationManager::randNumGenBothS(int& sh) {
+	if (FigCount == 0)
+		return;
+	int i;
+		srand(time(nullptr));
+		i = rand() % FigCount;
+	sh = FigList[i]->getType();
+	return;
+}
+
+
+
+void ApplicationManager::randNumGenBoth(int& c) {
+	if (SelectedFig->getFilledCount() == 0)
+		return;
+	int i;
+	do {
+		srand(time(nullptr));
+		i = rand() % FigCount;
+	} while (!FigList[i]->IsFilled());
+	c = FigList[i]->getFillClr();
+	
+	return;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+int ApplicationManager::getRandNumcount(int shape, int clr) {
 	int x=0;
-	for (int i = 0; i < MaxFigCount; i++)
+	for (int i = 0; i < FigCount; i++)
 	{
-		if (c==FigList[i]->getFillClr() && FigList[i]->getType() == sh)
-			x++;
+		if (FigList[i]->IsFilled()) {
+			if (FigList[i]->getFillClr()==clr &&FigList[i]->getType()==shape)
+			{
+				x++;
+			}
+		}
 	}
 	return x;
 }
-bool ApplicationManager::GetIsCut()
-{
-	return IsCut;
-}
-void ApplicationManager::SetIsCut(bool temp)
-{
-	IsCut = temp;
-}
+
 
 ////////////////////////////////////////////////////////////////////////////////////
 
