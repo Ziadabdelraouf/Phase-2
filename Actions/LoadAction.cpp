@@ -122,240 +122,30 @@ void LoadAction::Execute() {
 	for (int i = 0; i < num; i++)
 	{
 		fin >> Shape; //reads type of shape
-
+		fin >> ID;
 		if (Shape == "TRI")
 		{
-			fin >> ID >> P1.x >> P1.y >> P2.x >> P2.y >> P3.x >> P3.y >> Border >> Fill;
-			if (Border == "BL") {
-				FigGfxInfo.DrawClr = BLUE;
-			}
-			else if (Border == "BK") {
-				FigGfxInfo.DrawClr = BLACK;
-			}
-			else if (Border == "GN") {
-				FigGfxInfo.DrawClr = GREEN;
-			}
-			else if (Border == "RD") {
-				FigGfxInfo.DrawClr = RED;
-			}
-			else if (Border == "YL") {
-				FigGfxInfo.DrawClr = YELLOW;
-			}
-			else if (Border == "OR") {
-				FigGfxInfo.DrawClr = ORANGE;
-			}
-			FigGfxInfo.isFilled = true;
-			if (Fill == "NF") {
-				FigGfxInfo.isFilled = false;
-			}
-			else if (Fill == "BL") {
-				FigGfxInfo.FillClr = BLUE;
-			}
-			else if (Fill == "BK") {
-				FigGfxInfo.FillClr = BLACK;
-			}
-			else if (Fill == "GN") {
-				FigGfxInfo.FillClr = GREEN;
-			}
-			else if (Fill == "RD") {
-				FigGfxInfo.FillClr = RED;
-			}
-			else if (Fill == "YL") {
-				FigGfxInfo.FillClr = YELLOW;
-			}
-			else if (Fill == "OR") {
-				FigGfxInfo.FillClr = ORANGE;
-			}
-
-			CTriangle* T = new CTriangle(P1, P2, P3, FigGfxInfo, ID);
+			CTriangle* T = new CTriangle(fin, ID);
 			pManager->AddFigure(T);
 		}		
 		else if (Shape == "REC")
 		{
-			fin >> ID >> P1.x >> P1.y >> P2.x >> P2.y >> Border >> Fill;
-			if (Border == "BL") {
-				FigGfxInfo.DrawClr = BLUE;
-			}
-			else if (Border == "BK") {
-				FigGfxInfo.DrawClr = BLACK;
-			}
-			else if (Border == "GN") {
-				FigGfxInfo.DrawClr = GREEN;
-			}
-			else if (Border == "RD") {
-				FigGfxInfo.DrawClr = RED;
-			}
-			else if (Border == "YL") {
-				FigGfxInfo.DrawClr = YELLOW;
-			}
-			else if (Border == "OR") {
-				FigGfxInfo.DrawClr = ORANGE;
-			}
-			FigGfxInfo.isFilled = true;
-			if (Fill == "NF") {
-				FigGfxInfo.isFilled = false;
-			}
-			else if (Fill == "BL") {
-				FigGfxInfo.FillClr = BLUE;
-			}
-			else if (Fill == "BK") {
-				FigGfxInfo.FillClr = BLACK;
-			}
-			else if (Fill == "GN") {
-				FigGfxInfo.FillClr = GREEN;
-			}
-			else if (Fill == "RD") {
-				FigGfxInfo.FillClr = RED;
-			}
-			else if (Fill == "YL") {
-				FigGfxInfo.FillClr = YELLOW;
-			}
-			else if (Fill == "OR") {
-				FigGfxInfo.FillClr = ORANGE;
-			}
-
-			CRectangle* R = new CRectangle(P1, P2, FigGfxInfo, ID);
+			CRectangle* R = new CRectangle(fin, ID);
 			pManager->AddFigure(R);
 		}
 		else if (Shape == "SQR")
 		{
-			fin >> ID >> P1.x >> P1.y >> Border >> Fill;
-			if (Border == "BL") {
-				FigGfxInfo.DrawClr = BLUE;
-			}
-			else if (Border == "BK") {
-				FigGfxInfo.DrawClr = BLACK;
-			}
-			else if (Border == "GN") {
-				FigGfxInfo.DrawClr = GREEN;
-			}
-			else if (Border == "RD") {
-				FigGfxInfo.DrawClr = RED;
-			}
-			else if (Border == "YL") {
-				FigGfxInfo.DrawClr = YELLOW;
-			}
-			else if (Border == "OR") {
-				FigGfxInfo.DrawClr = ORANGE;
-			}
-			FigGfxInfo.isFilled = true;
-			if (Fill == "NF") {
-				FigGfxInfo.isFilled = false;
-			}
-			else if (Fill == "BL") {
-				FigGfxInfo.FillClr = BLUE;
-			}
-			else if (Fill == "BK") {
-				FigGfxInfo.FillClr = BLACK;
-			}
-			else if (Fill == "GN") {
-				FigGfxInfo.FillClr = GREEN;
-			}
-			else if (Fill == "RD") {
-				FigGfxInfo.FillClr = RED;
-			}
-			else if (Fill == "YL") {
-				FigGfxInfo.FillClr = YELLOW;
-			}
-			else if (Fill == "OR") {
-				FigGfxInfo.FillClr = ORANGE;
-			}
-
-			CSquare* S = new CSquare(P1, FigGfxInfo, ID);
+			CSquare* S = new CSquare(fin, ID);
 			pManager->AddFigure(S);
 		}
 		else if (Shape == "HEX")
 		{
-			fin >> ID >> P1.x >> P1.y >> Border >> Fill;
-			if (Border == "BL") {
-				FigGfxInfo.DrawClr = BLUE;
-			}
-			else if (Border == "BK") {
-				FigGfxInfo.DrawClr = BLACK;
-			}
-			else if (Border == "GN") {
-				FigGfxInfo.DrawClr = GREEN;
-			}
-			else if (Border == "RD") {
-				FigGfxInfo.DrawClr = RED;
-			}
-			else if (Border == "YL") {
-				FigGfxInfo.DrawClr = YELLOW;
-			}
-			else if (Border == "OR") {
-				FigGfxInfo.DrawClr = ORANGE;
-			}
-			FigGfxInfo.isFilled = true;
-			if (Fill == "NF") {
-				FigGfxInfo.isFilled = false;
-			}
-			else if (Fill == "BL") {
-				FigGfxInfo.FillClr = BLUE;
-			}
-			else if (Fill == "BK") {
-				FigGfxInfo.FillClr = BLACK;
-			}
-			else if (Fill == "GN") {
-				FigGfxInfo.FillClr = GREEN;
-			}
-			else if (Fill == "RD") {
-				FigGfxInfo.FillClr = RED;
-			}
-			else if (Fill == "YL") {
-				FigGfxInfo.FillClr = YELLOW;
-			}
-			else if (Fill == "OR") {
-				FigGfxInfo.FillClr = ORANGE;
-			}
-
-			CHexagon* H = new CHexagon(P1, FigGfxInfo, ID);
+			CHexagon* H = new CHexagon(fin, ID);
 			pManager->AddFigure(H);
 		}
 		else if (Shape == "CIR")
 		{
-			fin >> ID >> P1.x >> P1.y >> radius >> Border >> Fill;
-			if (Border == "BL") {
-				FigGfxInfo.DrawClr = BLUE;
-			}
-			else if (Border == "BK") {
-				FigGfxInfo.DrawClr = BLACK;
-			}
-			else if (Border == "GN") {
-				FigGfxInfo.DrawClr = GREEN;
-			}
-			else if (Border == "RD") {
-				FigGfxInfo.DrawClr = RED;
-			}
-			else if (Border == "YL") {
-				FigGfxInfo.DrawClr = YELLOW;
-			}
-			else if (Border == "OR") {
-				FigGfxInfo.DrawClr = ORANGE;
-			}
-			FigGfxInfo.isFilled = true;
-			if (Fill == "NF") {
-				FigGfxInfo.isFilled = false;
-			}
-			else if (Fill == "BL") {
-				FigGfxInfo.FillClr = BLUE;
-			}
-			else if (Fill == "BK") {
-				FigGfxInfo.FillClr = BLACK;
-			}
-			else if (Fill == "GN") {
-				FigGfxInfo.FillClr = GREEN;
-			}
-			else if (Fill == "RD") {
-				FigGfxInfo.FillClr = RED;
-			}
-			else if (Fill == "YL") {
-				FigGfxInfo.FillClr = YELLOW;
-			}
-			else if (Fill == "OR") {
-				FigGfxInfo.FillClr = ORANGE;
-			}
-
-			CCircle* CR = new CCircle(P1, radius, FigGfxInfo, ID);
+			CCircle* CR = new CCircle(fin, ID);
 			pManager->AddFigure(CR);
 		}
 	}
