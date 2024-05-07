@@ -5,15 +5,7 @@ void ColorRNG::Execute() {
 	Input* pIn = pManager->GetInput();
 
 	if (0 != R->getFilledCount()) {
-		do {
-			srand(time(nullptr));
-			rcolor = rand() % 6;
-		} while ((rcolor == 0 && 0 == R->getBlackCount()) ||
-			(1 == rcolor && 0 == R->getYellowCount()) ||
-			(2 == rcolor && 0 == R->getOrangeCount()) ||
-			(3 == rcolor && 0 == R->getRedCount()) ||
-			(4 == rcolor && 0 == R->getGreenCount()) ||
-			(5 == rcolor && 0 == R->getBlueCount()));
+		pManager->randNumGenBoth(rcolor);
 		switch (rcolor)
 		{
 		case pBLACK:
