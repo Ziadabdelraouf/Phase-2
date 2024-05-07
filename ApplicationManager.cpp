@@ -174,7 +174,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = NULL;
 	}
 }
-
+bool ApplicationManager::GetIsCut()
+{
+	return IsCut;
+}
+void ApplicationManager::SetIsCut(bool temp)
+{
+	IsCut = temp;
+}
 
 //==================================================================================//
 //						Figures Management Functions								//
