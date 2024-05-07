@@ -29,6 +29,11 @@ CCircle::CCircle(Point C, int r, GfxInfo FigureGfxInfo, int id) :CFigure(FigureG
 
 }
 
+CCircle::CCircle(ifstream& fin, int ID) : CFigure(FigGfxInfo, ID)
+{
+	Load(fin);
+}
+
 
 void CCircle::Draw(Output* pOut) const
 {
@@ -103,7 +108,52 @@ void CCircle::Save(ofstream& fout)
 	fout << "\n";
 }
 
+void CCircle::Load(ifstream& fin)
+{
+	string Border, Fill;
+	fin >> Center.x >> Center.y >> radius >> Border >> Fill;
+	if (Border == "BL") {
+		FigGfxInfo.DrawClr = BLUE;
+	}
+	else if (Border == "BK") {
+		FigGfxInfo.DrawClr = BLACK;
+	}
+	else if (Border == "GN") {
+		FigGfxInfo.DrawClr = GREEN;
+	}
+	else if (Border == "RD") {
+		FigGfxInfo.DrawClr = RED;
+	}
+	else if (Border == "YL") {
+		FigGfxInfo.DrawClr = YELLOW;
+	}
+	else if (Border == "OR") {
+		FigGfxInfo.DrawClr = ORANGE;
+	}
+	FigGfxInfo.isFilled = true;
+	if (Fill == "NF") {
+		FigGfxInfo.isFilled = false;
+	}
+	else if (Fill == "BL") {
+		FigGfxInfo.FillClr = BLUE;
+	}
+	else if (Fill == "BK") {
+		FigGfxInfo.FillClr = BLACK;
+	}
+	else if (Fill == "GN") {
+		FigGfxInfo.FillClr = GREEN;
+	}
+	else if (Fill == "RD") {
+		FigGfxInfo.FillClr = RED;
+	}
+	else if (Fill == "YL") {
+		FigGfxInfo.FillClr = YELLOW;
+	}
+	else if (Fill == "OR") {
+		FigGfxInfo.FillClr = ORANGE;
+	}
 
+}
 
 void CCircle::PrintInfo(Output* pOut) const
 {
