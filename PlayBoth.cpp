@@ -18,9 +18,18 @@ void PlayBoth::Execute() {
 		{
 			score++;
 		}
+		//implement delete here
+		if (pManager->GetFigure(x, y) != NULL) {
+			R = pManager->GetFigure(x, y);
+			pManager->usedBeforeDeleteInPlay(R);
+			delete R;
+			R == NULL;
+			pManager->UpdateInterface();
+		}
+		//
 	}
 pOut->ClearStatusBar();
-pOut->PrintMessage("you scored " + to_string(score) + " out of " + to_string(num));
+pOut->PrintMessage("you scored " + to_string(score) + " out of " + to_string(num) + " and you made " + to_string(num - score) + " incorrect picks");
 }
 void PlayBoth::ReadActionParameters() {
 

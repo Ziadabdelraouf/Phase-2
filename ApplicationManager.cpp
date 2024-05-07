@@ -123,12 +123,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new PlayBoth(this);
 	        break;
 
-                case TO_DRAW:
+        case TO_DRAW:
 	          pOut->CreateDrawToolBar();
 	          pOut->ClearStatusBar();
 	          UI.InterfaceMode = MODE_DRAW;
 	          break;
-               case TO_PLAY:
+        case TO_PLAY:
 	         pOut->CreatePlayToolBar();
 	         pOut->ClearStatusBar();
 	        UI.InterfaceMode = MODE_PLAY;
@@ -491,6 +491,26 @@ int ApplicationManager::getRandNumcount(int shape, int clr) {
 		}
 	}
 	return x;
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+
+void ApplicationManager::usedBeforeDeleteInPlay(CFigure* fig) {
+	int j = 0;
+	for (j; j < FigCount; j++)
+	{
+		if (fig==FigList[j])
+		{
+			break;
+		}
+	}
+	CFigure *temp = FigList[j]; // Store the value of the element to move
+	for (int i = j; i < FigCount - 1; i++) {
+		FigList[j] = FigList[j+1]; // Shift elements to the left
+	}
+	FigList[j-1] = temp; // Move the element to the end
+	FigCount--;
+	return;
 }
 
 

@@ -38,9 +38,17 @@ void PlayShape::Execute(){
 		{
 			score++;
 		}
-		
+		//implement delete here
+		if (pManager->GetFigure(x, y) != NULL) {
+			R = pManager->GetFigure(x, y);
+			pManager->usedBeforeDeleteInPlay(R);
+			delete R;
+			R == NULL;
+			pManager->UpdateInterface();
+		}
+		//
 	}
 	pOut->ClearStatusBar();
-	pOut->PrintMessage("you scored " + to_string(score) + " out of " + to_string(hmark));
+	pOut->PrintMessage("you scored " + to_string(score) + " out of " + to_string(hmark)+" and you made "+to_string(hmark-score)+" incorrect picks");
 }
 void PlayShape::ReadActionParameters(){}

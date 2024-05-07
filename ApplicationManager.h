@@ -48,7 +48,7 @@ public:
 	void UnCut();
 	void Delete();
         // Omar
-
+	     void usedBeforeDeleteInPlay(CFigure* fig );
          void randNumGenBoth(int &shape,int &color);            //select a random shape and return the color and type if the shape is filled
          void randNumGenBothS(int &shape); 
          void randNumGenBoth( int& color);                      //select a random shape and return the color if the shape is filled
