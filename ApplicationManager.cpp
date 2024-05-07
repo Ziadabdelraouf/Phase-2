@@ -455,7 +455,7 @@ void ApplicationManager::UpdateInterface() const
 {	
 	pOut->ClearDrawArea();
 	for(int i=0; i<GetFigureCount(); i++)
-		if (NULL!=FigList[i])
+		if (FigList!=NULL)
 		{
 			FigList[i]->Draw(pOut); //Call Draw function (virtual member fn)
 		}

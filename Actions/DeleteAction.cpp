@@ -43,18 +43,18 @@ void DeleteAction::ReadActionParameters()
 
 	if (pManager->GetNumSelected() != 0) {
 	
-		for (int i = 0; i < pManager->GetNumSelected(); i++)
+		for (int i = 0; i < pManager->GetNumSelected()+1; i++)
 		{
 			if (Pfig[i]!=NULL) {
 				 
 					Pfig[i]->SetSelected(false);
-					
+					delete Pfig[i];
 					Pfig[i] = NULL;
 					pManager->SetFigCount(pManager->GetFigureCount() - 1);
-					/*for (int j = i; i < pManager->GetFigureCount(); i++)
+					for (int j = i; j < pManager->GetFigureCount(); j++)
 					{
 						Pfig[j] = Pfig[j + 1];
-					}*/
+					}
 					
 				}
 			}
