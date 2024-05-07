@@ -7,6 +7,7 @@
 #include "Actions\SelectAction.h"
 #include "Actions\DeleteAction.h"
 #include "Actions\CopyAction.h"
+#include "Actions\CutAction.h"
 #include "Actions\FillAction.h"
 #include "Actions\BorderAction.h"
 #include "Actions\ClearAllAction.h"
@@ -22,7 +23,6 @@
 #include "PlayShape.h"
 #include "PlayColor.h"	
 #include "Figures\CFigure.h"
-#include "Actions/CutAction.h"
 #include "PlayBoth.h"
 #include "GUI/UI_Info.h"
 
@@ -42,7 +42,7 @@ ApplicationManager::ApplicationManager()
 	IsCut = false;
 		
 
-	Color = BLACK;  //Set initially color to black.
+	Color = BLACK;
 		
 	//Create an array of figure pointers and set them to NULL		
 	for(int i=0; i<MaxFigCount; i++)
@@ -109,6 +109,30 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case AUDIOPLAYER:
 			pAct = new VoiceAction(this);
 			break;
+		case LOAD:
+			pAct = new LoadAction(this);
+
+		case SHAPE:
+			pAct = new PlayShape(this);
+	          break;
+                case COLOR:
+			pAct = new PlayColor(this);
+	         break;
+
+		case BOTH:
+			pAct = new BothRNG(this);
+	        break;
+
+                case TO_DRAW:
+	          pOut->CreateDrawToolBar();
+	          pOut->ClearStatusBar();
+	          UI.InterfaceMode = MODE_DRAW;
+	          break;
+               case TO_PLAY:
+	         pOut->CreatePlayToolBar();
+	         pOut->ClearStatusBar();
+	        UI.InterfaceMode = MODE_PLAY;
+	         break;
 		case COLOR_GREEN:
 			Color = GREEN;
 			break;
@@ -134,30 +158,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case PASTEFIG:
 			pAct = new PasteAction(this);
 			break;
-		case LOAD:
-			pAct = new LoadAction(this);
-
-		case SHAPE:
-			pAct = new PlayShape(this);
-	          break;
-                case COLOR:
-			pAct = new PlayColor(this);
-	         break;
-
-		case BOTH:
-			pAct = new BothRNG(this);
-	        break;
-
-                case TO_DRAW:
-	          pOut->CreateDrawToolBar();
-	          pOut->ClearStatusBar();
-	          UI.InterfaceMode = MODE_DRAW;
-	          break;
-               case TO_PLAY:
-	         pOut->CreatePlayToolBar();
-	         pOut->ClearStatusBar();
-	        UI.InterfaceMode = MODE_PLAY;
-	         break;
 		case EXIT:
 			///create ExitAction here
 			break;
@@ -247,47 +247,29 @@ CFigure* ApplicationManager::GetClipboard()
 	return Clipboard;
 	
 }
-
-
-////////////////////////////////////////////////////////////////////////////////////
-int ApplicationManager::GetNumSelected()  {
+int ApplicationManager::GetNumSelected() {
 	SelectedFigCount = 0;
 	for (int i = 0; i < FigCount; i++) {
 		if (FigList[i]->IsSelected()) {
-			SelectedFigCount++; //increments counter if figure is selected
+			SelectedFigCount++;
 		}
 	}
-	return SelectedFigCount; //returns number of selected figures
+	return SelectedFigCount;
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////////////////
-
-CFigure** ApplicationManager::GetAllSelected() {
-	CFigure* Selected[MaxFigCount];
-	for (int i = 0; i < MaxFigCount; i++)
-	{
-		Selected[i] = NULL;
-	}
-	for (int i = 0; i < FigCount; i++)
-	{
-		if (FigList[i]->IsSelected())
-			Selected[i] = FigList[i];
-	}
-	return Selected;
+CFigure** ApplicationManager::getfiglist() {
+	return FigList;
 }
 void ApplicationManager::PasteFigure()
 {
-	Action* pAct = NULL;
-	pAct = new PasteAction(this);
+
 }
 /////////////////////////////////////////////////////////////////////////////////////
 
 
-
-
+////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::UnselectAll()
 {
 	for (int i = 0; i < GetFigureCount(); i++)
@@ -306,18 +288,6 @@ void ApplicationManager::ClearAll()
 	for (int i = 0; i < GetFigureCount(); i++) {
 		FigList[i] = NULL;  
 	}
-}
-void ApplicationManager::UnCut() {
-	CutAction* pAct = NULL;
-	pAct = new CutAction(this);
-	pAct->UnCut();
-}
-void ApplicationManager::Delete()
-{
-	
-	DeleteAction* pAct = NULL;
-	pAct = new DeleteAction(this);
-    pAct->Execute();
 }
 
 
@@ -348,7 +318,7 @@ color ApplicationManager::GetColor() {
 		pOut->PrintMessage("Orange");
 		break;
 	case COLOR_YELLOW:
-		Color = YELLOW;
+		Color = YELLOW;;
 		PlayAudio("Audio\\Yellow.wav");
 		pOut->PrintMessage("Yellow");
 		break;
@@ -435,8 +405,6 @@ int ApplicationManager::getColoredTypeNum(int sh,int c) {
 		if (c==FigList[i]->getFillClr() && FigList[i]->getType() == sh)
 			x++;
 	}
-	return x;
-
 }
 bool ApplicationManager::GetIsCut()
 {
@@ -446,6 +414,9 @@ void ApplicationManager::SetIsCut(bool temp)
 {
 	IsCut = temp;
 }
+
+////////////////////////////////////////////////////////////////////////////////////
+
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
@@ -455,7 +426,7 @@ void ApplicationManager::UpdateInterface() const
 {	
 	pOut->ClearDrawArea();
 	for(int i=0; i<GetFigureCount(); i++)
-		if (FigList!=NULL)
+		if (FigList[i]!=NULL)
 		{
 			FigList[i]->Draw(pOut); //Call Draw function (virtual member fn)
 		}
