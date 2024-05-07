@@ -32,9 +32,7 @@ void DeleteAction::ReadActionParameters()
 	
 
 	
-
 	Pfig = pManager->GetAllSelected();
-	
 	
 	if (pManager->GetNumSelected() == 0) {
 		pOut->PrintMessage("No figure selected");

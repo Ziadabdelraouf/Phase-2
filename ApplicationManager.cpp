@@ -238,6 +238,19 @@ CFigure* ApplicationManager::GetSelectedFig() {
 	}
 	return NULL;
 }
+CFigure** ApplicationManager::GetAllSelected() {
+	CFigure* Selected[MaxFigCount];
+	for (int i = 0; i < MaxFigCount; i++)
+	{
+		Selected[i] = NULL;
+	}
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->IsSelected())
+			Selected[i] = FigList[i];
+	}
+	return Selected;
+}
 void ApplicationManager::AddClipBoard(CFigure*pFig)
 {
 	Clipboard = pFig;
@@ -259,15 +272,25 @@ int ApplicationManager::GetNumSelected() {
 
 ////////////////////////////////////////////////////////////////////////////////////
 
-CFigure** ApplicationManager::getfiglist() {
-	return FigList;
-}
+
 void ApplicationManager::PasteFigure()
 {
-
+	Action* pAct = NULL;
+	pAct = new PasteAction(this);
 }
 /////////////////////////////////////////////////////////////////////////////////////
+void ApplicationManager::UnCut() {
+	CutAction* pAct = NULL;
+	pAct = new CutAction(this);
+	pAct->UnCut();
+}
+void ApplicationManager::Delete()
+{
 
+	DeleteAction* pAct = NULL;
+	pAct = new DeleteAction(this);
+	pAct->Execute();
+}
 
 ////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::UnselectAll()
@@ -405,6 +428,7 @@ int ApplicationManager::getColoredTypeNum(int sh,int c) {
 		if (c==FigList[i]->getFillClr() && FigList[i]->getType() == sh)
 			x++;
 	}
+	return x;
 }
 bool ApplicationManager::GetIsCut()
 {
