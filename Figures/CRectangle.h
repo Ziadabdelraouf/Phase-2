@@ -10,9 +10,13 @@ private:
 	Point Corner2;
 public:
 	CRectangle(Point, Point, GfxInfo FigureGfxInfo, int);
+	CRectangle(ifstream& fin, int ID);
+
 	virtual void Draw(Output* pOut) const;
 	virtual bool IsClickInside(int x, int y) const; //checks if click is inside the rectangle
 	virtual void Save(ofstream& OutFile);
+	virtual void Load(ifstream& fin);
+
 	virtual void PrintInfo(Output* pOut) const; //prints info of rectangle
 
 	virtual bool Wascut() const;
