@@ -46,20 +46,11 @@ bool CFigure::IsFilled()
 
 
 
-GfxInfo CFigure::GetGfxInfo() const
-{
-	return FigGfxInfo;
-}
 
-//void CFigure::Paste(Point, int) const
-//{
-//	
-//}
 
-Point CFigure::GetCenter()
-{
-	return Point();
-}
+
+
+
 
 double CFigure::GetRaduis() const
 {
@@ -110,15 +101,6 @@ else if (RED == Fclr)
 	FigGfxInfo.FillClr = Fclr; 
 }
 
-color CFigure::GetFillClr()
-{
-	return FigGfxInfo.FillClr;
-}
-
-color CFigure::GetDrawClr()
-{
-	return FigGfxInfo.DrawClr;
-}
 
 int CFigure::getRecTotalCount()
 {
@@ -193,8 +175,14 @@ int CFigure::getFilledCount() {
 	return filledCount;
 }
 //members functions
-bool CFigure::IsFilled() {
-	return FigGfxInfo.isFilled;
+color CFigure::GetFillClr()
+{
+	return FigGfxInfo.FillClr;
+}
+
+color CFigure::GetDrawClr()
+{
+	return FigGfxInfo.DrawClr;
 }
 
 int CFigure::getFillClr() {

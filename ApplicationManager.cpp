@@ -247,7 +247,6 @@ CFigure* ApplicationManager::GetClipboard()
 	return Clipboard;
 	
 }
-int ApplicationManager::GetNumSelected() {
 
 
 ////////////////////////////////////////////////////////////////////////////////////

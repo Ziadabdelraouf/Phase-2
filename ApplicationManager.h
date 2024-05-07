@@ -52,15 +52,16 @@ public:
 	Output* GetOutput() const; //Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window
 	color GetColor();    
-	CFigure* GetSelectedFig(); //Get current selected figure
+	
 	void SetFigCount(int);  //Reset the figure manually if we need.
-	void Swaping(int);  //Swaping between the layers of figures.
+	
 	void SaveAll(ofstream & fout); //Saves all figures
 	void PlayAudio(char*);   //Play the filename audio ".wav"
-	color GetColor();
+	
 	CFigure* GetSelectedFig(); // Get current selected figure
-	void SetFigCount(int);
-	void Swaping(CFigure*, int, int);
+	
+	void Swaping(int);  //Swaping between the layers of figures.
+	int getColoredTypeNum(int sh, int c);
 	bool GetIsCut();
 	void SetIsCut(bool);
 	CFigure** GetAllSelected();

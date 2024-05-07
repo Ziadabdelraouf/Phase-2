@@ -8,7 +8,7 @@ private:
 	Point Center;
 	int radius;
 	Point Radius;
-	int radius;
+	
 	bool IsCut;
 public:
 	CCircle(Point, int , GfxInfo FigureGfxInfo, int id);

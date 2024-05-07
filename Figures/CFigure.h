@@ -41,19 +41,19 @@ public:
 	CFigure(GfxInfo FigureGfxInfo, int id);
 	virtual void SetSelected(bool s) = 0;	//select/unselect the figure
 	bool IsSelected() const;	//check whether fig is selected
-	bool IsFilled();
+	
 	virtual bool IsClickInside(int x, int y) const =0;
 	virtual void Draw(Output* pOut) const  = 0 ;		//Draw the figure
         //omar
         virtual RNGshape getType()=0 ; //return the type of the shape
         //
-	virtual void Draw(Output* pOut) const  = 0 ;   //Draw the figure
 	
-	GfxInfo GetGfxInfo() const;
+	
+	
 	virtual CFigure* Paste(Point NewCnt,int x) const=0;
 	virtual CFigure* CreateCopy(CFigure*) const =0;
 	virtual bool Wascut() const=0;
-	Point GetCenter();
+	
 	double GetRaduis() const;
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
