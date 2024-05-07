@@ -52,6 +52,11 @@ CTriangle::CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo, int id
 
 }
 
+CTriangle::CTriangle(ifstream& fin, int ID) : CFigure(FigGfxInfo, ID)
+{
+	Load(fin);
+}
+
 
 void CTriangle::Draw(Output* pOut) const
 {
@@ -135,6 +140,54 @@ void CTriangle::Save(ofstream& fout)
 	fout << "\n";
 }
 
+void CTriangle::Load(ifstream& fin)
+{
+	string Border, Fill;
+
+	fin >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> Corner3.x >> Corner3.y >> Border >> Fill;
+	if (Border == "BL") {
+		FigGfxInfo.DrawClr = BLUE;
+	}
+	else if (Border == "BK") {
+		FigGfxInfo.DrawClr = BLACK;
+	}
+	else if (Border == "GN") {
+		FigGfxInfo.DrawClr = GREEN;
+	}
+	else if (Border == "RD") {
+		FigGfxInfo.DrawClr = RED;
+	}
+	else if (Border == "YL") {
+		FigGfxInfo.DrawClr = YELLOW;
+	}
+	else if (Border == "OR") {
+		FigGfxInfo.DrawClr = ORANGE;
+	}
+	FigGfxInfo.isFilled = true;
+	if (Fill == "NF") {
+		FigGfxInfo.isFilled = false;
+	}
+	else if (Fill == "BL") {
+		FigGfxInfo.FillClr = BLUE;
+	}
+	else if (Fill == "BK") {
+		FigGfxInfo.FillClr = BLACK;
+	}
+	else if (Fill == "GN") {
+		FigGfxInfo.FillClr = GREEN;
+	}
+	else if (Fill == "RD") {
+		FigGfxInfo.FillClr = RED;
+	}
+	else if (Fill == "YL") {
+		FigGfxInfo.FillClr = YELLOW;
+	}
+	else if (Fill == "OR") {
+		FigGfxInfo.FillClr = ORANGE;
+	}
+}
+
+		
 void CTriangle::PrintInfo(Output* pOut) const
 {
 	string str = "Triangle, ID: " + to_string(ID) + ", Corner1: (" + to_string(Corner1.x) + ", " + to_string(Corner1.y) +"), Corner2: (" + to_string(Corner2.x) + ", " + to_string(Corner2.y) + "), Corner3: (" + to_string(Corner3.x) + ", " + to_string(Corner3.y) + ")"; //add more info
