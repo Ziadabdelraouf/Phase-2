@@ -8,9 +8,12 @@ private:
 	int sidelength;
 public:
 	CHexagon(Point, GfxInfo FigureGfxInfo, int id);
+	CHexagon(ifstream& fin, int ID);
+
 	virtual void Draw(Output* pOut) const;
 	virtual bool IsClickInside(int x, int y) const; //checks if click is inside the hexagon
 	virtual void Save(ofstream& fout);
+	virtual void Load(ifstream& fin);
 	virtual void PrintInfo(Output* pOut) const; //prints info of hexagon
 	virtual void SetSelected(bool s);
 	GfxInfo GetGfxInfo()const;
