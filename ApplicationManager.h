@@ -56,6 +56,8 @@ public:
 	void SetFigCount(int);  //Reset the figure manually if we need.
 	
 	void SaveAll(ofstream & fout); //Saves all figures
+	void LoadAll(ifstream& fin);
+
 	void PlayAudio(char*);   //Play the filename audio ".wav"
 	
 	CFigure* GetSelectedFig(); // Get current selected figure
