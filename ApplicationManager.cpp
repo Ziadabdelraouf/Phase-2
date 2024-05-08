@@ -504,14 +504,14 @@ void ApplicationManager::usedBeforeDeleteInPlay(CFigure* fig) {
 			break;
 		}
 	}
-	CFigure *temp = FigList[j]; // Store the value of the element to move
+	j++;
 	for (int i = j; i < FigCount - 1; i++) {
-		FigList[j] = FigList[j+1]; // Shift elements to the left
+		FigList[i] = FigList[i + 1]; // Shift elements to the left
 	}
-	FigList[j-1] = temp; // Move the element to the end
 	FigCount--;
 	return;
 }
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////
