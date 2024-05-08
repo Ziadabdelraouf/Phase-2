@@ -504,7 +504,6 @@ void ApplicationManager::usedBeforeDeleteInPlay(CFigure* fig) {
 			break;
 		}
 	}
-	j++;
 	for (int i = j; i < FigCount - 1; i++) {
 		FigList[i] = FigList[i + 1]; // Shift elements to the left
 	}
