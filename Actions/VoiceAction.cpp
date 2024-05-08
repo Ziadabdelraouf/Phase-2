@@ -12,6 +12,7 @@ VoiceAction::VoiceAction(ApplicationManager *pApp) :Action(pApp){
 void VoiceAction::AudioPlayer(char* FileName) {
 	//The engine that we use to ginerate the audios at its place.
 	//(FileName): The name of the file that we will play "It should be .wav file"
+//(ASUNC): sync voice with program.
 	if (Switcher) {
 		PlaySound(TEXT(FileName), NULL, SND_FILENAME | SND_ASYNC);
 	};
