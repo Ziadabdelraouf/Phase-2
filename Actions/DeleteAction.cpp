@@ -49,7 +49,7 @@ void DeleteAction::ReadActionParameters()
 					delete Pfig[i];
 					Pfig[i] = NULL;
 					
-					for (int j = i; j < pManager->GetFigureCount()-1; j++)
+					for (int j = i; j < pManager->GetFigureCount(); j++)
 					{
 						Pfig[j] = Pfig[j + 1];
 					}
