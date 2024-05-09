@@ -91,8 +91,13 @@ void SaveAction::Execute() {
 	//opens file for writing
 	ofstream fout(str + ".txt");
 
+	
+	//calls function to save data
 	SaveFigures(fout);
 
+	
+	//closes file after saving
+	fout.close();
 
 	//prints info of the file the graph data was saved to
 	pOut->PrintMessage("Filename: " + str + ".txt, File has been saved successfully.");

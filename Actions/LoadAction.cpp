@@ -153,6 +153,9 @@ void LoadAction::Execute() {
 	//extra measure to ensure figure count is correct
 	pManager->SetFigCount(0);
 
-
+	//calls function to load data from file
 	LoadData(fin);
+
+	//closes file after load
+	fin.close();
 }

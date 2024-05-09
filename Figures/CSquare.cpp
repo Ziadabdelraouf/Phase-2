@@ -25,6 +25,7 @@ CSquare::CSquare(Point C, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo,
 
 CSquare::CSquare(ifstream& fin, int ID) : CFigure(FigGfxInfo, ID)
 {
+	sidelength = 4 * UI.ToolBarHeight;
 	Load(fin);
 }
 

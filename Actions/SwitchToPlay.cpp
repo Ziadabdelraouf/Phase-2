@@ -34,7 +34,11 @@ void SwitchToPlay::Load()
 
 	LoadAction* pAct = new LoadAction(pManager);
 
+	//calls function to load data
 	pAct->LoadData(fin);
+	
+	//closes file after loading
+	fin.close();
 	
 	delete pAct;
 	pAct = NULL;
@@ -48,7 +52,12 @@ void SwitchToPlay::Save()
 
 	SaveAction* pAct = new SaveAction(pManager);
 
+	//calls function to save data
 	pAct->SaveFigures(fout);
+
+	//closes file after saving
+	fout.close();
+
 	delete pAct;
 	pAct = NULL;
 }
