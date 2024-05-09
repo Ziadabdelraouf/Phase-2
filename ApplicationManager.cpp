@@ -302,6 +302,7 @@ void ApplicationManager::Delete()
 		CFigure* R;   // A pointer to Figure
 		if (FigList[i]->IsSelected()) {
 			FigList[i]->SetSelected(false);
+			FigList[i]->decStaticMembers(FigList[i]);
 			R = FigList[i];
 			for (int k = i; k < FigCount - 1; k++) {
 				FigList[k] = FigList[k + 1]; // Shift elements to the left
