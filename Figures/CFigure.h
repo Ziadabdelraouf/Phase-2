@@ -79,7 +79,7 @@ int getGreenCount();
 int getFilledCount();
 bool IsFilled();
 int getFillClr();   //temporary it might be needed or not in the future made by (Omar)
-
+static void decStaticMembers(CFigure *fig);
 
 ////
 	///The following functions should be supported by the figure class
