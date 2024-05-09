@@ -1,6 +1,8 @@
 #include "PlayColor.h"
+
 void PlayColor::Execute() {
 	ColorRNG::Execute();
+	
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 	if (R->getFilledCount()==0)

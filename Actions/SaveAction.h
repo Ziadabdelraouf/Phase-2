@@ -15,6 +15,8 @@ public:
 	//Reads file name
 	virtual void ReadActionParameters();
 
+	void SaveFigures(ofstream& fout);
+
 	//Creates file and saves info of figures
 	virtual void Execute();
 

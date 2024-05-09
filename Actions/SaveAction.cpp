@@ -24,22 +24,8 @@ void SaveAction::ReadActionParameters() {
 	str = pIn->GetString(pOut);
 }
 
-void SaveAction::Execute() {
-	ReadActionParameters(); //read input from user
-
-
-	Output* pOut = pManager->GetOutput(); // get a pointer to output interface
-
-
-	//prints info of the file the graph data was saved to
-	pOut->PrintMessage("Filename: " + str + ".txt, File has been saved successfully.");
-	pManager->PlayAudio("Audio\\FileSaved.wav");
-	
-	
-	//opens file for writing
-	ofstream fout(str + ".txt");
-
-
+void SaveAction::SaveFigures(ofstream& fout)
+{
 	//saves default draw color
 	if (UI.DrawColor == BLUE) {
 		fout << "BL\t";
@@ -59,7 +45,7 @@ void SaveAction::Execute() {
 	else if (UI.DrawColor == ORANGE) {
 		fout << "OR\t";
 	}
-	
+
 
 	//saves default fill color
 	if (UI.FillColor == BLUE) {
@@ -92,4 +78,24 @@ void SaveAction::Execute() {
 
 	//calls function to save the information of all figures
 	pManager->SaveAll(fout);
+}
+
+void SaveAction::Execute() {
+	ReadActionParameters(); //read input from user
+
+
+	Output* pOut = pManager->GetOutput(); // get a pointer to output interface
+
+
+	
+	//opens file for writing
+	ofstream fout(str + ".txt");
+
+	SaveFigures(fout);
+
+
+	//prints info of the file the graph data was saved to
+	pOut->PrintMessage("Filename: " + str + ".txt, File has been saved successfully.");
+	pManager->PlayAudio("Audio\\FileSaved.wav");
+
 }

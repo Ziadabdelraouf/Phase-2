@@ -1,5 +1,14 @@
 #include "BothRNG.h"
+#include "Actions\SwitchToPlay.h"
 void BothRNG::Execute() {
+
+	SwitchToPlay* pAct = new SwitchToPlay(pManager);
+	pAct->Load();
+
+	delete pAct;
+	pAct = NULL;
+
+
 	pManager->UnselectAll();
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();

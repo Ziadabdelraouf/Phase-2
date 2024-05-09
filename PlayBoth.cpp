@@ -1,4 +1,5 @@
 #include "PlayBoth.h"
+
 PlayBoth::PlayBoth(ApplicationManager* pApp) :BothRNG(pApp) {
 	score = 0;
 }
@@ -7,6 +8,7 @@ void PlayBoth::Execute() {
 	if (num == 0) {
 		return;
 	}
+	
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 	for (size_t i = 0; i < num; i++)  // hmark should have certain value but logic still has some problems
@@ -23,7 +25,7 @@ void PlayBoth::Execute() {
 			R = pManager->GetFigure(x, y);
 			pManager->usedBeforeDeleteInPlay(R);
 			delete R;
-			R == NULL;
+			pManager->GetFigure(x, y) == NULL;
 			pManager->UpdateInterface();
 		}
 		//

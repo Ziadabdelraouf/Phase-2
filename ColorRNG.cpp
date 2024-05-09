@@ -1,5 +1,15 @@
 #include "ColorRNG.h"
+#include "Actions\SwitchToPlay.h"
+
 void ColorRNG::Execute() {
+
+	SwitchToPlay* pAct = new SwitchToPlay(pManager);
+	pAct->Load();
+
+	delete pAct;
+	pAct = NULL;
+
+
 	pManager->UnselectAll();
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();

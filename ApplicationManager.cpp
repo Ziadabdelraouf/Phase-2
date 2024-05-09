@@ -25,7 +25,8 @@
 #include "Figures\CFigure.h"
 #include "PlayBoth.h"
 #include "GUI/UI_Info.h"
-
+#include "Actions\SwitchToPlay.h"
+#include "Actions\SwitchToDraw.h"
 
 
 //Constructor
@@ -124,15 +125,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	        break;
 
         case TO_DRAW:
-	          pOut->CreateDrawToolBar();
-	          pOut->ClearStatusBar();
-	          UI.InterfaceMode = MODE_DRAW;
-	          break;
+			pAct = new SwitchToDraw(this);
+			UI.InterfaceMode = MODE_DRAW;
+	        UI.InterfaceMode = MODE_DRAW;
+	        break;
         case TO_PLAY:
-	         pOut->CreatePlayToolBar();
-	         pOut->ClearStatusBar();
-	        UI.InterfaceMode = MODE_PLAY;
-	         break;
+			pAct = new SwitchToPlay(this);
+			UI.InterfaceMode = MODE_PLAY;
+	        break;
 		case COLOR_GREEN:
 			Color = GREEN;
 			break;

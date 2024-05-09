@@ -1,5 +1,5 @@
 #include "PlayShape.h"
-
+#include "Actions\SwitchToPlay.h"
 
 PlayShape::PlayShape(ApplicationManager* pApp) :ShapeRNG(pApp){
 	hmark = 0;
@@ -9,6 +9,7 @@ PlayShape::PlayShape(ApplicationManager* pApp) :ShapeRNG(pApp){
 
 void PlayShape::Execute(){
 	ShapeRNG::Execute();
+
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 	switch (rshape)

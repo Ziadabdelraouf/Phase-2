@@ -140,6 +140,8 @@
     <ClCompile Include="Actions\SaveAction.cpp" />
     <ClCompile Include="Actions\SelectAction.cpp" />
     <ClCompile Include="Actions\SendBackAction.cpp" />
+    <ClCompile Include="Actions\SwitchToDraw.cpp" />
+    <ClCompile Include="Actions\SwitchToPlay.cpp" />
     <ClCompile Include="Actions\VoiceAction.cpp" />
     <ClCompile Include="BothRNG.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -212,6 +214,8 @@
     <ClInclude Include="Actions\PasteAction.h" />
     <ClInclude Include="Actions\SelectAction.h" />
     <ClInclude Include="Actions\SendBackAction.h" />
+    <ClInclude Include="Actions\SwitchToDraw.h" />
+    <ClInclude Include="Actions\SwitchToPlay.h" />
     <ClInclude Include="Actions\VoiceAction.h" />
     <ClInclude Include="BothRNG.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />

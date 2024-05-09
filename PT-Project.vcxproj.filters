@@ -177,6 +177,8 @@
     <ClCompile Include="PlayColor.cpp" />
     <ClCompile Include="PlayShape.cpp" />
     <ClCompile Include="PlayBoth.cpp" />
+    <ClCompile Include="Actions\SwitchToDraw.cpp" />
+    <ClCompile Include="Actions\SwitchToPlay.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -277,6 +279,24 @@
     <ClInclude Include="Figures\CCircle.h" />
     <ClInclude Include="Actions\SendBackAction.h" />
     <ClInclude Include="Actions\BringFrontAction.h" />
+    <ClInclude Include="Actions\BorderAction.h" />
+    <ClInclude Include="Actions\ClearAllAction.h" />
+    <ClInclude Include="Actions\FillAction.h" />
+    <ClInclude Include="Actions\SaveAction.h" />
+    <ClInclude Include="Actions\PasteAction.h" />
+    <ClInclude Include="Actions\VoiceAction.h" />
+    <ClInclude Include="BothRNG.h" />
+    <ClInclude Include="ColorRNG.h" />
+    <ClInclude Include="Actions\DeleteAction.h" />
+    <ClInclude Include="Actions\CopyAction.h" />
+    <ClInclude Include="Actions\CutAction.h" />
+    <ClInclude Include="Actions\LoadAction.h" />
+    <ClInclude Include="PlayBoth.h" />
+    <ClInclude Include="PlayColor.h" />
+    <ClInclude Include="PlayShape.h" />
+    <ClInclude Include="ShapeRNG.h" />
+    <ClInclude Include="Actions\SwitchToDraw.h" />
+    <ClInclude Include="Actions\SwitchToPlay.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

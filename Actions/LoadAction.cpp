@@ -26,35 +26,9 @@ void LoadAction::ReadActionParameters() {
 	pOut->PrintMessage("Loading Graph... Enter Filename: ");
 	str = pIn->GetString(pOut);
 }
-void LoadAction::Execute() {
-	ReadActionParameters(); //read input from user
 
-	Output* pOut = pManager->GetOutput(); // get a pointer to output interface
-
-	//prints info of the file the graph data was loaded from
-	pOut->PrintMessage("Loaded from: " + str + ".txt");
-
-
-	//opens file for reading
-	ifstream fin(str + ".txt");
-
-
-	//check whether file exists or not
-	if (!fin.is_open()) {
-		pOut->PrintMessage("Error! No file with this name. Please try again.");
-		return;
-	}
-	
-
-	//clear drawing area before loading graph
-	pManager->ClearAll();
-	pOut->ClearDrawArea();
-	
-
-	//extra measure to ensure figure count is correct
-	pManager->SetFigCount(0);
-
-
+void LoadAction::LoadData(ifstream &fin)
+{
 	//string to temporarily store input
 	string var;
 
@@ -127,7 +101,7 @@ void LoadAction::Execute() {
 		{
 			CTriangle* T = new CTriangle(fin, ID);
 			pManager->AddFigure(T);
-		}		
+		}
 		else if (Shape == "REC")
 		{
 			CRectangle* R = new CRectangle(fin, ID);
@@ -149,4 +123,36 @@ void LoadAction::Execute() {
 			pManager->AddFigure(CR);
 		}
 	}
+}
+
+
+void LoadAction::Execute() {
+	ReadActionParameters(); //read input from user
+
+	Output* pOut = pManager->GetOutput(); // get a pointer to output interface
+
+	//prints info of the file the graph data was loaded from
+	pOut->PrintMessage("Loaded from: " + str + ".txt");
+
+
+	//opens file for reading
+	ifstream fin(str + ".txt");
+
+
+	//check whether file exists or not
+	if (!fin.is_open()) {
+		pOut->PrintMessage("Error! No file with this name. Please try again.");
+		return;
+	}
+
+	//clear drawing area before loading graph
+	pManager->ClearAll();
+	pOut->ClearDrawArea();
+
+
+	//extra measure to ensure figure count is correct
+	pManager->SetFigCount(0);
+
+
+	LoadData(fin);
 }

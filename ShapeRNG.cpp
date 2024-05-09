@@ -1,5 +1,13 @@
 #include "ShapeRNG.h"
+#include "Actions\SwitchToPlay.h"
+
 void ShapeRNG::Execute() {
+	SwitchToPlay* pAct = new SwitchToPlay(pManager);
+	pAct->Load();
+
+	delete pAct;
+	pAct = NULL;
+	
 	pManager->UnselectAll();
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
