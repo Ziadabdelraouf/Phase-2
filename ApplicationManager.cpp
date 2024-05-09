@@ -301,6 +301,7 @@ void ApplicationManager::Delete()
 		
 		CFigure* R;   // A pointer to Figure
 		if (FigList[i]->IsSelected()) {
+			FigList[i]->SetSelected(false);
 			R = FigList[i];
 			for (int k = i; k < FigCount - 1; k++) {
 				FigList[k] = FigList[k + 1]; // Shift elements to the left

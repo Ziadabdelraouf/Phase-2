@@ -92,7 +92,9 @@ void LoadAction::LoadData(ifstream &fin)
 
 	//Loop through the lines including the figure information
 	//Data is read differently depending on figure type
-	//Figure is created using the data read
+	//Figure is created and added to the figure list
+	//A constructor is used to load data from file and initialise the data members of the figure
+
 	for (int i = 0; i < num; i++)
 	{
 		fin >> Shape; //reads type of shape

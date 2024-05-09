@@ -22,7 +22,7 @@ void CopyAction::ReadActionParameters()
 	}
 	else if (pManager->GetNumSelected() == 1) {
 		Pfig = pManager->GetSelectedFig();
-		pOut->PrintMessage("figure cpoied");
+		pOut->PrintMessage("figure copied");
 	}
 	
 }
@@ -43,7 +43,8 @@ void CopyAction::Execute()
 			CFigure* Temp = Pfig->CreateCopy(Pfig);   //create a copy of the selected figure
 			pManager->AddClipBoard(Temp);         //add it to the clipboard
 			Pfig->SetSelected(false);        
-		}
 	}
+}
+
 	
 	

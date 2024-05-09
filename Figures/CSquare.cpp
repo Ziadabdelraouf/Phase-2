@@ -222,5 +222,4 @@ CFigure* CSquare::Paste(Point NewCnt, int ID) const
 RNGshape CSquare::getType() {
 	return square;
 }
-
 //

@@ -40,7 +40,7 @@ void DeleteAction::Execute()
 	ReadActionParameters();
 	pManager->UpdateInterface();
 	
-	pManager->UnselectAll();
+	
 	
 }
 void DeleteAction::Delete(CFigure*Temp) {
