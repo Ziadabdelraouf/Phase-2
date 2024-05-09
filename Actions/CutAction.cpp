@@ -12,7 +12,7 @@ void CutAction::ReadActionParameters()
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	if (pManager->GetNumSelected() > 1) {
+	if (pManager->GetNumSelected() > 1) { //check selected figure count
 		pOut->PrintMessage("Can't copy more than one figure");
 		
 	}
@@ -20,27 +20,39 @@ void CutAction::ReadActionParameters()
 		for (int i = 0; i < pManager->GetFigureCount(); i++)
 		{
 
-			Pfig = pManager->GetSelectedFig();
-			pOut->PrintMessage("Cut");
-			pManager->SetIsCut(true);
+			//delete element from clipboard (bkml sho8l 3leha )
+
+			/*if (pManager->GetClipboard() != NULL) {
+				Previous = pManager->GetClipboard();
+				delete Previous;
+				Previous = NULL;
+			}*/
+			Pfig = pManager->GetSelectedFig(); //return selected figure
+			
+			pManager->SetIsCut(true);     //set that the figure in the clipboard is cut not copied (used again in Paste)
 			
 		}
 	}
-	else if (pManager->GetNumSelected() == 1 && pManager->GetIsCut()) {
+	else if (pManager->GetNumSelected() == 1 && pManager->GetIsCut()) //if the clipboard is from a cut 
+	{
 		for (int i = 0; i < pManager->GetFigureCount(); i++)
 		{
-			Pfig = pManager->GetClipboard();
+			
 			Pfig->ChngDrawClr(tempDraw);
 			if (WasFill) {
 				Pfig->ChngFillClr(tempFill);
 				
 			}
-		
-			
-			
-			pOut->PrintMessage("Cut1");
 			Pfig = pManager->GetSelectedFig();
 
+
+			//delete element from clipboard (bkml sho8l 3leha )
+
+			/*if (pManager->GetClipboard() != NULL) {
+				Previous = pManager->GetClipboard();
+				delete Previous;
+				Previous = NULL;
+			}*/
 		}
 	}
 	else if(pManager->GetNumSelected()==0) {
@@ -70,6 +82,7 @@ void CutAction::Execute()
 		if (Pfig->IsFilled()) {
 			Pfig->ChngFillClr(GRAY);
 		}
+			pOut->PrintMessage("Cut");
 		pManager->UpdateInterface();
 		
 		

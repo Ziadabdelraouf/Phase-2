@@ -293,10 +293,26 @@ void ApplicationManager::UnCut() {
 }
 void ApplicationManager::Delete()
 {
+	
+	for (int i = 0; i < FigCount; i++){
+		
+		
+		CFigure* R;   // A pointer to Figure
+		if (FigList[i]->IsSelected()) {
+			R = FigList[i];
+			for (int k = i; k < FigCount - 1; k++) {
+				FigList[k] = FigList[k + 1]; // Shift elements to the left
+			}
+			FigCount--;   //decrement figure count
+			i--;     //recheck the shifted figure
+			delete R;   //delete object
+			R = NULL;    //set to NULL
+ 			
+		}
 
-	DeleteAction* pAct = NULL;
-	pAct = new DeleteAction(this);
-	pAct->Execute();
+	}
+	
+	 
 }
 
 ////////////////////////////////////////////////////////////////////////////////////

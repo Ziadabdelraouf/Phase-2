@@ -11,7 +11,6 @@ void SendBackAction::ReadActionParameters() {
 }
 
 void SendBackAction::Execute() {
-
 		pManager->Swaping(2); //Sending the operrator number to the AppManager
 		
 }

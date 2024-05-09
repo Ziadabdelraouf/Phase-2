@@ -16,6 +16,7 @@ class CutAction :
 {
 	SelectAction* pSelct;
 	static CFigure* Pfig;
+	CFigure* Previous=NULL;
 	bool IsCut ;
 	static color tempFill;
 	static color tempDraw;
