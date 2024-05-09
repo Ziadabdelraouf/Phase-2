@@ -14,10 +14,10 @@
 class CutAction :
     public Action
 {
-	SelectAction* pSelct;
-	static CFigure* Pfig;
-	CFigure* Previous=NULL;
-	bool IsCut ;
+	static CFigure* Pfig;   //create a pointer to figrue
+	CFigure* Previous=NULL;	 //create a temporary pointer to figure and intialize it to NULL
+	
+	//data members to return previously cut figrue to it state
 	static color tempFill;
 	static color tempDraw;
 	static bool WasFill;

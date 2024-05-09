@@ -29,7 +29,7 @@ void DeleteAction::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
-	
+	//calls the delete function in 
 	pManager->Delete();
 	
 	

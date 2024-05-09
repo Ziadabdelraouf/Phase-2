@@ -14,8 +14,8 @@ class CopyAction :
     public Action
 {
 private:
-	SelectAction* pSelct;
-	CFigure* Pfig;
+	CFigure* Pfig;   //create a pointer to figure
+	
 
 public:
 	CopyAction(ApplicationManager* pApp);

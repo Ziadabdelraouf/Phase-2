@@ -24,7 +24,7 @@ public:
 virtual RNGshape getType(); //return the type of the shape
 //
 	virtual bool Wascut() const;
-	virtual CFigure* CreateCopy(CFigure*) const;
+	CFigure* CreateCopy(CFigure*) const;
 	CFigure* Paste(Point, int) const;
 	GfxInfo GetGfxInfo() const;
 	Point GetCenter() const;

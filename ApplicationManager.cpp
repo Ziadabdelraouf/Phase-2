@@ -287,9 +287,11 @@ void ApplicationManager::PasteFigure()
 }
 /////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::UnCut() {
-	CutAction* pAct = NULL;
-	pAct = new CutAction(this);
-	pAct->UnCut();
+	
+	
+	CutAction* temp = NULL;  //create pointer to cut
+	temp = new CutAction(this);   //create new cut object
+	temp->UnCut();  //calls uncut function
 }
 void ApplicationManager::Delete()
 {
@@ -567,7 +569,7 @@ ApplicationManager::~ApplicationManager()
 		{
 			delete FigList[i];
 		}
-		
+	delete Clipboard;
 	delete pIn;
 	delete pOut;
 }
