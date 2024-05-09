@@ -184,6 +184,53 @@ color CFigure::GetDrawClr()
 {
 	return FigGfxInfo.DrawClr;
 }
+void CFigure::decStaticMembers(CFigure *fig) {
+
+	switch (fig->getType())
+	{
+	case triangle:
+		TriTotalCount--;
+		break;
+	case square:
+		SqrTotalCount--;
+		break;
+	case rectangle:
+		RecTotalCount--;
+		break;
+	case circle:
+		CircleTotalCount--;
+		break;
+	case hexagon:
+		HexTotalCount--;
+		break;
+	}
+	if (fig->IsFilled())
+	{
+		filledCount--;
+		switch (fig->getFillClr())
+		{
+		case pBLACK:
+			blackCount--;
+			break;
+		case pYELLOW:
+			yellowCount--;
+			break;
+		case pORANGE:
+			orangeCount--;
+			break;
+		case pRED:
+			redCount--;
+			break;
+		case pGREEN:
+			greenCount--;
+			break;
+		case pBLUE:
+			blueCount--;
+			break;
+		}
+	}
+	
+}
 
 int CFigure::getFillClr() {
 	if (BLACK==FigGfxInfo.FillClr)
