@@ -229,6 +229,72 @@ void CFigure::decStaticMembers(CFigure *fig) {
 }
 
 
+void CFigure::incColorCount(int c) {
+	filledCount++;
+	switch (c)
+	{
+	case pBLACK:
+		blackCount++;
+		break;
+	case pYELLOW:
+		yellowCount++;
+		break;
+	case pORANGE:
+		orangeCount++;
+		break;
+	case pRED:
+		redCount++;
+		break;
+	case pGREEN:
+		greenCount++;
+		break;
+	case pBLUE:
+		blueCount++;
+		break;
+
+	}
+}
+
+void CFigure::incShapeCount(int s) {
+	switch (s)
+	{
+	case triangle:
+		TriTotalCount++;
+		break;
+	case square:
+		SqrTotalCount++;
+		break;
+	case rectangle:
+		RecTotalCount++;
+		break;
+	case circle:
+		CircleTotalCount++;
+		break;
+	case hexagon:
+		HexTotalCount++;
+		break;
+	}
+}
+
+void CFigure::setAllStaticZero() {
+	blackCount = 0;
+	yellowCount = 0;
+	orangeCount = 0;
+	redCount = 0;
+	blueCount = 0;
+	greenCount = 0;
+	filledCount = 0;
+	RecTotalCount = 0;
+	RecSelectedCount = 0;
+	SqrTotalCount = 0;
+	SqrSelectedCount = 0;
+	TriTotalCount = 0;
+	TriSelectedCount = 0;
+	HexTotalCount = 0;
+	HexSelectedCount = 0;
+	CircleTotalCount = 0;
+}
+
 int CFigure::getFillClr() {
 	if (BLACK==FigGfxInfo.FillClr)
 		return 0;
