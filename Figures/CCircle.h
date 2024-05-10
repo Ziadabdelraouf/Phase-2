@@ -23,12 +23,12 @@ public:
 //omar
 virtual RNGshape getType(); //return the type of the shape
 //
-	virtual bool Wascut() const;
-	CFigure* CreateCopy(CFigure*) const;
+	
+	CFigure* CreateCopy() const;
 	CFigure* Paste(Point, int) const;
-	GfxInfo GetGfxInfo() const;
-	Point GetCenter() const;
-	double GetRaduis() const;
+	
+	
+	
 	
 
 };

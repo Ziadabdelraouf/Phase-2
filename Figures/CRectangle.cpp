@@ -190,11 +190,8 @@ void CRectangle::SetSelected(bool s)
 	else
 		CFigure::RecSelectedCount--; //decrements count of selected rectangles by 1 when a rectangle is deselected
 }
-bool CRectangle::Wascut() const
-{
-	return WasCut;
-}
-CFigure* CRectangle::CreateCopy(CFigure*) const
+
+CFigure* CRectangle::CreateCopy() const
 {
 	CRectangle* RR = new CRectangle(Corner1, Corner2, FigGfxInfo, ID);
 	return RR;

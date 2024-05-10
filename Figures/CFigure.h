@@ -51,10 +51,8 @@ public:
 	
 	
 	virtual CFigure* Paste(Point NewCnt,int x) const=0;
-	virtual CFigure* CreateCopy(CFigure*) const =0;
-	virtual bool Wascut() const=0;
+	virtual CFigure* CreateCopy() const =0;
 	
-	double GetRaduis() const;
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 	/*void UnFillClr();*/

@@ -40,7 +40,7 @@ void CopyAction::Execute()
 			delete Previous;
 			Previous = NULL;
 		}
-			CFigure* Temp = Pfig->CreateCopy(Pfig);   //create a copy of the selected figure
+			CFigure* Temp = Pfig->CreateCopy();   //create a copy of the selected figure
 			pManager->AddClipBoard(Temp);         //add it to the clipboard
 			Pfig->SetSelected(false);        
 	}

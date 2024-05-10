@@ -79,7 +79,7 @@ void CutAction::Execute()
 
 		}
 		//Create a copy of the figure and add it to clipboard
-		CFigure* Temp = Pfig->CreateCopy(Pfig);
+		CFigure* Temp = Pfig->CreateCopy();
 		pManager->AddClipBoard(Temp);
 
 		//Change the fill and draw color of figure to gray

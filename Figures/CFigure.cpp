@@ -45,10 +45,7 @@ bool CFigure::IsFilled()
 
 
 
-double CFigure::GetRaduis() const
-{
-	return 1;
-}
+
 
 void CFigure::ChngDrawClr(color Dclr)
 {	
@@ -98,10 +95,7 @@ else if (RED == Fclr)
 	}
 }
 
-//void CFigure::UnFillClr(){
-//	FigGfxInfo.isFilled = false;
-//
-//}
+
 
 
 int CFigure::getRecTotalCount()

@@ -17,10 +17,8 @@ public:
 
 	virtual void PrintInfo(Output* pOut) const; //prints info of square
 	virtual void SetSelected(bool s);
-	GfxInfo GetGfxInfo();
-	Point GetCenter();
-	virtual bool Wascut() const;
-	virtual CFigure* CreateCopy(CFigure*) const;
+	
+	virtual CFigure* CreateCopy() const;
 	CFigure* Paste(Point, int) const;
 	
 //omar

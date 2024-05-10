@@ -208,12 +208,7 @@ RNGshape CTriangle::getType() {
 	return triangle;
 }
 
-bool CTriangle::Wascut() const
-{
-	return WasCut;
-}
-
-CFigure* CTriangle::CreateCopy(CFigure*) const
+CFigure* CTriangle::CreateCopy() const
 {
 	CTriangle* TT = new CTriangle(Corner1, Corner2, Corner3, FigGfxInfo, ID);
 	return TT;

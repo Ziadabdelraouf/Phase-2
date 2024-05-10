@@ -228,24 +228,8 @@ RNGshape CHexagon::getType() {
 	return hexagon;    
 }
 
-//
 
-GfxInfo CHexagon::GetGfxInfo() const
-{
-	return FigGfxInfo;
-}
-
-Point CHexagon::GetCenter()
-{
-	return Center;
-}
-
-bool CHexagon::Wascut() const
-{
-	return WasCut;
-}
-
-CFigure* CHexagon::CreateCopy(CFigure*Pfig) const
+CFigure* CHexagon::CreateCopy() const
 {
 	CHexagon* HH = new CHexagon(Center, FigGfxInfo, ID);
 	return HH ;

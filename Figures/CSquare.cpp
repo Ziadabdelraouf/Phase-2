@@ -186,22 +186,8 @@ void CSquare::SetSelected(bool s)
 		CFigure::SqrSelectedCount--; //decrements count of selected squares by 1 when a square is deselected
 }
 
-GfxInfo CSquare::GetGfxInfo()
-{
-	return FigGfxInfo;
-}
 
-Point CSquare::GetCenter()
-{
-	return Center;
-}
-
-bool CSquare::Wascut() const
-{
-	return WasCut;
-}
-
-CFigure* CSquare::CreateCopy(CFigure*) const
+CFigure* CSquare::CreateCopy() const
 {
 	CSquare* SS = new CSquare(Center, FigGfxInfo, ID);
 	return SS;
