@@ -337,6 +337,7 @@ void ApplicationManager::ClearAll()
 	for (int i = 0; i < GetFigureCount(); i++) {
 		FigList[i] = NULL;  
 	}
+	/*delete[]FigList;*/
 }
 
 
