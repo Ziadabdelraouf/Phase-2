@@ -8,7 +8,7 @@
 
 BorderAction::BorderAction(ApplicationManager* pApp) :Action(pApp) {
 
-	color = BLACK;
+	color = GREEN;
 	PFig = pManager->GetSelectedFig();   //Set the pointer to the selected figure.
 }
 void BorderAction::ReadActionParameters() {
@@ -30,9 +30,6 @@ void BorderAction::Execute() {
 		pOut->PrintMessage("Select color to change border color: ");
 		pManager->PlayAudio("Audio\\BorderColor.wav");
 		ReadActionParameters();  //Get the color before change border color action.
-		if (color == UI.FillColor) {
-			color = UI.DrawColor;
-		}
 		PFig->ChngDrawClr(color);
 		pManager->UnselectAll();  //Unselect the figure to show the action.
 	}

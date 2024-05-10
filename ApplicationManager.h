@@ -23,7 +23,8 @@ private:
 	Output* pOut;
 
 	CFigure* Clipboard;  //Pointer to copied/cut figure
-
+	ActionType LastAction;   //Dummy ActionType to store the action last action type
+	//between (CHANGE_BORDER_COLOR CHANGE_FILLING_COLOR)
 
 public:	
 

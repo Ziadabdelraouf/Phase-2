@@ -42,6 +42,7 @@ ApplicationManager::ApplicationManager()
 	Clipboard = NULL;
 	SelectedFig = NULL;
 	IsCut = false;
+	LastAction = CHANGE_FILLING_COLOR;
 		
 
 	Color = BLACK;
@@ -90,9 +91,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 		case CHANGE_FILLING_COLOR:
 			pAct = new FillAction(this);
+			LastAction = CHANGE_FILLING_COLOR;
 			break;
 		case CHANGE_BORDER_COLOR:
 			pAct = new BorderAction(this);
+			LastAction = CHANGE_BORDER_COLOR;
 			break;
 		case CLEARALL:
 			pAct = new ClearAllAction(this);
@@ -382,9 +385,14 @@ color ApplicationManager::GetColor() {
 		pOut->PrintMessage("Unfill the figure...");
 		//GetSelectedFig()->UnFillClr();
 		break;
-	default:
-		Color = UI.FillColor;
-		break;
+	default: //If the user clicked in anywhaere not the colors the color will set to default colors.
+		if (LastAction == CHANGE_FILLING_COLOR){
+			Color = UI.FillColor;
+		}
+		else
+		{
+			Color = UI.DrawColor;
+		}
 	}
 	return Color;
 }
