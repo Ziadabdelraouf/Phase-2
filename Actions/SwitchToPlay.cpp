@@ -72,6 +72,8 @@ void SwitchToPlay::Execute()
 	pManager->ClearAll();
 	pOut->CreatePlayToolBar();
 	pOut->ClearStatusBar();
+	pOut->PrintMessage("Switching to play mode......");
+	pManager->PlayAudio("Audio\\PlayMode.wav");
 
 	Load();
 }

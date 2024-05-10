@@ -92,11 +92,16 @@ else if (RED == Fclr)
 //
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr; 
+	if (LIGHTGOLDENRODYELLOW == Fclr) {
+		filledCount--;
+		FigGfxInfo.isFilled = false;
+	}
 }
 
-void CFigure::UnFillClr(){
-	FigGfxInfo.isFilled = false;
-}
+//void CFigure::UnFillClr(){
+//	FigGfxInfo.isFilled = false;
+//
+//}
 
 
 int CFigure::getRecTotalCount()

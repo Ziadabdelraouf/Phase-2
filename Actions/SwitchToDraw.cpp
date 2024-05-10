@@ -19,6 +19,8 @@ void SwitchToDraw::Execute()
 
 	SwitchToPlay* pAct = new SwitchToPlay(pManager);
 	pAct->Load();
+	pOut->PrintMessage("Switching to draw mode....");
+	pManager->PlayAudio("Audio//DrawMode.wav");
 
 	delete pAct;
 	pAct = NULL;
