@@ -13,7 +13,7 @@ void ClearAllAction::ReadActionParameters() {
 }
 
 void ClearAllAction::Execute() {
-	
+        CFigure::setAllStaticZero();
 	Output* pOut = pManager->GetOutput();
 	pOut->PrintMessage("The drawing area has been cleared successfully");
 	pManager->PlayAudio("Audio\\CleaningDrawingArea.wav");
