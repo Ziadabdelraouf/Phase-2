@@ -96,7 +96,7 @@ void CutAction::Execute()
 
 }
 
-void CutAction::UnCut(){
+void CutAction::Uncut(){
 
 	//set the figure as selected 
 	Pfig->SetSelected(true);  //ssets previously cut object as selected

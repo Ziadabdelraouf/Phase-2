@@ -40,6 +40,7 @@ ApplicationManager::ApplicationManager()
 	SelectedFigCount = 0;
 	FigerIndex = 0;
 	Clipboard = NULL;
+	SelectedFig = NULL;
 	IsCut = false;
 		
 
@@ -286,11 +287,9 @@ void ApplicationManager::PasteFigure()
 }
 /////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::UnCut() {
+	CutAction temporary(this);
+	temporary.Uncut();
 	
-	
-	CutAction* temp = NULL;  //create pointer to cut
-	temp = new CutAction(this);   //create new cut object
-	temp->UnCut();  //calls uncut function
 }
 void ApplicationManager::Delete()
 {
@@ -577,7 +576,8 @@ ApplicationManager::~ApplicationManager()
 			delete FigList[i];
 		}
 	delete Clipboard;
+	delete SelectedFig;
 	delete pIn;
 	delete pOut;
-	delete SelectedFig;
+	
 }
