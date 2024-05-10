@@ -379,9 +379,9 @@ color ApplicationManager::GetColor() {
 		break;
 	case DELETEFIG:
 		Color = LIGHTGOLDENRODYELLOW;
-		PlayAudio("Audio\\Red.wav");
-		pOut->PrintMessage("Red");
-		GetSelectedFig()->UnFillClr();
+		PlayAudio("Audio\\UnFill.wav");
+		pOut->PrintMessage("Unfill the figure...");
+		//GetSelectedFig()->UnFillClr();
 		break;
 	default:
 		Color = UI.FillColor;
