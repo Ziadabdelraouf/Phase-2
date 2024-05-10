@@ -189,7 +189,7 @@ void CSquare::SetSelected(bool s)
 
 CFigure* CSquare::CreateCopy() const
 {
-	CSquare* SS = new CSquare(Center, FigGfxInfo, ID);
+	CSquare* SS = new CSquare(Center, FigGfxInfo, ID);  //create an identical copy that will be stored in Clipboard
 	return SS;
 }
 
@@ -197,7 +197,8 @@ CFigure* CSquare::CreateCopy() const
 CFigure* CSquare::Paste(Point NewCnt, int ID) const
 {
 
-	CSquare* SS = new CSquare(NewCnt, FigGfxInfo, ID);
+	CSquare* SS = new CSquare(NewCnt, FigGfxInfo, ID);   //Create a new object to be pasted 
+
 
 	CFigure::SqrTotalCount++;
 	return SS;

@@ -231,7 +231,7 @@ RNGshape CHexagon::getType() {
 
 CFigure* CHexagon::CreateCopy() const
 {
-	CHexagon* HH = new CHexagon(Center, FigGfxInfo, ID);
+	CHexagon* HH = new CHexagon(Center, FigGfxInfo, ID);  //create an identical copy that will be stored in Clipboard
 	return HH ;
 }
 
@@ -239,7 +239,8 @@ CFigure* CHexagon::CreateCopy() const
 
 CFigure* CHexagon::Paste(Point NewCnt,int ID) const
 {
-	CHexagon* HH = new CHexagon(NewCnt,FigGfxInfo,ID);
+	CHexagon* HH = new CHexagon(NewCnt,FigGfxInfo,ID);  //Create a new object to be pasted 
+
 
 	CFigure::HexTotalCount++;
 	return HH;

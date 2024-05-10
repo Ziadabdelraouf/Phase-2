@@ -172,7 +172,7 @@ void CCircle::SetSelected(bool s)
 
 CFigure* CCircle::CreateCopy() const
 {
-	CCircle* CC = new CCircle(Center, radius, FigGfxInfo, ID);
+	CCircle* CC = new CCircle(Center, radius, FigGfxInfo, ID);  //create an identical copy that will be stored in Clipboard
 	return CC;
 }
 CFigure* CCircle::Paste(Point NewCnt, int ID) const
@@ -180,7 +180,7 @@ CFigure* CCircle::Paste(Point NewCnt, int ID) const
 	Point PTemp;
 	PTemp.x = NewCnt.x + radius;
 	PTemp.y = NewCnt.y;
-	CCircle* CC = new CCircle(NewCnt, radius, FigGfxInfo, ID);
+	CCircle* CC = new CCircle(NewCnt, radius, FigGfxInfo, ID); //Create a new object to be pasted 
    CFigure::CircleTotalCount++;
 	return CC;
 }

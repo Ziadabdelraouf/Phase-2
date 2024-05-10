@@ -210,18 +210,21 @@ RNGshape CTriangle::getType() {
 
 CFigure* CTriangle::CreateCopy() const
 {
-	CTriangle* TT = new CTriangle(Corner1, Corner2, Corner3, FigGfxInfo, ID);
+	CTriangle* TT = new CTriangle(Corner1, Corner2, Corner3, FigGfxInfo, ID);  //create an identical copy that will be stored in Clipboard
 	return TT;
 }
 
 CFigure* CTriangle::Paste(Point NewCorner, int ID) const
 {
+
+
 	Point PTemp1, PTemp2;
 	PTemp1.x = NewCorner.x + (Corner2.x - Corner1.x);
 	PTemp1.y = NewCorner.y + (Corner2.y - Corner1.y);
 	PTemp2.x = NewCorner.x + (Corner3.x - Corner1.x);
 	PTemp2.y = NewCorner.y + (Corner3.y- Corner1.y);
-	CTriangle* TT = new CTriangle(NewCorner,PTemp1,PTemp2, FigGfxInfo, ID);
+	CTriangle* TT = new CTriangle(NewCorner,PTemp1,PTemp2, FigGfxInfo, ID);  //Create a new object to be pasted 
+
 
 	CFigure::TriTotalCount++;
 	return TT;

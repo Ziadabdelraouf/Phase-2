@@ -193,7 +193,7 @@ void CRectangle::SetSelected(bool s)
 
 CFigure* CRectangle::CreateCopy() const
 {
-	CRectangle* RR = new CRectangle(Corner1, Corner2, FigGfxInfo, ID);
+	CRectangle* RR = new CRectangle(Corner1, Corner2, FigGfxInfo, ID);  //create an identical copy that will be stored in Clipboard
 	return RR;
 }
 CFigure* CRectangle::Paste(Point NewCorner, int ID) const
@@ -201,7 +201,8 @@ CFigure* CRectangle::Paste(Point NewCorner, int ID) const
 	Point PTemp;
 	PTemp.x = NewCorner.x + (Corner2.x - Corner1.x);
 	PTemp.y = NewCorner.y + (Corner2.y - Corner1.y);
-	CRectangle* RR = new CRectangle(NewCorner,PTemp,  FigGfxInfo, ID);
+	CRectangle* RR = new CRectangle(NewCorner,PTemp,  FigGfxInfo, ID);  //Create a new object to be pasted 
+
 
 	CFigure::RecTotalCount++;
 	return RR;
