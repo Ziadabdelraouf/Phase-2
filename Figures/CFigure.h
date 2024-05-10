@@ -46,6 +46,8 @@ public:
 	virtual void Draw(Output* pOut) const  = 0 ;		//Draw the figure
         //omar
         virtual RNGshape getType()=0 ; //return the type of the shape
+		static void setAllStaticZero();
+
         //
 	
 	
@@ -69,6 +71,8 @@ public:
 	int getCircleTotalCount();
 	int getCircleSelectedCount();
 // temporary by omar 
+static void incColorCount(int c);
+static void incShapeCount(int s);
 int getBlackCount();
 int getYellowCount();
 int getOrangeCount();
