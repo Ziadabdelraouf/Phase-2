@@ -145,7 +145,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case COLOR_RED:
 			Color = RED;
 			break;
-			break;
 		case DELETEFIG:
 			pAct = new DeleteAction(this);
 			break;
@@ -373,9 +372,15 @@ color ApplicationManager::GetColor() {
 		pOut->PrintMessage("Yellow");
 		break;
 	case COLOR_RED:
-		Color = RED;
+		Color = RED;;
 		PlayAudio("Audio\\Red.wav");
 		pOut->PrintMessage("Red");
+		break;
+	case DELETEFIG:
+		Color = LIGHTGOLDENRODYELLOW;
+		PlayAudio("Audio\\Red.wav");
+		pOut->PrintMessage("Red");
+		GetSelectedFig()->UnFillClr();
 		break;
 	default:
 		Color = UI.FillColor;
@@ -567,11 +572,11 @@ Output *ApplicationManager::GetOutput() const
 ApplicationManager::~ApplicationManager()
 {
 	for(int i=0; i<FigCount; i++)
-		if (FigList[i]!=NULL)
-		{
+		if (FigList[i]!=NULL){
 			delete FigList[i];
 		}
 	delete Clipboard;
 	delete pIn;
 	delete pOut;
+	delete SelectedFig;
 }

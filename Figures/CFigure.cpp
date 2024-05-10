@@ -45,13 +45,6 @@ bool CFigure::IsFilled()
 
 
 
-
-
-
-
-
-
-
 double CFigure::GetRaduis() const
 {
 	return 1;
@@ -99,6 +92,10 @@ else if (RED == Fclr)
 //
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr; 
+}
+
+void CFigure::UnFillClr(){
+	FigGfxInfo.isFilled = false;
 }
 
 
@@ -231,6 +228,7 @@ void CFigure::decStaticMembers(CFigure *fig) {
 	}
 	
 }
+
 
 int CFigure::getFillClr() {
 	if (BLACK==FigGfxInfo.FillClr)

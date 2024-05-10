@@ -22,6 +22,7 @@ public:
 	virtual bool Wascut() const;
 	virtual CFigure* CreateCopy(CFigure*) const;
 	CFigure* Paste(Point, int) const;
+	
 //omar
 virtual RNGshape getType(); //return the type of the shape
 //

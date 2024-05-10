@@ -57,6 +57,7 @@ public:
 	double GetRaduis() const;
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
+	void UnFillClr();
 	color GetFillClr();
 	color GetDrawClr();
 	int getRecTotalCount(); //returns total number of rectangles
