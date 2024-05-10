@@ -1,3 +1,0 @@
-BL	GN
-1
-SQR	0	468	324	BL	NF
