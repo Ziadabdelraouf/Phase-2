@@ -1,5 +1,6 @@
 #pragma once
 #include "ColorRNG.h"
+
 class PlayColor:public ColorRNG
 {private:
 	int score;  // player score

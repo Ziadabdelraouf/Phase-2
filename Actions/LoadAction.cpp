@@ -138,7 +138,7 @@ void LoadAction::Execute() {
 
 
 	//opens file for reading
-	ifstream fin(str + ".txt");
+	ifstream fin("SavedGraphs\\" + str + ".txt");
 
 
 	//check whether file exists or not

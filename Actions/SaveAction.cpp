@@ -89,7 +89,7 @@ void SaveAction::Execute() {
 
 	
 	//opens file for writing
-	ofstream fout(str + ".txt");
+	ofstream fout("SavedGraphs\\" + str + ".txt");
 
 	
 	//calls function to save data

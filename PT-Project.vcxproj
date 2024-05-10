@@ -143,7 +143,7 @@
     <ClCompile Include="Actions\SwitchToDraw.cpp" />
     <ClCompile Include="Actions\SwitchToPlay.cpp" />
     <ClCompile Include="Actions\VoiceAction.cpp" />
-    <ClCompile Include="BothRNG.cpp" />
+    <ClCompile Include="Actions\BothRNG.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
@@ -183,7 +183,7 @@
     <ClCompile Include="Actions\DeleteAction.cpp" />
     <ClCompile Include="Actions\CopyAction.cpp" />
     <ClCompile Include="Actions\CutAction.cpp" />
-    <ClCompile Include="ColorRNG.cpp" />
+    <ClCompile Include="Actions\ColorRNG.cpp" />
     <ClCompile Include="Figures\CCircle.cpp" />
     <ClCompile Include="Figures\CFigure.cpp" />
     <ClCompile Include="Figures\CHexagon.cpp" />
@@ -196,10 +196,10 @@
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="Actions\LoadAction.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="PlayBoth.cpp" />
-    <ClCompile Include="PlayColor.cpp" />
-    <ClCompile Include="PlayShape.cpp" />
-    <ClCompile Include="ShapeRNG.cpp" />
+    <ClCompile Include="Actions\PlayBoth.cpp" />
+    <ClCompile Include="Actions\PlayColor.cpp" />
+    <ClCompile Include="Actions\PlayShape.cpp" />
+    <ClCompile Include="Actions\ShapeRNG.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddCrcAction.h" />
@@ -217,7 +217,7 @@
     <ClInclude Include="Actions\SwitchToDraw.h" />
     <ClInclude Include="Actions\SwitchToPlay.h" />
     <ClInclude Include="Actions\VoiceAction.h" />
-    <ClInclude Include="BothRNG.h" />
+    <ClInclude Include="Actions\BothRNG.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />
@@ -238,7 +238,7 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpegint.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
-    <ClInclude Include="ColorRNG.h" />
+    <ClInclude Include="Actions\ColorRNG.h" />
     <ClInclude Include="Actions\DeleteAction.h" />
     <ClInclude Include="Actions\CopyAction.h" />
     <ClInclude Include="Actions\CutAction.h" />
@@ -256,10 +256,10 @@
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="Actions\LoadAction.h" />
-    <ClInclude Include="PlayBoth.h" />
-    <ClInclude Include="PlayColor.h" />
-    <ClInclude Include="PlayShape.h" />
-    <ClInclude Include="ShapeRNG.h" />
+    <ClInclude Include="Actions\PlayBoth.h" />
+    <ClInclude Include="Actions\PlayColor.h" />
+    <ClInclude Include="Actions\PlayShape.h" />
+    <ClInclude Include="Actions\ShapeRNG.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

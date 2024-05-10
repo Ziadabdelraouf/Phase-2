@@ -1,5 +1,5 @@
 #include "PlayShape.h"
-#include "Actions\SwitchToPlay.h"
+#include "SwitchToPlay.h"
 
 PlayShape::PlayShape(ApplicationManager* pApp) :ShapeRNG(pApp){
 	hmark = 0;

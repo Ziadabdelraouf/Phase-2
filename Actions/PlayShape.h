@@ -1,5 +1,6 @@
 #pragma once
 #include "ShapeRNG.h"
+
 class PlayShape:public ShapeRNG
 {
 private:

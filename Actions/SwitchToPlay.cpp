@@ -24,7 +24,7 @@ void SwitchToPlay::ReadActionParameters()
 
 void SwitchToPlay::Load()
 {
-	ifstream fin("playmodesave.txt");
+	ifstream fin("PlayMode Save\\playmodesave.txt");
 	
 	//clear drawing area before loading graph
 	pManager->ClearAll();
@@ -48,7 +48,7 @@ void SwitchToPlay::Load()
 
 void SwitchToPlay::Save()
 {
-	ofstream fout("playmodesave.txt");
+	ofstream fout("PlayMode Save\\playmodesave.txt");
 
 	SaveAction* pAct = new SaveAction(pManager);
 

@@ -1,5 +1,5 @@
 #include "ShapeRNG.h"
-#include "Actions\SwitchToPlay.h"
+#include "SwitchToPlay.h"
 
 void ShapeRNG::Execute() {
 	SwitchToPlay* pAct = new SwitchToPlay(pManager);

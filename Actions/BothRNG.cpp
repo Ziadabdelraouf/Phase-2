@@ -1,5 +1,6 @@
 #include "BothRNG.h"
-#include "Actions\SwitchToPlay.h"
+#include "SwitchToPlay.h"
+
 void BothRNG::Execute() {
 
 	SwitchToPlay* pAct = new SwitchToPlay(pManager);
