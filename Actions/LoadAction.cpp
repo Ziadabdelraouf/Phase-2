@@ -94,7 +94,7 @@ void LoadAction::LoadData(ifstream &fin)
 	//Data is read differently depending on figure type
 	//Figure is created and added to the figure list
 	//A constructor is used to load data from file and initialise the data members of the figure
-
+	CFigure::setAllStaticZero();
 	for (int i = 0; i < num; i++)
 	{
 		fin >> Shape; //reads type of shape
@@ -103,26 +103,36 @@ void LoadAction::LoadData(ifstream &fin)
 		{
 			CTriangle* T = new CTriangle(fin, ID);
 			pManager->AddFigure(T);
+			CFigure::incColorCount(T->getFillClr());
+			CFigure::incShapeCount(T->getType());
 		}
 		else if (Shape == "REC")
 		{
 			CRectangle* R = new CRectangle(fin, ID);
 			pManager->AddFigure(R);
+			CFigure::incColorCount(R->getFillClr());
+			CFigure::incShapeCount(R->getType());
 		}
 		else if (Shape == "SQR")
 		{
 			CSquare* S = new CSquare(fin, ID);
 			pManager->AddFigure(S);
+			CFigure::incColorCount(S->getFillClr());
+			CFigure::incShapeCount(S->getType());
 		}
 		else if (Shape == "HEX")
 		{
 			CHexagon* H = new CHexagon(fin, ID);
 			pManager->AddFigure(H);
+			CFigure::incColorCount(H->getFillClr());
+			CFigure::incShapeCount(H->getType());
 		}
 		else if (Shape == "CIR")
 		{
 			CCircle* CR = new CCircle(fin, ID);
 			pManager->AddFigure(CR);
+			CFigure::incColorCount(CR->getFillClr());
+			CFigure::incShapeCount(CR->getType());
 		}
 	}
 }

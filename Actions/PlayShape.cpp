@@ -9,7 +9,10 @@ PlayShape::PlayShape(ApplicationManager* pApp) :ShapeRNG(pApp){
 
 void PlayShape::Execute(){
 	ShapeRNG::Execute();
-
+	if (0==pManager->GetFigureCount())
+	{
+		return;
+	}
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 	switch (rshape)
