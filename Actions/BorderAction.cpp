@@ -32,5 +32,8 @@ void BorderAction::Execute() {
 		ReadActionParameters();  //Get the color before change border color action.
 		PFig->ChngDrawClr(color);
 		pManager->UnselectAll();  //Unselect the figure to show the action.
+		
 	}
+	p
 }
+

@@ -33,6 +33,8 @@ void FillAction::Execute() {
 		PFig->ChngFillClr(color);
 		pManager->UnselectAll(); 
 		
+		
 	}
+	
 }
 

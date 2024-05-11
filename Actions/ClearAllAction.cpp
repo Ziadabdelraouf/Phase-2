@@ -20,4 +20,5 @@ void ClearAllAction::Execute() {
 	pManager->ClearAll();  //func. in AppManager that will implement the action.
 	pOut->ClearDrawArea();  //Clear all the painted shapes.
 	pManager->SetFigCount(0);  //Reset the figures count to 0.
+	
 }
