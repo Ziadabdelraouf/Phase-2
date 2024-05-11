@@ -35,7 +35,6 @@ public:
 	ActionType GetUserAction() const; //Reads the input command from the user and returns the corresponding action type
 	void ExecuteAction(ActionType) ; //Creates an action and executes it
 	
-
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
 	CFigure* GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
@@ -44,7 +43,7 @@ public:
 	CFigure* GetClipboard();
 	int GetNumSelected();
 	void UnselectAll();
-	void ClearAll();
+	void ClearAll();  //Reset all the program as it has just started.
 	void UnCut();
 	void Delete();
         // Omar
@@ -71,12 +70,8 @@ public:
 	CFigure* GetSelectedFig(); // Get current selected figure
 	int UniqueID(int); //function to make sure the id is unique
 	void Swaping(int);  //Swaping between the layers of figures.
-	int getColoredTypeNum(int sh, int c);
 	bool GetIsCut();
 	void SetIsCut(bool);
-	CFigure** GetAllSelected();
-	
-	
 };
 #endif
 
