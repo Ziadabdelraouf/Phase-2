@@ -8,8 +8,8 @@
 class ShapeRNG : public Action
 {
 protected:
-    int rshape;
-    CFigure* R;
+    int rshape; //the integer that express the shape type based on the defs.h (RNGshape)
+    CFigure* R; //pointer for using Cfigure functions
 public:
   void Execute();
   ShapeRNG(ApplicationManager* pApp);
