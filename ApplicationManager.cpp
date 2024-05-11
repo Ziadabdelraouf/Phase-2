@@ -275,19 +275,7 @@ int ApplicationManager::UniqueID(int id)
 	return id;
 }
 
-CFigure** ApplicationManager::GetAllSelected() {
-	CFigure* Selected[MaxFigCount];
-	for (int i = 0; i < MaxFigCount; i++)
-	{
-		Selected[i] = NULL;
-	}
-	for (int i = 0; i < FigCount; i++)
-	{
-		if (FigList[i]->IsSelected())
-			Selected[i] = FigList[i];
-	}
-	return Selected;
-}
+
 void ApplicationManager::AddClipBoard(CFigure*pFig)
 {
 	Clipboard = pFig; //add figure to clipboard
@@ -321,7 +309,7 @@ void ApplicationManager::Delete()
 	
 	for (int i = 0; i < FigCount; i++){
 		
-		
+	
 		CFigure* R;   // A pointer to Figure
 		if (FigList[i]->IsSelected()) {
 			FigList[i]->SetSelected(false);
@@ -338,7 +326,6 @@ void ApplicationManager::Delete()
 		}
 
 	}
-	
 	 
 }
 
@@ -360,6 +347,7 @@ void ApplicationManager::ClearAll(){
 		delete FigList[i];
 		FigList[i] = NULL;  
 	}
+
 	delete Clipboard;
 	Clipboard = NULL;
 	VoiceAction::i = 0;
