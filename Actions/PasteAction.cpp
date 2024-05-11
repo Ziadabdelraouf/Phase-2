@@ -17,12 +17,24 @@ void PasteAction::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
-	//Ask user to click on a figure
 
-	pOut->PrintMessage("Paste Tool: Choose A center");
-	pIn->GetPointClicked(P2.x, P2.y);
 	Pfig = pManager->GetClipboard();
-	x=pManager->GetFigureCount();
+	if (Pfig==NULL) {
+		pOut->PrintMessage("NO figure to paste");
+
+	}
+	else {
+
+		//Ask user to click on a figure
+
+		pOut->PrintMessage("Paste Tool: Choose A center");
+		pIn->GetPointClicked(P2.x, P2.y);
+		x = pManager->GetFigureCount();
+	}
+	
+	
+	
+	
 	
 }
 
@@ -31,20 +43,18 @@ void PasteAction::Execute()
 	Output* pOut = pManager->GetOutput();
 	ReadActionParameters();
 	if (Pfig!=NULL) {
-	CFigure* Pasted=Pfig->Paste(P2, x);
+		CFigure* Pasted = Pfig->Paste(P2, x);
 		pManager->AddFigure(Pasted);
-	
-		/*pOut->PrintMessage("Pasted");*/
+		pOut->PrintMessage("Pasted");
+
+
 		if (pManager->GetIsCut()) {
 			pManager->UnselectAll();
-	
+
 			pManager->UnCut();
 			pManager->SetIsCut(false);
 		}
 		pManager->UpdateInterface();
-	}
-	else {
-		pOut->PrintMessage("There doesn't exist any figure in the clipboard");
 	}
 	
 }
