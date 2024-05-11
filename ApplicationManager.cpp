@@ -336,6 +336,7 @@ void ApplicationManager::ClearAll(){
 		delete FigList[i];
 		FigList[i] = NULL;  
 	}
+delete Clipboard;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
