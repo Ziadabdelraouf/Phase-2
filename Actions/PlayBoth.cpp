@@ -14,7 +14,7 @@ void PlayBoth::Execute() {
 	for (size_t i = 0; i < num; i++)  
 	{
 		do {
-			pIn->GetPointClicked(x, y);
+			pIn->GetPointClicked(x, y); //gets where the user clicked
 		} while (pManager->GetFigure(x, y) == NULL);
 		if (rcolor==pManager->GetFigure(x, y)->getFillClr() && pManager->GetFigure(x, y)->getType() == rshape) //check the neccassary condition for the figure to be right
 		{
@@ -22,7 +22,7 @@ void PlayBoth::Execute() {
 		}
 		//implement delete here
 		if (pManager->GetFigure(x, y) != NULL) {
-			R = pManager->GetFigure(x, y);
+			R = pManager->GetFigure(x, y); 
 			pManager->usedBeforeDeleteInPlay(R);   //used to push the figure the last on the list 
 			delete R;                              // deletes the obj   
 			pManager->GetFigure(x, y) == NULL;
