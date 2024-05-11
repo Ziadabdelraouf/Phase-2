@@ -8,15 +8,15 @@ PlayShape::PlayShape(ApplicationManager* pApp) :ShapeRNG(pApp){
 
 
 void PlayShape::Execute(){
-	ShapeRNG::Execute();
-	if (0==pManager->GetFigureCount())
+	ShapeRNG::Execute(); //execute the code from shapeRNG
+	if (0==pManager->GetFigureCount()) //prevents the program from running if the count of figures is zero
 	{
 		return;
 	}
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	switch (rshape)
-	{
+	switch (rshape) //based on RNGshape in defs.h
+	{ //The switch gets the highest score the user can get (number of figure with the wanted type)
 	case triangle:
 		hmark = R->getTriTotalCount();
 		break;
@@ -36,19 +36,19 @@ void PlayShape::Execute(){
 	for (int i = 0; i < hmark; i++)
 	{
 		do {
-			pIn->GetPointClicked(x, y);
+			pIn->GetPointClicked(x, y); //gets user click location
 		} while (pManager->GetFigure(x, y)==NULL);
-		if (pManager->GetFigure(x, y)->getType()==rshape)
+		if (pManager->GetFigure(x, y)->getType()==rshape) //check that the figure clicked is right 
 		{
-			score++;
+			score++; //inc. the score if the user clicked right
 		}
 		//implement delete here
 		if (pManager->GetFigure(x, y) != NULL) {
 			R = pManager->GetFigure(x, y);
-			pManager->usedBeforeDeleteInPlay(R);
+			pManager->usedBeforeDeleteInPlay(R); //make the obj last at the figlist before deleting
 			delete R;
 			R == NULL;
-			pManager->UpdateInterface();
+			pManager->UpdateInterface(); //update the interface so deleted obj don't appear
 		}
 		//
 	}
