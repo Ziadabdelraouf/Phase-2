@@ -485,12 +485,12 @@ void ApplicationManager::PlayAudio(char* FileName){
 ////////////////////////////////////////////////////////////////////////////////////
 
 void ApplicationManager::randNumGenBoth(int& sh,int& c) {
-	if (SelectedFig->getFilledCount() == 0)
+	if (SelectedFig->getFilledCount() == 0) //checks if the filled shapes count is zero
 		return;
 	int i;
 	do {
 		srand(time(nullptr));
-		i = rand()%FigCount;
+		i = rand()%FigCount;  //get random number between 0 and figcount-1
 	} while (!FigList[i]->IsFilled());
 	c = FigList[i]->getFillClr();
 	sh = FigList[i]->getType();
@@ -498,23 +498,23 @@ void ApplicationManager::randNumGenBoth(int& sh,int& c) {
 }
 
 void ApplicationManager::randNumGenBothS(int& sh) {
-	if (FigCount == 0)
+	if (FigCount == 0) //check if the figures count is zero
 		return;
 	int i;
 		srand(time(nullptr));
-		i = rand() % FigCount;
+		i = rand() % FigCount;  //get random number between 0 and figcount-1
 	sh = FigList[i]->getType();
 	return;
 }
 
 
 void ApplicationManager::randNumGenBoth(int& c) {
-	if (SelectedFig->getFilledCount() == 0)
+	if (SelectedFig->getFilledCount() == 0) //checks if the filled shapes count is zero
 		return;
 	int i;
 	do {
 		srand(time(nullptr));
-		i = rand() % FigCount;
+		i = rand() % FigCount; //get random number between 0 and figcount-1
 	} while (!FigList[i]->IsFilled());
 	c = FigList[i]->getFillClr();
 	
@@ -524,7 +524,7 @@ void ApplicationManager::randNumGenBoth(int& c) {
 ////////////////////////////////////////////////////////////////////////////////////
 int ApplicationManager::getRandNumcount(int shape, int clr) {
 	int x=0;
-	for (int i = 0; i < FigCount; i++)
+	for (int i = 0; i < FigCount; i++) //loops the figlist and inc the counter when the matching type with matching fill color appears
 	{
 		if (FigList[i]->IsFilled()) {
 			if (FigList[i]->getFillClr()==clr &&FigList[i]->getType()==shape)
@@ -540,7 +540,7 @@ int ApplicationManager::getRandNumcount(int shape, int clr) {
 
 void ApplicationManager::usedBeforeDeleteInPlay(CFigure* fig) {
 	int j = 0;
-	for (j; j < FigCount; j++)
+	for (j; j < FigCount; j++) //it's only use is to get the index of the fig sent to it
 	{
 		if (fig==FigList[j])
 		{
@@ -548,7 +548,7 @@ void ApplicationManager::usedBeforeDeleteInPlay(CFigure* fig) {
 		}
 	}
 	for (int i = j; i < FigCount - 1; i++) {
-		FigList[i] = FigList[i + 1]; // Shift elements to the left
+		FigList[i] = FigList[i + 1]; // it's only use is to push all the figures after the fig to the left once
 	}
 	FigCount--;
 	return;

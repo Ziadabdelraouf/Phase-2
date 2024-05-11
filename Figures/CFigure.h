@@ -26,7 +26,7 @@ protected:
 	static int CircleTotalCount;
 	static int CircleSelectedCount;
 
-//made by omar temporarly 
+//made by omar
  
     static int blackCount;
     static int yellowCount;
@@ -34,7 +34,7 @@ protected:
     static int redCount;
     static int blueCount;
     static int greenCount;
-	static int filledCount;
+    static int filledCount;
 
 //
 
@@ -71,7 +71,7 @@ public:
 	int getHexSelectedCount();
 	int getCircleTotalCount();
 	int getCircleSelectedCount();
-// temporary by omar 
+//by omar 
 static void incColorCount(int c);
 static void incShapeCount(int s);
 int getBlackCount();
@@ -83,7 +83,7 @@ int getGreenCount();
 int getFilledCount();
 int getID();
 bool IsFilled();
-int getFillClr();   //temporary it might be needed or not in the future made by (Omar)
+int getFillClr();   //another get fill but it is based on RNGcolor in defs file
 static void decStaticMembers(CFigure *fig);
 
 ////
