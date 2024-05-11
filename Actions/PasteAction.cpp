@@ -29,7 +29,7 @@ void PasteAction::ReadActionParameters()
 
 		pOut->PrintMessage("Paste Tool: Choose A center");
 		pIn->GetPointClicked(P2.x, P2.y);
-		x = pManager->GetFigureCount();
+		FigureCount = pManager->GetFigureCount();
 	}
 	
 	
@@ -43,7 +43,7 @@ void PasteAction::Execute()
 	Output* pOut = pManager->GetOutput();
 	ReadActionParameters();
 	if (Pfig!=NULL) {
-		CFigure* Pasted = Pfig->Paste(P2, x);
+		CFigure* Pasted = Pfig->Paste(P2, FigureCount);
 		pManager->AddFigure(Pasted);
 		pOut->PrintMessage("Pasted");
 

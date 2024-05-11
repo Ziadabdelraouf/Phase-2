@@ -27,7 +27,7 @@ void AddCrcAction::ReadActionParameters()
 	//Read the point on radius of the circle
 	pIn->GetPointClicked(R.x, R.y);
 
-	radius = sqrt((R.x - C.x) * (R.x - C.x) + (R.y - C.y) * (R.y - C.y)); //calculates radius of circle
+	radius = sqrt((R.x - C.x) * (R.x - C.x) + (R.y - C.y) * (R.y - C.y)); //Calculates radius of circle
 
 
 	CircleGfxInfo.isFilled = false;	//default is not filled
@@ -52,6 +52,6 @@ void AddCrcAction::Execute()
 
 	//Add the Circle to the list of figures
 	pManager->AddFigure(CR);
-	//delete CR;
+	
 
 }
