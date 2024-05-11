@@ -30,17 +30,23 @@ void PasteAction::Execute()
 {
 	Output* pOut = pManager->GetOutput();
 	ReadActionParameters();
+	if (Pfig!=NULL) {
 	CFigure* Pasted=Pfig->Paste(P2, x);
-	pManager->AddFigure(Pasted);
+		pManager->AddFigure(Pasted);
 	
-	/*pOut->PrintMessage("Pasted");*/
-	if (pManager->GetIsCut()) {
-		pManager->UnselectAll();
+		/*pOut->PrintMessage("Pasted");*/
+		if (pManager->GetIsCut()) {
+			pManager->UnselectAll();
 	
-		pManager->UnCut();
-		pManager->SetIsCut(false);
+			pManager->UnCut();
+			pManager->SetIsCut(false);
+		}
+		pManager->UpdateInterface();
 	}
-	pManager->UpdateInterface();
+	else {
+		pOut->PrintMessage("There doesn't exist any figure in the clipboard");
+	}
+	
 }
 
 
