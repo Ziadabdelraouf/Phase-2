@@ -2,6 +2,7 @@
 #include <fstream>
 CTriangle::CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
+	//makes sure the triangle is within drawing area
 	if (p1.y < UI.ToolBarHeight || p2.y < UI.ToolBarHeight || p3.y < UI.ToolBarHeight) {
 		if (p1.y < p2.y && p1.y < p3.y) {
 			int temp = UI.ToolBarHeight - p1.y;
@@ -48,6 +49,7 @@ CTriangle::CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo, int id
 	Corner2 = p2;
 	Corner3 = p3;
 
+	//increments triangle count
 	CFigure::TriTotalCount++;
 
 }
@@ -85,9 +87,11 @@ bool CTriangle::IsClickInside(int x, int y) const
 //saves the type, id, corners, draw colour, and fill colour of the figure
 void CTriangle::Save(ofstream& fout)
 {
+	//saves type and id of figure
 	fout << "TRI\t";
 	fout << ID << "\t";
 
+	//saves corners of figures
 	fout << Corner1.x << "\t";
 	fout << Corner1.y << "\t";
 
@@ -97,6 +101,7 @@ void CTriangle::Save(ofstream& fout)
 	fout << Corner3.x << "\t";
 	fout << Corner3.y << "\t";
 
+	//saves draw color
 	if (FigGfxInfo.DrawClr == BLUE) {
 		fout << "BL\t";
 	}
@@ -116,6 +121,7 @@ void CTriangle::Save(ofstream& fout)
 		fout << "OR\t";
 	}
 
+	//saves fill color
 	if (!FigGfxInfo.isFilled)
 	{
 		fout << "NF";
@@ -144,8 +150,11 @@ void CTriangle::Save(ofstream& fout)
 void CTriangle::Load(ifstream& fin)
 {
 	string Border, Fill;
-
+	
+	//reads corners, borner color, and fill color from file
 	fin >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> Corner3.x >> Corner3.y >> Border >> Fill;
+	
+	//sets figure draw color
 	if (Border == "BL") {
 		FigGfxInfo.DrawClr = BLUE;
 	}
@@ -164,6 +173,8 @@ void CTriangle::Load(ifstream& fin)
 	else if (Border == "OR") {
 		FigGfxInfo.DrawClr = ORANGE;
 	}
+	
+	//sets figure fill color
 	FigGfxInfo.isFilled = true;
 	if (Fill == "NF") {
 		FigGfxInfo.isFilled = false;

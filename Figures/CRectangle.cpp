@@ -90,6 +90,7 @@ void CRectangle::Save(ofstream& fout)
 	fout << Corner2.x << "\t";
 	fout << Corner2.y << "\t";
 
+	//saves draw color
 	if (FigGfxInfo.DrawClr == BLUE) {
 		fout << "BL\t";
 	}
@@ -109,6 +110,8 @@ void CRectangle::Save(ofstream& fout)
 		fout << "OR\t";
 	}
 
+
+	//saves fill color
 	if (!FigGfxInfo.isFilled) 
 	 {
 		fout << "NF";
@@ -137,7 +140,11 @@ void CRectangle::Save(ofstream& fout)
 void CRectangle::Load(ifstream& fin)
 {
 	string Border, Fill;
+
+	//loads corners, border color, and fill color from file
 	fin >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> Border >> Fill;
+
+	//sets draw color of figure
 	if (Border == "BL") {
 		FigGfxInfo.DrawClr = BLUE;
 	}
@@ -156,6 +163,8 @@ void CRectangle::Load(ifstream& fin)
 	else if (Border == "OR") {
 		FigGfxInfo.DrawClr = ORANGE;
 	}
+	
+	//set fill color of figure
 	FigGfxInfo.isFilled = true;
 	if (Fill == "NF") {
 		FigGfxInfo.isFilled = false;

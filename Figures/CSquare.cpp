@@ -2,6 +2,7 @@
 
 CSquare::CSquare(Point C, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
+	//makes sure that the figure is within the draw area
 	sidelength = 4 * UI.ToolBarHeight;
 	if (C.x < sidelength / 2) {
 		C.x = sidelength / 2;
@@ -19,6 +20,8 @@ CSquare::CSquare(Point C, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo,
 	}
 	Center = C;
 
+
+	//increments the number of squares
 	CFigure::SqrTotalCount++;
 
 }

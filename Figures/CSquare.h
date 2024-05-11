@@ -8,7 +8,7 @@ private:
 	int sidelength;
 public:
 	CSquare(Point,GfxInfo FigureGfxInfo, int id);
-	CSquare(ifstream& fin, int ID);
+	CSquare(ifstream& fin, int ID); //constructor to be used for load
 
 	virtual void Draw(Output* pOut) const;
 	virtual bool IsClickInside(int x, int y) const; //checks if click is inside the square
