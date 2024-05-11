@@ -39,7 +39,6 @@ public:
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
 	CFigure* GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
-	CFigure* GetFigure(int id) const; //Search for a figure given its ID
 	int GetFigureCount() const; //returns the number of figures
 	void AddClipBoard(CFigure* pFig);
 	CFigure* GetClipboard();
@@ -65,12 +64,12 @@ public:
 	void SetFigCount(int);  //Reset the figure manually if we need.
 	
 	void SaveAll(ofstream & fout); //Saves all figures
-	void LoadAll(ifstream& fin);
+	void LoadAll(ifstream& fin); //loads all figures
 
 	void PlayAudio(char*);   //Play the filename audio ".wav"
 	
 	CFigure* GetSelectedFig(); // Get current selected figure
-	int UniqueID(int);
+	int UniqueID(int); //function to make sure the id is unique
 	void Swaping(int);  //Swaping between the layers of figures.
 	int getColoredTypeNum(int sh, int c);
 	bool GetIsCut();

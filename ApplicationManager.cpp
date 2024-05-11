@@ -216,16 +216,6 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 
 
 ////////////////////////////////////////////////////////////////////////////////////
-CFigure* ApplicationManager::GetFigure(int id) const //TO BE REMOVED -Yousef
-{
-	if (id <= FigCount)
-		return FigList[id]; //return pointer to figure if found
-	else
-		return NULL; //return NULL if figure not found
-}
-
-
-////////////////////////////////////////////////////////////////////////////////////
 int ApplicationManager::GetFigureCount() const
 {
 	return FigCount; //returns actual number of figures

@@ -10,12 +10,12 @@ private:
 	Point Corner2;
 public:
 	CRectangle(Point, Point, GfxInfo FigureGfxInfo, int);
-	CRectangle(ifstream& fin, int ID);
+	CRectangle(ifstream& fin, int ID); //constructor to be used when loading from file
 
 	virtual void Draw(Output* pOut) const;
 	virtual bool IsClickInside(int x, int y) const; //checks if click is inside the rectangle
-	virtual void Save(ofstream& OutFile);
-	virtual void Load(ifstream& fin);
+	virtual void Save(ofstream& OutFile); //saves rectangle info to file
+	virtual void Load(ifstream& fin); //loads rectangle info from file
 
 	virtual void PrintInfo(Output* pOut) const; //prints info of rectangle
 

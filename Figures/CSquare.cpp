@@ -70,6 +70,8 @@ bool CSquare::IsClickInside(int x, int y) const
 	return true;
 }
 
+
+//saves the type, id, centre, draw colour, and fill colour of the figure
 void CSquare::Save(ofstream& fout)
 {
 	fout << "SQR\t";

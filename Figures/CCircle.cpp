@@ -4,6 +4,8 @@ CCircle::CCircle(Point C, int r, GfxInfo FigureGfxInfo, int id) :CFigure(FigureG
 	Point cent = C;
 	Point cent1 = cent;
 	radius = r;
+	
+	//validation to make sure circle is drawn within drawing area
 	if (radius > (UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / 2) {
 		radius = (UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / 2;
 		cent1.y = UI.ToolBarHeight + (UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / 2;
@@ -24,6 +26,8 @@ CCircle::CCircle(Point C, int r, GfxInfo FigureGfxInfo, int id) :CFigure(FigureG
 	}
 	
 	Center = cent1;
+
+	//increment number of circles by 1
 	CFigure::CircleTotalCount++;
 
 }
@@ -52,6 +56,7 @@ bool CCircle::IsClickInside(int x, int y) const
 	return true;
 }
 
+//saves the type, id, centre, draw colour, and fill colour of the figure
 void CCircle::Save(ofstream& fout)
 {
 	fout << "CIR\t";

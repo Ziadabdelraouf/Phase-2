@@ -3,6 +3,9 @@
 
 CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
+	
+	//validation to ensure figure is within draw area
+
 	if (P1.y < UI.ToolBarHeight || P2.y < UI.ToolBarHeight) {
 		if (P1.y < P2.y) {
 			P2.y += (UI.ToolBarHeight - P1.y);
@@ -26,6 +29,7 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo, int id) :CFigu
 	Corner1 = P1;
 	Corner2 = P2;
 
+	//increments number of rectangles
 	CFigure::RecTotalCount++;
 }
 
@@ -71,15 +75,18 @@ bool CRectangle::IsClickInside(int x, int y) const
 }
 
 
-
+//saves the type, id, corners, draw colour, and fill colour of the figure
 void CRectangle::Save(ofstream& fout)
 {
+	//saves figure type and id
 	fout << "REC\t";
 	fout << ID << "\t";
 
+	//saves first corner
 	fout << Corner1.x << "\t";
 	fout << Corner1.y << "\t";
 
+	//saves second corner
 	fout << Corner2.x << "\t";
 	fout << Corner2.y << "\t";
 

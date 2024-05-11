@@ -4,6 +4,9 @@
 CHexagon::CHexagon(Point C, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
 	sidelength = 2 * UI.ToolBarHeight;
+
+	//validation to ensure hexagon is within drawing area
+
 	if (C.x < sidelength) {
 		C.x = sidelength;
 	}
@@ -20,6 +23,7 @@ CHexagon::CHexagon(Point C, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInf
 	}
 	Center = C;
 
+	//increment number of hexagons
 	CFigure::HexTotalCount++;
 
 }
@@ -36,17 +40,21 @@ void CHexagon::Draw(Output* pOut) const
 	pOut->DrawHex(Center, FigGfxInfo, Selected);
 }
 
+
+//checks if click is inside hexagon by dividing it into a square and 2 triangles
 bool CHexagon::IsClickInside(int x, int y) const
 {
 	Point C = Center;
+	//points are stored in two arrays
 	int Px[6] = { C.x + sidelength, C.x + 0.5 * sidelength, C.x - 0.5 * sidelength, C.x - sidelength, C.x - 0.5 * sidelength, C.x + 0.5 * sidelength };
 	int Py[6] = { C.y, C.y - (sqrt(3 / 4.0) * sidelength), C.y - (sqrt(3 / 4.0) * sidelength), C.y, C.y + (sqrt(3 / 4.0) * sidelength), C.y + (sqrt(3 / 4.0) * sidelength) };
 	
-	int m = Px[2];
-	int n = Py[2];
+
 	Point Corner1, Corner2, Corner3;
 	float TotalArea, A1, A2, A3;
 
+
+	//algorithm using geometry to check if click is inside the triangle on the right
 	Corner1.x = Px[0];
 	Corner1.y = Py[0];
 	Corner2.x = Px[1];
@@ -58,11 +66,13 @@ bool CHexagon::IsClickInside(int x, int y) const
 	A2 = 0.5 * abs(Corner1.x * (y - Corner3.y) + x * (Corner3.y - Corner1.y) + Corner3.x * (Corner1.y - y));
 	A3 = 0.5 * abs(Corner1.x * (Corner2.y - y) + Corner2.x * (y - Corner1.y) + x * (Corner1.y - Corner2.y));
 	
+	
 	if (TotalArea == A1 + A2 + A3)
 	{
 		return true;
 	}
 	
+	//algorithm using geometry to check if click is inside the triangle on the left
 	Corner1.x = Px[3];
 	Corner1.y = Py[3];
 	Corner2.x = Px[4];
@@ -84,7 +94,7 @@ bool CHexagon::IsClickInside(int x, int y) const
 	Corner2.x = Px[5];
 	Corner2.y = Py[5];
 
-
+	//algorithm using geometry to check if click is inside the square in the middle
 	if (Corner1.x < Corner2.x) {
 		if (x < Corner1.x || x > Corner2.x)
 			return false;
@@ -108,14 +118,19 @@ bool CHexagon::IsClickInside(int x, int y) const
 	return true;
 }
 
+
+//saves the type, id, centre, draw colour, and fill colour of the figure
 void CHexagon::Save(ofstream& fout)
 {
+	//saves figure type and id
 	fout << "HEX\t";
 	fout << ID << "\t";
 
+	//saves centre
 	fout << Center.x << "\t";
 	fout << Center.y << "\t";
 	
+	//saves draw colour
 	if (FigGfxInfo.DrawClr == BLUE) {
 		fout << "BL\t";
 	}
@@ -135,6 +150,7 @@ void CHexagon::Save(ofstream& fout)
 		fout << "OR\t";
 	}
 
+	//saves fill colour
 	if (!FigGfxInfo.isFilled) {
 		fout << "NF";
 	}
@@ -162,7 +178,11 @@ void CHexagon::Save(ofstream& fout)
 void CHexagon::Load(ifstream& fin)
 {
 	string Border, Fill;
+	
+	//loads centre, border colour, and fill colour
 	fin >> Center.x >> Center.y >> Border >> Fill;
+
+	//sets draw colour
 	if (Border == "BL") {
 		FigGfxInfo.DrawClr = BLUE;
 	}
@@ -181,6 +201,8 @@ void CHexagon::Load(ifstream& fin)
 	else if (Border == "OR") {
 		FigGfxInfo.DrawClr = ORANGE;
 	}
+	
+	//sets fill color
 	FigGfxInfo.isFilled = true;
 	if (Fill == "NF") {
 		FigGfxInfo.isFilled = false;

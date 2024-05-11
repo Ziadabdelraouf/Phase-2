@@ -82,6 +82,7 @@ bool CTriangle::IsClickInside(int x, int y) const
 	return false;
 }
 
+//saves the type, id, corners, draw colour, and fill colour of the figure
 void CTriangle::Save(ofstream& fout)
 {
 	fout << "TRI\t";
