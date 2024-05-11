@@ -233,6 +233,7 @@ CFigure* CHexagon::CreateCopy() const
 {
 	CHexagon* HH = new CHexagon(Center, FigGfxInfo, ID);  //create an identical copy that will be stored in Clipboard
 	return HH ;
+	delete HH;
 }
 
 
@@ -244,6 +245,7 @@ CFigure* CHexagon::Paste(Point NewCnt,int ID) const
 
 	CFigure::HexTotalCount++;
 	return HH;
+	delete HH;
 }
 
 

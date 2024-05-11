@@ -195,6 +195,7 @@ CFigure* CRectangle::CreateCopy() const
 {
 	CRectangle* RR = new CRectangle(Corner1, Corner2, FigGfxInfo, ID);  //create an identical copy that will be stored in Clipboard
 	return RR;
+	delete RR;
 }
 CFigure* CRectangle::Paste(Point NewCorner, int ID) const
 {
@@ -206,6 +207,7 @@ CFigure* CRectangle::Paste(Point NewCorner, int ID) const
 
 	CFigure::RecTotalCount++;
 	return RR;
+	delete RR;
 }
 
 //omar

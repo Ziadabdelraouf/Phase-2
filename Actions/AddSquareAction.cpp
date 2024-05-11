@@ -41,4 +41,5 @@ void AddSquareAction::Execute()
 
 	//Add the square to the list of figures
 	pManager->AddFigure(S);
+	delete S;
 }

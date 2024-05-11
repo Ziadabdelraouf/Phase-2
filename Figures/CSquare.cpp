@@ -191,6 +191,7 @@ CFigure* CSquare::CreateCopy() const
 {
 	CSquare* SS = new CSquare(Center, FigGfxInfo, ID);  //create an identical copy that will be stored in Clipboard
 	return SS;
+	delete SS;
 }
 
 
@@ -202,6 +203,7 @@ CFigure* CSquare::Paste(Point NewCnt, int ID) const
 
 	CFigure::SqrTotalCount++;
 	return SS;
+	delete SS;
 }
 
 

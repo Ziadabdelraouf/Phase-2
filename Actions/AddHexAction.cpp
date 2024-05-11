@@ -41,6 +41,7 @@ void AddHexAction::Execute()
 
 	//Add the hexagon to the list of figures
 	pManager->AddFigure(H);
+	delete H;
 }
 
 

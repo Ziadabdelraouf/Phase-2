@@ -45,7 +45,7 @@ ApplicationManager::ApplicationManager()
 	LastAction = CHANGE_FILLING_COLOR;
 		
 
-	Color = BLACK;
+	Color = GREEN;
 		
 	//Create an array of figure pointers and set them to NULL		
 	for(int i=0; i<MaxFigCount; i++)
@@ -237,7 +237,6 @@ void ApplicationManager::SetFigCount(int n) {
 	FigCount = (n>=0) ? n:0; //sets actual number of figures
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////
 //Used to return the selected figure when only one figure is selected
 CFigure* ApplicationManager::GetSelectedFig() {
@@ -281,19 +280,18 @@ int ApplicationManager::GetNumSelected() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
-
-
-void ApplicationManager::PasteFigure()
-{
+void ApplicationManager::PasteFigure(){
 	Action* pAct = NULL;
 	pAct = new PasteAction(this);
 }
+
 /////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::UnCut() {
 	CutAction temporary(this);
 	temporary.Uncut();
 	
 }
+
 void ApplicationManager::Delete()
 {
 	
@@ -330,18 +328,15 @@ void ApplicationManager::UnselectAll()
 	}
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////
 //Deletes all figures
-void ApplicationManager::ClearAll()
-{
+void ApplicationManager::ClearAll(){
 	//Loop at each figure in the figure list and set all pointers to null
 	for (int i = 0; i < GetFigureCount(); i++) {
+		delete FigList[i];
 		FigList[i] = NULL;  
 	}
-	/*delete[]FigList;*/
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////////
 color ApplicationManager::GetColor() {
@@ -354,38 +349,44 @@ color ApplicationManager::GetColor() {
 		PlayAudio("Audio\\Black.wav");
 		pOut->PrintMessage("Black");
 		break;
+
 	case COLOR_BLUE:
 		Color = BLUE;
 		PlayAudio("Audio\\Blue.wav");
 		pOut->PrintMessage("Blue");
 		break;
+
 	case COLOR_GREEN:
 		Color = GREEN;
 		PlayAudio("Audio\\Green.wav");
 		pOut->PrintMessage("Green");
 		break;
+
 	case COLOR_ORANGE:
 		Color = ORANGE;
 		PlayAudio("Audio\\Orange.wav");
 		pOut->PrintMessage("Orange");
 		break;
+
 	case COLOR_YELLOW:
 		Color = YELLOW;;
 		PlayAudio("Audio\\Yellow.wav");
 		pOut->PrintMessage("Yellow");
 		break;
+
 	case COLOR_RED:
 		Color = RED;;
 		PlayAudio("Audio\\Red.wav");
 		pOut->PrintMessage("Red");
 		break;
+
 	case DELETEFIG:
 		Color = LIGHTGOLDENRODYELLOW;
 		PlayAudio("Audio\\UnFill.wav");
 		pOut->PrintMessage("Unfill the figure...");
-		//GetSelectedFig()->UnFillClr();
 		break;
-	default: //If the user clicked in anywhaere not the colors the color will set to default colors.
+
+	default: //If the user clicked in anywhaere not the colors the color will set to default.
 		if (LastAction == CHANGE_FILLING_COLOR){
 			Color = UI.FillColor;
 		}
@@ -396,7 +397,6 @@ color ApplicationManager::GetColor() {
 	}
 	return Color;
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::Swaping(int Op) {
@@ -445,7 +445,6 @@ void ApplicationManager::Swaping(int Op) {
 	}
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::SaveAll(ofstream& fout)
 {
@@ -453,7 +452,6 @@ void ApplicationManager::SaveAll(ofstream& fout)
 		FigList[i]->Save(fout); //calls save function for each figure
 	}
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::LoadAll(ifstream& fin)
@@ -463,11 +461,13 @@ void ApplicationManager::LoadAll(ifstream& fin)
 	}
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////
-void ApplicationManager::PlayAudio(char* a){
-	VoiceAction::AudioPlayer(a);
+//Voice action.
+void ApplicationManager::PlayAudio(char* FileName){
+	//FileName must be .wav file.
+	VoiceAction::AudioPlayer(FileName);
 }
+
 ////////////////////////////////////////////////////////////////////////////////////
 
 void ApplicationManager::randNumGenBoth(int& sh,int& c) {
@@ -494,7 +494,6 @@ void ApplicationManager::randNumGenBothS(int& sh) {
 }
 
 
-
 void ApplicationManager::randNumGenBoth(int& c) {
 	if (SelectedFig->getFilledCount() == 0)
 		return;
@@ -508,10 +507,7 @@ void ApplicationManager::randNumGenBoth(int& c) {
 	return;
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////
-
-
 int ApplicationManager::getRandNumcount(int shape, int clr) {
 	int x=0;
 	for (int i = 0; i < FigCount; i++)
@@ -544,8 +540,6 @@ void ApplicationManager::usedBeforeDeleteInPlay(CFigure* fig) {
 	return;
 }
 
-
-
 ////////////////////////////////////////////////////////////////////////////////////
 
 //==================================================================================//
@@ -564,7 +558,6 @@ void ApplicationManager::UpdateInterface() const
 				
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
 Input *ApplicationManager::GetInput() const
@@ -573,7 +566,6 @@ Input *ApplicationManager::GetInput() const
 //Return a pointer to the output
 Output *ApplicationManager::GetOutput() const
 {	return pOut; }
-
 
 ////////////////////////////////////////////////////////////////////////////////////
 //Destructor
@@ -587,5 +579,4 @@ ApplicationManager::~ApplicationManager()
 	delete SelectedFig;
 	delete pIn;
 	delete pOut;
-	
 }

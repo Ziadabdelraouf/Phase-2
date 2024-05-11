@@ -1,7 +1,6 @@
 #include "CCircle.h"
 
-CCircle::CCircle(Point C, int r, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
-{
+CCircle::CCircle(Point C, int r, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id){
 	Point cent = C;
 	Point cent1 = cent;
 	radius = r;
@@ -174,6 +173,7 @@ CFigure* CCircle::CreateCopy() const
 {
 	CCircle* CC = new CCircle(Center, radius, FigGfxInfo, ID);  //create an identical copy that will be stored in Clipboard
 	return CC;
+	delete CC;
 }
 CFigure* CCircle::Paste(Point NewCnt, int ID) const
 {
@@ -183,12 +183,8 @@ CFigure* CCircle::Paste(Point NewCnt, int ID) const
 	CCircle* CC = new CCircle(NewCnt, radius, FigGfxInfo, ID); //Create a new object to be pasted 
    CFigure::CircleTotalCount++;
 	return CC;
+	delete CC;
 }
-
-
-
-
-
 
 //omar
 RNGshape CCircle::getType() {

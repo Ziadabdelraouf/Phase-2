@@ -95,9 +95,6 @@ else if (RED == Fclr)
 	}
 }
 
-
-
-
 int CFigure::getRecTotalCount()
 {
 	return RecTotalCount; //returns total number of rectangles

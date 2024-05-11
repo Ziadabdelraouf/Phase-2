@@ -212,6 +212,7 @@ CFigure* CTriangle::CreateCopy() const
 {
 	CTriangle* TT = new CTriangle(Corner1, Corner2, Corner3, FigGfxInfo, ID);  //create an identical copy that will be stored in Clipboard
 	return TT;
+	delete TT;
 }
 
 CFigure* CTriangle::Paste(Point NewCorner, int ID) const
@@ -228,6 +229,7 @@ CFigure* CTriangle::Paste(Point NewCorner, int ID) const
 
 	CFigure::TriTotalCount++;
 	return TT;
+	delete TT;
 }
 
 //CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo, int id)
