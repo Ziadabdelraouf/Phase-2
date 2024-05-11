@@ -10,13 +10,13 @@ void ColorRNG::Execute() {
 	pAct = NULL;
 
 
-	pManager->UnselectAll();
+	pManager->UnselectAll(); //used to prevent possible errors
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
 	if (0 != R->getFilledCount()) {
-		pManager->randNumGenBoth(rcolor);
-		switch (rcolor)
+		pManager->randNumGenBoth(rcolor); //generate random number based on the figures in the figure list 
+		switch (rcolor)    //the switch is based on RNGcolor in defs.h
 		{
 		case pBLACK:
 			pOut->ClearStatusBar();
