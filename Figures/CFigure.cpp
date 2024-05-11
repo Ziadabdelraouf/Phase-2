@@ -55,7 +55,7 @@ void CFigure::ChngDrawClr(color Dclr)
 
 void CFigure::ChngFillClr(color Fclr)
 {	
-	//    temporary changes by Omar
+	//by Omar
 if (FigGfxInfo.isFilled == true) {  // dec the num of the old fill color if it was filled
 	if (BLACK == FigGfxInfo.FillClr)
 		blackCount--;
@@ -145,7 +145,8 @@ int CFigure::getCircleSelectedCount()
 	return CircleSelectedCount;
 }
 
-// temporary by Omar //start //static members fucntions
+//by Omar //start //static members fucntions
+//returns the counter of the shpaes with a specific fill color
 int CFigure::getBlackCount() {
 	return blackCount;
 }
@@ -178,7 +179,7 @@ color CFigure::GetDrawClr()
 	return FigGfxInfo.DrawClr;
 }
 void CFigure::decStaticMembers(CFigure *fig) {
-
+       //used to dec the filled number of the shape count before deleting the obj
 	switch (fig->getType())
 	{
 	case triangle:
@@ -197,7 +198,7 @@ void CFigure::decStaticMembers(CFigure *fig) {
 		HexTotalCount--;
 		break;
 	}
-	if (fig->IsFilled())
+	if (fig->IsFilled()) //used to check if it is filled ,if yes if gets it's color and dec the static data member of it's fillcolor and dec the count of filled objects
 	{
 		filledCount--;
 		switch (fig->getFillClr())
@@ -227,7 +228,7 @@ void CFigure::decStaticMembers(CFigure *fig) {
 
 
 void CFigure::incColorCount(int c) {
-	filledCount++;
+	filledCount++; //used to inc the count of static members of color and the count of filled objects when loading a program to insure that there is no problem in playmode
 	switch (c)
 	{
 	case pBLACK:
@@ -253,7 +254,7 @@ void CFigure::incColorCount(int c) {
 }
 
 void CFigure::incShapeCount(int s) {
-	switch (s)
+	switch (s)  //used to inc the count of a shape when loading to insure there is no problems when using playmode
 	{
 	case triangle:
 		TriTotalCount++;
@@ -274,6 +275,7 @@ void CFigure::incShapeCount(int s) {
 }
 
 void CFigure::setAllStaticZero() {
+	//sets all teh static data members to zero used when loading a save file and when clearing all objects to insure there is no problems in playmode
 	blackCount = 0;
 	yellowCount = 0;
 	orangeCount = 0;
@@ -293,6 +295,7 @@ void CFigure::setAllStaticZero() {
 }
 
 int CFigure::getFillClr() {
+	//another get fill color but it returns based on RNGcolor in defs.h and it only returns for the 6 color that is available in draw mode
 	if (BLACK==FigGfxInfo.FillClr)
 		return 0;
 	else if (YELLOW==FigGfxInfo.FillClr )
