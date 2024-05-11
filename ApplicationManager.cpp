@@ -86,9 +86,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_HEX:
 			pAct = new AddHexAction(this);
 			break;
+
 		case DRAW_CIRCL:
 			pAct = new AddCrcAction(this);
 			break;
+
 		case COLOR_BLACK:
 			Color = BLACK;
 			PlayAudio("Audio\\black .wav");
