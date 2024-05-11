@@ -38,16 +38,13 @@ void DeleteAction::ReadActionParameters()
 void DeleteAction::Execute()
 {
 	ReadActionParameters();
-	pManager->UpdateInterface();
+
+
+	pManager->UpdateInterface();  //updates the program interface
 	
 	
 	
 }
-void DeleteAction::Delete(CFigure*Temp) {
-	
-	
-	Temp = NULL;
-	
-}
+
 
 

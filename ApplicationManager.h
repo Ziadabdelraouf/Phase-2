@@ -75,7 +75,7 @@ public:
 	bool GetIsCut();
 	void SetIsCut(bool);
 	CFigure** GetAllSelected();
-	void PasteFigure();
+	
 	
 };
 #endif

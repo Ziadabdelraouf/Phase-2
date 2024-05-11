@@ -17,8 +17,8 @@ public:
 	virtual void PrintInfo(Output* pOut) const; //prints info of hexagon
 	virtual void SetSelected(bool s);
 	
-	virtual CFigure* CreateCopy() const;
-	CFigure* Paste(Point, int) const;
+	CFigure* CreateCopy() const;  //create a dummy figrue 
+	CFigure* Paste(Point, int) const;   //create a new figure at new location
 
 //omar
 virtual RNGshape getType(); //return the type of the shape

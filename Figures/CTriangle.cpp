@@ -219,8 +219,10 @@ CFigure* CTriangle::CreateCopy() const
 CFigure* CTriangle::Paste(Point NewCorner, int ID) const
 {
 
-
+	//temporary point
 	Point PTemp1, PTemp2;
+
+	//calculations to carry dimensions of previous triangle
 	PTemp1.x = NewCorner.x + (Corner2.x - Corner1.x);
 	PTemp1.y = NewCorner.y + (Corner2.y - Corner1.y);
 	PTemp2.x = NewCorner.x + (Corner3.x - Corner1.x);
@@ -228,10 +230,8 @@ CFigure* CTriangle::Paste(Point NewCorner, int ID) const
 	CTriangle* TT = new CTriangle(NewCorner,PTemp1,PTemp2, FigGfxInfo, ID);  //Create a new object to be pasted 
 
 
-	CFigure::TriTotalCount++;
-	return TT;
-	delete TT;
+	CFigure::TriTotalCount++;  //incremrnt triangle count
+	return TT; //return pointer to figure
+	delete TT;   //delete figure (returned as value)
 }
 
-//CTriangle(Point p1, Point p2, Point p3, GfxInfo FigureGfxInfo, int id)
-  //

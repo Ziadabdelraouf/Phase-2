@@ -182,13 +182,20 @@ CFigure* CCircle::CreateCopy() const
 }
 CFigure* CCircle::Paste(Point NewCnt, int ID) const
 {
-	Point PTemp;
+	Point PTemp;  //temporary point to be used as radius
+
+	//calculations to carry the same value of radius 
 	PTemp.x = NewCnt.x + radius;
 	PTemp.y = NewCnt.y;
+
+
 	CCircle* CC = new CCircle(NewCnt, radius, FigGfxInfo, ID); //Create a new object to be pasted 
-   CFigure::CircleTotalCount++;
+
+   CFigure::CircleTotalCount++;  //increment circle count every time a paste is done
+
 	return CC;
-	delete CC;
+
+	delete CC; //delte figure (returned as value)
 }
 
 //omar

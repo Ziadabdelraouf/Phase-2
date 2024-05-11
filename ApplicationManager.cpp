@@ -263,11 +263,11 @@ CFigure** ApplicationManager::GetAllSelected() {
 }
 void ApplicationManager::AddClipBoard(CFigure*pFig)
 {
-	Clipboard = pFig;
+	Clipboard = pFig; //add figure to clipboard
 }
 CFigure* ApplicationManager::GetClipboard()
 {
-	return Clipboard;
+	return Clipboard; //return figure from clipboard
 	
 }
 int ApplicationManager::GetNumSelected() {
@@ -280,16 +280,12 @@ int ApplicationManager::GetNumSelected() {
 	return SelectedFigCount;
 }
 
-////////////////////////////////////////////////////////////////////////////////////
-void ApplicationManager::PasteFigure(){
-	Action* pAct = NULL;
-	pAct = new PasteAction(this);
-}
+
 
 /////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::UnCut() {
-	CutAction temporary(this);
-	temporary.Uncut();
+	CutAction temporary(this); //create a new object of class Cut
+	temporary.Uncut(); //run the uncut function 
 	
 }
 

@@ -264,10 +264,11 @@ CFigure* CHexagon::Paste(Point NewCnt,int ID) const
 {
 	CHexagon* HH = new CHexagon(NewCnt,FigGfxInfo,ID);  //Create a new object to be pasted 
 
-
+	//increment count of hexagons
 	CFigure::HexTotalCount++;
-	return HH;
-	delete HH;
+
+	return HH;  //return figure
+	delete HH;  //delete figure (returned as value)
 }
 
 

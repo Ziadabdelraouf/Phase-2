@@ -17,8 +17,7 @@ class DeleteAction :
     public Action
 {
 private:
-	SelectAction* pSelct;
-	CFigure** Pfig;
+	CFigure** Pfig; //create a pointer to figure
 	
 public:
     DeleteAction(ApplicationManager*pApp);
@@ -27,7 +26,7 @@ public:
 
 	virtual void Execute();
 
-	void Delete(CFigure*);
+	
 
 };
 #endif

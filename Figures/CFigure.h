@@ -53,8 +53,8 @@ public:
 	
 	
 	
-	virtual CFigure* Paste(Point NewCnt,int x) const=0;
-	virtual CFigure* CreateCopy() const =0;
+		virtual CFigure* CreateCopy() const=0;  //create a dummy figrue 
+		virtual CFigure* Paste(Point, int) const=0;   //create a new figure at new location
 	
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color

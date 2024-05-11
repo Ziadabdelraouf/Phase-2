@@ -24,8 +24,8 @@ public:
 virtual RNGshape getType(); //return the type of the shape
 //
 	
-	CFigure* CreateCopy() const;
-	CFigure* Paste(Point, int) const;
+	CFigure* CreateCopy() const;  //create a dummy figrue 
+	CFigure* Paste(Point, int) const;   //create a new figure at new location
 	
 };
 #endif

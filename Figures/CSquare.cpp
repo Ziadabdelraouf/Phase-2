@@ -192,7 +192,11 @@ void CSquare::SetSelected(bool s)
 CFigure* CSquare::CreateCopy() const
 {
 	CSquare* SS = new CSquare(Center, FigGfxInfo, ID);  //create an identical copy that will be stored in Clipboard
+	
+	//return poimter to figure
 	return SS;
+
+	//delete figure (returned as value)
 	delete SS;
 }
 
