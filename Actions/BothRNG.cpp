@@ -10,14 +10,14 @@ void BothRNG::Execute() {
 	pAct = NULL;
 
 
-	pManager->UnselectAll();
+	pManager->UnselectAll();     //prevents potential errors
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
 	if (0 != R->getFilledCount()) {
-		pManager->randNumGenBoth(rshape, rcolor);
-		num = pManager->getRandNumcount(rshape, rcolor);
-		switch (rshape)
+		pManager->randNumGenBoth(rshape, rcolor); //get random generated number for shape and color
+		num = pManager->getRandNumcount(rshape, rcolor); //get the number of figure with specific characteristics 
+		switch (rshape)  //based on RNGshape in defs.h
 		{
 		case triangle:
 			s2 = "triangles";
@@ -35,7 +35,7 @@ void BothRNG::Execute() {
 			s2 = "hexagons";
 			break;
 		}
-		switch (rcolor)
+		switch (rcolor)   //based on RNGcolor in defs.h
 		{
 		case pBLACK:
 			s1 = "select all black ";
@@ -56,7 +56,6 @@ void BothRNG::Execute() {
 			s1 = "select all blue ";
 			break;
 		}
-		/*num = pManager->getColoredTypeNum(rshape, rcolor);*/
 		pOut->ClearStatusBar();
 		pOut->PrintMessage(s1 + s2);
 	}
