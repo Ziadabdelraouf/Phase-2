@@ -5,6 +5,9 @@
 #include "../ApplicationManager.h"
 #include "Action.h"
 
+int VoiceAction :: i = 0;
+
+bool VoiceAction:: Switcher = false;
 VoiceAction::VoiceAction(ApplicationManager *pApp) :Action(pApp){
 	Switcher = false;
 }

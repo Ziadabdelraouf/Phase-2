@@ -29,9 +29,9 @@ void FillAction::Execute() {
 	else {
 		pOut->PrintMessage("Select color to fill: ");
 		pManager->PlayAudio("Audio\\SelectColor.wav");
-		ReadActionParameters();//Get the color before fill action.
-		PFig->ChngFillClr(color);
-		pManager->UnselectAll(); 
+		ReadActionParameters();  //Get the color before fill action.
+		PFig->ChngFillClr(color);   //Send the new fill color to GFXinfo to change the color.
+		pManager->UnselectAll();    
 		
 		
 	}

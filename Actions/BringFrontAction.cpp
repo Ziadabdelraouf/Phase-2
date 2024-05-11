@@ -11,5 +11,5 @@ void BringFrontAction::ReadActionParameters() {
 }
 
 void BringFrontAction::Execute() {
-		pManager->Swaping(1); //Sending the operator number to the AppManager
+		pManager->Swaping(1); //Sending the operator number to the AppManager.
 }

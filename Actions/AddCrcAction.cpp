@@ -22,7 +22,7 @@ void AddCrcAction::ReadActionParameters()
 	pIn->GetPointClicked(C.x, C.y);
 
 	pOut->PrintMessage("Click at the end of radius");
-	pManager->PlayAudio("Audio\\CircleRadius.wav");  //circel radius voice acting
+	pManager->PlayAudio("Audio\\CircleRadius.wav");  //circle radius voice acting
 
 	//Read the point on radius of the circle
 	pIn->GetPointClicked(R.x, R.y);
@@ -53,5 +53,4 @@ void AddCrcAction::Execute()
 	//Add the Circle to the list of figures
 	pManager->AddFigure(CR);
 	
-
 }

@@ -6,12 +6,11 @@
 #include "string"
 #pragma comment(lib,"Winmm.lib")
 
-static bool Switcher;
-static int i=0;
-class VoiceAction: public Action{
-private:
 
+class VoiceAction: public Action{
 public:
+	static bool Switcher;
+	static int i;
 	VoiceAction(ApplicationManager*);
 	
 	static void AudioPlayer(char*);

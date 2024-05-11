@@ -362,6 +362,7 @@ void ApplicationManager::ClearAll(){
 	}
 	delete Clipboard;
 	Clipboard = NULL;
+	VoiceAction::i = 0;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////

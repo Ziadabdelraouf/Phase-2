@@ -31,9 +31,7 @@ void BorderAction::Execute() {
 		pManager->PlayAudio("Audio\\BorderColor.wav");
 		ReadActionParameters();  //Get the color before change border color action.
 		PFig->ChngDrawClr(color);
-		pManager->UnselectAll();  //Unselect the figure to show the action.
-		
+		pManager->UnselectAll();  //Unselect the figure to show the action.	
 	}
-	
 }
 
