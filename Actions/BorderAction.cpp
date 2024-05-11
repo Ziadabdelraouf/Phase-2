@@ -34,6 +34,6 @@ void BorderAction::Execute() {
 		pManager->UnselectAll();  //Unselect the figure to show the action.
 		
 	}
-	p
+	
 }
 
