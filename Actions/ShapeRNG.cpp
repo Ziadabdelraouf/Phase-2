@@ -8,16 +8,16 @@ void ShapeRNG::Execute() {
 	delete pAct;
 	pAct = NULL;
 	
-	pManager->UnselectAll();
+	pManager->UnselectAll(); //prevents potential errors
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 	
-	if (0==pManager->GetFigureCount()) {
-		pOut->PrintMessage("Error there is no shapes to start the play mode with");
+	if (0==pManager->GetFigureCount()) { //prevents program from running if there is no shapes and inform the user
+		pOut->PrintMessage("Error there is no shapes to start the play mode with"); 
 		return;
 	}
-	pManager->randNumGenBothS(rshape);
-	switch (rshape)
+	pManager->randNumGenBothS(rshape); //generate random number for shapes based on the existing figures
+	switch (rshape)  //based on RNGshpae in defs.h
 	{
 	case triangle:
 		pOut->PrintMessage("Select all triangles");
