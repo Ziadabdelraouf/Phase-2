@@ -51,4 +51,5 @@ void AddCrcAction::Execute()
 	//Add the Circle to the list of figures
 	pManager->AddFigure(CR);
 	//delete CR;
+
 }
