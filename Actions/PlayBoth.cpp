@@ -6,27 +6,27 @@ PlayBoth::PlayBoth(ApplicationManager* pApp) :BothRNG(pApp) {
 void PlayBoth::Execute() {
 	BothRNG::Execute();
 	if (num == 0) {
-		return;
+		return; //incase the number of possible right figures are zero it prevents the program from running unnecessary part and prevent overwriting in the status bar
 	}
 	
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	for (size_t i = 0; i < num; i++)  // hmark should have certain value but logic still has some problems
+	for (size_t i = 0; i < num; i++)  
 	{
 		do {
 			pIn->GetPointClicked(x, y);
 		} while (pManager->GetFigure(x, y) == NULL);
-		if (rcolor==pManager->GetFigure(x, y)->getFillClr() && pManager->GetFigure(x, y)->getType() == rshape)
+		if (rcolor==pManager->GetFigure(x, y)->getFillClr() && pManager->GetFigure(x, y)->getType() == rshape) //check the neccassary condition for the figure to be right
 		{
-			score++;
+			score++; //increase the score if clicked right
 		}
 		//implement delete here
 		if (pManager->GetFigure(x, y) != NULL) {
 			R = pManager->GetFigure(x, y);
-			pManager->usedBeforeDeleteInPlay(R);
-			delete R;
+			pManager->usedBeforeDeleteInPlay(R);   //used to push the figure the last on the list 
+			delete R;                              // deletes the obj   
 			pManager->GetFigure(x, y) == NULL;
-			pManager->UpdateInterface();
+			pManager->UpdateInterface();          //updates the interface to make deleting the figure appear to the user
 		}
 		//
 	}
