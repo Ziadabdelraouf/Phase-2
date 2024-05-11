@@ -21,7 +21,7 @@ void AddCrcAction::ReadActionParameters()
 	//Read the center of the circle
 	pIn->GetPointClicked(C.x, C.y);
 
-	pOut->PrintMessage("New Circle: Click at the end of radius");
+	pOut->PrintMessage("Click at the end of radius");
 	pManager->PlayAudio("Audio\\CircleRadius.wav");  //circel radius voice acting
 
 	//Read the point on radius of the circle

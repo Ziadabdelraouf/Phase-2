@@ -22,13 +22,13 @@ void AddTriAction::ReadActionParameters()
 	pIn->GetPointClicked(P1.x, P1.y);
 
 	pOut->PrintMessage("Click at second corner");
-	pManager->PlayAudio("Audio\\TriangleSecondCorner.wav");
+	pManager->PlayAudio("Audio\\Corner2.wav");
 
 	//Read 2nd corner and store in point P2
 	pIn->GetPointClicked(P2.x, P2.y);
 
 	pOut->PrintMessage("Click at third corner");
-	pManager->PlayAudio("Audio\\TriangleThirdCorner.wav");
+	pManager->PlayAudio("Audio\\Corner3.wav");
 
 	//Read 3rd corner and store in point P3
 	pIn->GetPointClicked(P3.x, P3.y);

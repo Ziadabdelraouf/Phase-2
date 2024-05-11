@@ -21,8 +21,8 @@ void AddRectAction::ReadActionParameters()
 	//Read 1st corner and store in point P1
 	pIn->GetPointClicked(P1.x, P1.y);
 
-	pOut->PrintMessage("New Rectangle: Click at second corner");
-	pManager->PlayAudio("Audio\\RectangelCorner2.wav");
+	pOut->PrintMessage("Click at second corner");
+	pManager->PlayAudio("Audio\\Corner2.wav");
 	// 
 	//Read 2nd corner and store in point P2
 	pIn->GetPointClicked(P2.x, P2.y);

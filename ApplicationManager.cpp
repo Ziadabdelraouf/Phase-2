@@ -89,6 +89,41 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_CIRCL:
 			pAct = new AddCrcAction(this);
 			break;
+		case COLOR_BLACK:
+			Color = BLACK;
+			PlayAudio("Audio\\black .wav");
+			pOut->PrintMessage("Black");
+			break;
+
+		case COLOR_BLUE:
+			Color = BLUE;
+			PlayAudio("Audio\\blue .wav");
+			pOut->PrintMessage("Blue");
+			break;
+
+		case COLOR_GREEN:
+			Color = GREEN;
+			PlayAudio("Audio\\green .wav");
+			pOut->PrintMessage("Green");
+			break;
+
+		case COLOR_ORANGE:
+			Color = ORANGE;
+			PlayAudio("Audio\\orange .wav");
+			pOut->PrintMessage("Orange");
+			break;
+
+		case COLOR_YELLOW:
+			Color = YELLOW;;
+			PlayAudio("Audio\\yellow .wav");
+			pOut->PrintMessage("Yellow");
+			break;
+
+		case COLOR_RED:
+			Color = RED;;
+			PlayAudio("Audio\\red .wav");
+			pOut->PrintMessage("Red");
+			break;
 		case CHANGE_FILLING_COLOR:
 			pAct = new FillAction(this);
 			LastAction = CHANGE_FILLING_COLOR;
@@ -133,22 +168,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			UI.InterfaceMode = MODE_DRAW;
 	        UI.InterfaceMode = MODE_DRAW;
 	        break;
+
         case TO_PLAY:
 			pAct = new SwitchToPlay(this);
 			UI.InterfaceMode = MODE_PLAY;
 	        break;
-		case COLOR_GREEN:
-			Color = GREEN;
-			break;
-		case COLOR_ORANGE:
-			Color = ORANGE;
-			break;
-		case COLOR_YELLOW:
-			Color = YELLOW;
-			break;
-		case COLOR_RED:
-			Color = RED;
-			break;
+
 		case DELETEFIG:
 			pAct = new DeleteAction(this);
 			break;
@@ -345,43 +370,43 @@ color ApplicationManager::GetColor() {
 	{
 	case COLOR_BLACK:
 		Color = BLACK;
-		PlayAudio("Audio\\Black.wav");
+		PlayAudio("Audio\\black .wav");
 		pOut->PrintMessage("Black");
 		break;
 
 	case COLOR_BLUE:
 		Color = BLUE;
-		PlayAudio("Audio\\Blue.wav");
+		PlayAudio("Audio\\blue .wav");
 		pOut->PrintMessage("Blue");
 		break;
 
 	case COLOR_GREEN:
 		Color = GREEN;
-		PlayAudio("Audio\\Green.wav");
+		PlayAudio("Audio\\green .wav");
 		pOut->PrintMessage("Green");
 		break;
 
 	case COLOR_ORANGE:
 		Color = ORANGE;
-		PlayAudio("Audio\\Orange.wav");
+		PlayAudio("Audio\\orange .wav");
 		pOut->PrintMessage("Orange");
 		break;
 
 	case COLOR_YELLOW:
 		Color = YELLOW;;
-		PlayAudio("Audio\\Yellow.wav");
+		PlayAudio("Audio\\yellow .wav");
 		pOut->PrintMessage("Yellow");
 		break;
 
 	case COLOR_RED:
 		Color = RED;;
-		PlayAudio("Audio\\Red.wav");
+		PlayAudio("Audio\\red .wav");
 		pOut->PrintMessage("Red");
 		break;
 
 	case DELETEFIG:
 		Color = LIGHTGOLDENRODYELLOW;
-		PlayAudio("Audio\\UnFill.wav");
+		/*PlayAudio("Audio\\UnFill.wav");*/
 		pOut->PrintMessage("Unfill the figure...");
 		break;
 
