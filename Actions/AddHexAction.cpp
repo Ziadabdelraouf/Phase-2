@@ -36,8 +36,10 @@ void AddHexAction::Execute()
 	//This action needs to read some parameters first
 	ReadActionParameters();
 
+	int id = pManager->GetFigureCount();
+
 	//Create a hexagon with the parameters read from the user
-	CHexagon* H = new CHexagon(C, HexagonGfxInfo, pManager->GetFigureCount());
+	CHexagon* H = new CHexagon(C, HexagonGfxInfo, pManager->UniqueID(id));
 
 	//Add the hexagon to the list of figures
 	pManager->AddFigure(H);

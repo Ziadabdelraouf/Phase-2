@@ -14,6 +14,7 @@ protected:
 	bool Selected;	//true if the figure is selected
 	GfxInfo FigGfxInfo;	//Figure graphics info
 	bool WasCut;
+	//static int IDCount; //id number (constantly incremented to prevent id repetition)
 	static int RecTotalCount; //total number of rectangles
 	static int RecSelectedCount; //number of selected rectangles
 	static int SqrTotalCount;
@@ -80,6 +81,7 @@ int getRedCount();
 int getBlueCount();
 int getGreenCount();
 int getFilledCount();
+int getID();
 bool IsFilled();
 int getFillClr();   //temporary it might be needed or not in the future made by (Omar)
 static void decStaticMembers(CFigure *fig);

@@ -247,6 +247,17 @@ CFigure* ApplicationManager::GetSelectedFig() {
 	}
 	return NULL;
 }
+
+int ApplicationManager::UniqueID(int id)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (id == FigList[i]->getID())
+			id++;
+	}
+	return id;
+}
+
 CFigure** ApplicationManager::GetAllSelected() {
 	CFigure* Selected[MaxFigCount];
 	for (int i = 0; i < MaxFigCount; i++)

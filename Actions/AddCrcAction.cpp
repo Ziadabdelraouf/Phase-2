@@ -45,8 +45,10 @@ void AddCrcAction::Execute()
 	//This action needs to read some parameters first
 	ReadActionParameters();
 
+	int id = pManager->GetFigureCount();
+
 	//Create a circle with the parameters read from the user
-	CCircle*CR = new CCircle(C, radius, CircleGfxInfo, pManager->GetFigureCount());
+	CCircle*CR = new CCircle(C, radius, CircleGfxInfo, pManager->UniqueID(id));
 
 	//Add the Circle to the list of figures
 	pManager->AddFigure(CR);

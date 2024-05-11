@@ -70,7 +70,7 @@ public:
 	void PlayAudio(char*);   //Play the filename audio ".wav"
 	
 	CFigure* GetSelectedFig(); // Get current selected figure
-	
+	int UniqueID(int);
 	void Swaping(int);  //Swaping between the layers of figures.
 	int getColoredTypeNum(int sh, int c);
 	bool GetIsCut();

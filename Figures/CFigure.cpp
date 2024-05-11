@@ -1,14 +1,14 @@
 #include "CFigure.h"
-
+#include "../ApplicationManager.h"
 
 CFigure::CFigure(GfxInfo FigureGfxInfo, int id)
 { 
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false; //default status is not-selected
 	ID = id; //set id of the figure
-	
 }
  
+//int CFigure::IDCount = 0; //intialise figure id counter
 int CFigure::RecTotalCount = 0; //initialise total count of rectangles
 int CFigure::RecSelectedCount = 0; //initialise count of selected rectangles
 int CFigure::SqrTotalCount = 0; //initialise total count of squares
@@ -166,6 +166,10 @@ int CFigure::getGreenCount() {
 }
 int CFigure::getFilledCount() {
 	return filledCount;
+}
+int CFigure::getID()
+{
+	return ID;
 }
 //members functions
 color CFigure::GetFillClr()
